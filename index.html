@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Reservas Incalake</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+	<!-- Bootcards CSS for desktop: -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+	<!-- Bootstrap and Bootcards JS -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+	<script src="app.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h1>Reservas</h1>
+				<form novalidate>
+					<span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
+					<hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2">
+					<h4><i class="fa fa-map-signs"></i> Tours</h4>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<table class="table table-bordered">
+								<tr>
+									<th>Nombre del tour</th>
+									<th>Fecha</th>
+									<th>Aciones</th>
+								</tr>
+								<tr>
+									<td>Tour Islas los Uros Medio Dia</td>
+									<td>24-08-2017</td>
+									<td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
+								</tr>
+							</table>
+							<!-- Trigger the modal with a button -->
+							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal">Agregar Ticket aqui</a>
+						</div>
+					</div>
+					<h4><i class="fa fa-bus"></i> Bus Tickets</h4>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<table class="table table-bordered">
+								<tr>
+									<th>Bus</th>
+									<th>Origen</th>
+									<th>Destino</th>
+									<th>Fecha</th>
+									<th>Acciones</th>
+								</tr>
+								<tr>
+									<td>Bus directo local cama 160°</td>
+									<td>Puno</td>
+									<td>Cusco</td>
+									<td>24-08-2017</td>
+									<td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
+								</tr>
+							</table>
+							<!-- Trigger the modal with a button -->
+							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">Agregar Ticket aqui</a>
+						</div>
+					</div>
+
+					<span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+					<hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2">
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="form-group">
+								<label for="name">Nombres y Apellidos</label>
+								<input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<div class="form-group">
+								<label for="nationality">Nacionalidad</label>
+								<input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label for="email">E-mail</label>
+								<input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="form-group">
+								<label for="numberof">Numero de Pasajeros</label>
+								<input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<div class="form-group">
+								<label for="cellphone">Numero de celular</label>
+								<input type="text" class="form-control" id="cellphone" placeholder="..." required title="Numero de celular">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12">
+							<a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
+						</div>
+						<div class="col-xs-12 collapse" id="aditional_info">
+							<div class="form-group">
+								<label for="place">Hotel o lugar de Recojo</label>
+								<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="extra">Escribanos aqui mas detalles o observaciones</label>
+								<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-12">
+							<br>
+							<button type="submit" class="btn btn-primary">Reservar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Tours Modal -->
+	<div id="toursModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Busca tu Tour</h4>
+				</div>
+				<div class="modal-body">
+					
+<div class="panel panel-default bootcards-summary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Destinos</h3>
+  </div>
+  <div class="panel-body" id="destinosCards">
+    <div class="row">
+      <div class="col-xs-6 col-sm-4">
+        <a class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-users"></i>
+          <h4>Contacts <span class="label label-info">432</span></h4>
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <a class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-building-o"></i>
+          <h4>Companies <span class="label label-info">98</span></h4>
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <a class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-clipboard"></i>
+          <h4>Notes <span class="label label-danger">54</span></h4>
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <a class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-files-o"></i>
+          <h4>Files <span class="label label-info">65</span></h4>
+        </a>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+        <a class="bootcards-summary-item" href="#">
+          <i class="fa fa-3x fa-check-square-o"></i>
+          <h4>Tasks <span class="label label-warning">109</span></h4>
+        </a>
+      </div>      
+    </div>
+  </div>
+  <div class="panel-footer">
+    <small>Los tours que debes visitar</small>
+  </div>
+</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- End Modal -->
+	<!-- Bus Ticket Modal -->
+	<div id="ticketsModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Busca tu Bus Ticket</h4>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
+						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
+						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
+						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- End Modal -->
+</body>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+
+</html>
+
+
+
+
+<!--<div class="form-group">
+						<label for="place">Hotel o lugar de Recojo</label>
+						<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="extra">Informacion adicional</label>
+						<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
+					</div>-->
