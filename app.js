@@ -1,4 +1,4 @@
-const destinos = [
+const destinoss = [
 	{
 		name: 'Puno',
 		tours: [
@@ -332,6 +332,28 @@ const tickets = [
 
 ];
 
+var contador = 0;
+var destinosDisponibles = menus.filter((menu)=>menu.options);
+var destinos = destinosDisponibles.map((destino)=>{
+	let toursDestino = [];
+	destino.options.forEach(grupo=>{
+		grupo.options.forEach(tour=>{
+			toursDestino.push({
+				name: tour.name?tour.name.es:null,
+				desc: tour.subname?tour.subname.es:null,
+				url: tour.url?tour.url.es:null,
+				id: contador
+			});
+			contador = contador + 1;
+		});
+	});
+
+	return {
+		name: destino.name.es,
+		tours: toursDestino
+	}
+});
+
 var selectedTours = [];
 var selectedTickets = [];
 
@@ -352,14 +374,14 @@ function mostrarDestinos(text) {
 	destinos.forEach((destino, index) => {
 		html = html + `
     	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item" onclick="selectDestino(${index})">
+        <a class="bootcards-summary-item" onclick="toogleTours(${index})">
           <i class="fa fa-3x fa-suitcase"></i>
           <h4>${destino.name} <span class="label label-info">${destino.tours.length}</span></h4>
         </a>
       </div>
 		`;
 	});
-	
+
 	html = html + `
 		<div id="space-tours" class="col-xs-12" >
 		</div>
@@ -368,7 +390,7 @@ function mostrarDestinos(text) {
 	document.getElementById('destinosCards').innerHTML = html;
 }
 
-function selectDestino(index) {
+function toogleTours(index) {
 	// Esconder si ya existia seleccionado
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
@@ -393,7 +415,7 @@ function selectDestino(index) {
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
 				<div>
-					<h4 onclick="selectTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name} <br> 
+					<h4 onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name} <br> 
 						<small>${tour.desc}</small> <br> 
 						<small><a href="${tour.url}">Explorar tour >> </a></small> 
 					</h4>
@@ -405,7 +427,7 @@ function selectDestino(index) {
 		`;
 		document.getElementById(`space-tours`).innerHTML = content;
 		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
-		
+
 		// focus
 		// document.getElementById(`space-tours`).focus();
 	}
@@ -471,7 +493,45 @@ celular:123456789
 
 }
 
-function selectTour(name,id){
-	console.log('seleccionno el tour:',name,id);
+function addTour(name, id) {
+	console.log('seleccionno el tour:', name, id);
+	selectedTours.push({
+		name: name,
+		id: id
+	});
 	
+	renderSelectedTours();
+}
+
+function removeTour(id){
+	selectedTours = selectedTours.filter(tour=>tour.id!=id);
+	renderSelectedTours();
+}
+
+function renderSelectedTours(){
+	var items = "";
+
+	selectedTours.forEach((tour)=>{
+		items = items + `
+			<div class="col-md-12 div-list-tours col-xs-12 ">
+				<div class="col-md-7 list-tours-name"> ${tour.name}
+				</div>
+				<div class="col-md-3 text-center list-tours-date col-xs-10">
+					<div class="input-group">
+						<span class="input-group-addon fa fa-calendar">							     
+						</span>
+						<input class="" id="date" name="date" type="date" />
+					</div>
+				</div>
+				<div class="col-md-2 text-center col-xs-2">
+					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tour.id})">
+					</span>
+				</div>
+			</div>
+		`;
+	});
+
+	document.getElementById('tours-screen').innerHTML = items;
+
+	$('#toursModal').modal('hide');
 }
