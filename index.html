@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-speak.infoelectron.com
-Metalick
-Metalick
+speak.infoelectron.com Metalick Metalick
+
 <head>
 	<title>Reservas Incalake</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="style.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css"> -->
-	<!-- <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"> -->
-	<!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
-	<!-- <script src="node_modules/bootstrap3/dist/js/bootstrap.min.js"></script> -->
-	<!-- Bootcards CSS for desktop: -->
-	<!-- Bootstrap and Bootcards JS -->
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script> -->
-	<script src="//incalake.com/wcontent/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-	<link href="http://www.incalake.com/wcontent/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="//incalake.com/estilos/css/font-awesome.min.css">
-	<script src="http://www.incalake.com/wcontent/js/bootstrap.min.js" type="text/javascript"></script>
+	<!--<script src="//incalake.com/wcontent/js/jquery-1.11.1.min.js" type="text/javascript"></script>-->
+	<script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
+	<!--<link href="http://www.incalake.com/wcontent/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
+	<link href="node_modules/bootstrap3/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!--<link rel="stylesheet" href="//incalake.com/estilos/css/font-awesome.min.css">-->
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<!--<script src="http://www.incalake.com/wcontent/js/bootstrap.min.js" type="text/javascript"></script>-->
+	<script src="node_modules/bootstrap3/dist/js/bootstrap.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
-
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
 	<script src="app.js"></script>
 </head>
@@ -48,11 +44,10 @@ Metalick
 									<div class="col-md-6 list-tours-name">Tour Islas los Uros Medio Dia</div>
 									<div class="col-md-3 text-center list-tours-date">
 							              <div class="input-group">
-										    <span class="input-group-addon fa fa-calendar">
-										     
+										    <span class="input-group-addon fa fa-calendar">							     
 										    </span>
-										    <input class="" id="email" name="email" type="text"/>
-										  </div>
+											<input class="" id="email" name="email" type="text" />
+										</div>
 									</div>
 									<div class="col-md-3 text-center"><span class="btn btn-default btn-xs fa fa-close"></span></div>
 								</div>
@@ -71,7 +66,7 @@ Metalick
 								</tr>
 							</table>
 							<!-- Trigger the modal with a button -->
-							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal">Agregar Ticket aqui</a>
+							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="filtrarTours(123)">Agregar Tour aqui</a>
 						</div>
 					</div>
 					<h4><i class="fa fa-bus"></i> Bus Tickets</h4>
@@ -175,49 +170,17 @@ Metalick
 					<h4 class="modal-title">Busca tu Tour</h4>
 				</div>
 				<div class="modal-body">
-					
-<div class="panel panel-default bootcards-summary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Destinos</h3>
-  </div>
-  <div class="panel-body" id="destinosCards">
-    <div class="row">
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-users"></i>
-          <h4>Contacts <span class="label label-info">432</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-building-o"></i>
-          <h4>Companies <span class="label label-info">98</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-clipboard"></i>
-          <h4>Notes <span class="label label-danger">54</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-files-o"></i>
-          <h4>Files <span class="label label-info">65</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-check-square-o"></i>
-          <h4>Tasks <span class="label label-warning">109</span></h4>
-        </a>
-      </div>      
-    </div>
-  </div>
-  <div class="panel-footer">
-    <small>Los tours que debes visitar</small>
-  </div>
-</div>
+
+					<div class="panel panel-default bootcards-summary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Destinos</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row" id="destinosCards">
+								Cargando...
+							</div>
+						</div>
+					</div>
 
 				</div>
 				<div class="modal-footer">
@@ -228,7 +191,7 @@ Metalick
 		</div>
 	</div>
 	<!-- End Modal -->
-	<!-- Bus Ticket Modal -->
+	<!-- Bus ticket Modal -->
 	<div id="ticketsModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -236,15 +199,12 @@ Metalick
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Busca tu Bus Ticket</h4>
+					<h4 class="modal-title">Busca tu Bus ticket</h4>
 				</div>
 				<div class="modal-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
+
+					naa...
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -254,11 +214,13 @@ Metalick
 		</div>
 	</div>
 	<!-- End Modal -->
+
 </body>
 <br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br>
 
 </html>
+
 
 
 
@@ -273,77 +235,3 @@ Metalick
 					</div>-->
 
 
-<style>
-/*GLOBAL*/
-:root{
-  --color-primary:#5996ea;
-  --color-secondary:rgb(54, 147, 36);
-  --color-text: rgba(0, 0, 0, 0.67);
-  --color-complement: rgba(204, 204, 204, 0.33);
-}
-html{
-  height: 100%;
-
-}
-/*p,h1,h2,h4,h5,div,span,td,body{
-  
-}*/
-p,li,label,.alert,#precios_tabla tr>td:nth-child(1){
-      font-size: 16px;
-      text-align: justify;
-}
-body{
-      
-    width: 100%;
-    min-height: 100%;
-    position: relative;
-    font-family: 'Pontano Sans', sans-serif;
-}
-	.container-book-now{
-		background: #fff;
-	}
-	.line-header{
-  display: block;
-    margin: 10px 0 25px 0;
-    border-bottom: 1px solid var(--color-complement);
-    padding: 0;
-
-}
-
-.line-header >*{
-          font-size: 20px;
-    margin: 0 0 -1px 0;
-    padding-bottom: 5px;
-    display: inline-block;
-    border-bottom: 1px solid var(--color-primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--color-text);
-}
-.div-tours .div-reserva-header{
-	background: var(--color-primary);
-	text-align: center;
-	color: #f5f5f5;
-}
-.div-tours .div-content-list-tours{
-	padding: 0;
-    border-style: none solid none solid;
-    border-width: 1px;
-    border-color: #ccc;
-}
-.div-tours .div-list-tours{
-	    border-bottom: solid;
-    border-width: 1px;
-    border-color: #ccc;
-padding: 0;
-}
-.div-tours .div-list-tours .list-tours-name{
-line-height: 30px;	
-}
-.div-tours .div-list-tours>*{
-	padding: 3px 10px;
-}
-.div-tours .div-list-tours .list-tours-date .input-group-addon{
-	padding: 5px;
-}   
-</style>
