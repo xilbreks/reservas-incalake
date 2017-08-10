@@ -8,6 +8,11 @@
 	<link href="style.css" rel="stylesheet">
 	<link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<style>
+		.selecionado {
+			background-color: red;
+		}
+	</style>
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
 	<!-- Bootcards CSS for desktop: -->
@@ -41,7 +46,7 @@
 								</tr>
 							</table>
 							<!-- Trigger the modal with a button -->
-							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal">Agregar Ticket aqui</a>
+							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="filtrarTours(123)">Agregar Tour aqui</a>
 						</div>
 					</div>
 					<h4><i class="fa fa-bus"></i> Bus Tickets</h4>
@@ -143,49 +148,17 @@
 					<h4 class="modal-title">Busca tu Tour</h4>
 				</div>
 				<div class="modal-body">
-					
-<div class="panel panel-default bootcards-summary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Destinos</h3>
-  </div>
-  <div class="panel-body" id="destinosCards">
-    <div class="row">
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-users"></i>
-          <h4>Contacts <span class="label label-info">432</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-building-o"></i>
-          <h4>Companies <span class="label label-info">98</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-clipboard"></i>
-          <h4>Notes <span class="label label-danger">54</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-files-o"></i>
-          <h4>Files <span class="label label-info">65</span></h4>
-        </a>
-      </div>
-      <div class="col-xs-6 col-sm-4">
-        <a class="bootcards-summary-item" href="#">
-          <i class="fa fa-3x fa-check-square-o"></i>
-          <h4>Tasks <span class="label label-warning">109</span></h4>
-        </a>
-      </div>      
-    </div>
-  </div>
-  <div class="panel-footer">
-    <small>Los tours que debes visitar</small>
-  </div>
-</div>
+
+					<div class="panel panel-default bootcards-summary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Destinos</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row" id="destinosCards">
+								Cargando...
+							</div>
+						</div>
+					</div>
 
 				</div>
 				<div class="modal-footer">
@@ -196,46 +169,9 @@
 		</div>
 	</div>
 	<!-- End Modal -->
-	<!-- Bus Ticket Modal -->
-	<div id="ticketsModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Busca tu Bus Ticket</h4>
-				</div>
-				<div class="modal-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae id, numquam iure nesciunt aspernatur, labore placeat
-						consequatur vel cupiditate. Eligendi quae consectetur nobis quis, magnam reiciendis! Quibusdam, aspernatur iste laborum.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<!-- End Modal -->
+	
 </body>
 <br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br>
 
 </html>
-
-
-
-
-<!--<div class="form-group">
-						<label for="place">Hotel o lugar de Recojo</label>
-						<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
-					</div>
-					<div class="form-group">
-						<label for="extra">Informacion adicional</label>
-						<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
-					</div>-->
