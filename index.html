@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
+speak.infoelectron.com
+Metalick
+Metalick
 <head>
 	<title>Reservas Incalake</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="style.css" rel="stylesheet">
-	<link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-	<style>
-		.selecionado {
-			background-color: red;
-		}
-	</style>
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" href="node_modules/bootstrap3/dist/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"> -->
+	<!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+	<!-- <script src="node_modules/bootstrap3/dist/js/bootstrap.min.js"></script> -->
 	<!-- Bootcards CSS for desktop: -->
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
 	<!-- Bootstrap and Bootcards JS -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script> -->
+	<script src="//incalake.com/wcontent/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+	<link href="http://www.incalake.com/wcontent/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="//incalake.com/estilos/css/font-awesome.min.css">
+	<script src="http://www.incalake.com/wcontent/js/bootstrap.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
 	<script src="app.js"></script>
 </head>
 
 <body>
-	<div class="container">
+	<div class="container container-book-now">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<h1>Reservas</h1>
 				<form novalidate>
-					<span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
-					<hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2">
+					<div class="line-header">
+						<span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
+					</div>
+					<!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
 					<h4><i class="fa fa-map-signs"></i> Tours</h4>
 					<div class="row">
 						<div class="col-md-10 col-md-offset-1">
+							<div class="col-md-12 div-reserva-header">
+								<div class="col-md-6">Nombre del Tour</div>
+								<div class="col-md-3 text-center">Fecha</div>
+								<div class="col-md-3 text-center">Acción</div>
+							</div>
+							<div class="col-md-12 div-content-list-tours ">
+								<div class="col-md-12 div-list-tours ">
+									<div class="col-md-6">Tour Islas los Uros Medio Dia</div>
+									<div class="col-md-3 text-center">
+							              <div class="input-group">
+										    <span class="input-group-addon fa fa-calendar">
+										     
+										    </span>
+										    <input class="" id="email" name="email" type="text"/>
+										  </div>
+									</div>
+									<div class="col-md-3 text-center"><span class="btn btn-default btn-xs fa fa-close"></span></div>
+								</div>
+							</div>
+
 							<table class="table table-bordered">
 								<tr>
 									<th>Nombre del tour</th>
@@ -73,8 +98,10 @@
 						</div>
 					</div>
 
-					<span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
-					<hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2">
+					<div class="line-header">
+						<span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+					</div>
+					<!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
 					<div class="row">
 						<div class="col-xs-8">
 							<div class="form-group">
@@ -175,3 +202,69 @@
 <br><br><br><br><br><br><br><br><br>
 
 </html>
+
+<style>
+/*GLOBAL*/
+:root{
+  --color-primary:#5996ea;
+  --color-secondary:rgb(54, 147, 36);
+  --color-text: rgba(0, 0, 0, 0.67);
+  --color-complement: rgba(204, 204, 204, 0.33);
+}
+html{
+  height: 100%;
+
+}
+/*p,h1,h2,h4,h5,div,span,td,body{
+  
+}*/
+p,li,label,.alert,#precios_tabla tr>td:nth-child(1){
+      font-size: 16px;
+      text-align: justify;
+}
+body{
+      
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    font-family: 'Pontano Sans', sans-serif;
+}
+	.container-book-now{
+		background: #fff;
+	}
+	.line-header{
+  display: block;
+    margin: 10px 0 25px 0;
+    border-bottom: 1px solid var(--color-complement);
+    padding: 0;
+
+}
+
+.line-header >*{
+          font-size: 20px;
+    margin: 0 0 -1px 0;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-bottom: 1px solid var(--color-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+.div-reserva-header{
+	background: var(--color-primary);
+	text-align: center;
+	color: #f5f5f5;
+}
+.div-content-list-tours{
+	padding: 0;
+    border-style: none solid none solid;
+    border-width: 1px;
+    border-color: #ccc;
+}
+.div-list-tours{
+	    border-bottom: solid;
+    border-width: 1px;
+    border-color: #ccc;
+padding: 0;
+}
+</style>
