@@ -638,14 +638,22 @@ function buscar_bus() {
 				</span>
 			`).append(res.html);
 
-			
+			$('.select').click(function () {
+				console.log('ioio');
+				console.log($(this).data('id'));
+				$(this).children('td').each(function (index) {
+					switch(index){
+						case 0: campo1 = $(this).text();
+							break;
+					}
+					console.log($(this).text())
+				});
+			});
+
 		}
 	});
 };
 
-$('.select').click(function(){
-	console.log('ioio');
-	console.log($(this).data('id').value);
-});
+
 
 
