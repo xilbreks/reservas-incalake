@@ -641,11 +641,16 @@ function buscar_bus() {
 			
 		}
 	});
+	console.log($('.select').html());
 };
-
-$('.select').click(function(){
-	console.log('ioio');
-	console.log($(this).data('id').value);
+$( document ).ready(function() {
+	console.log($('#table_bus').html());
+    $('#table_bus').click(function(){
+	console.log('asdasd');
+	// console.log($(this).data('id').value);
+	
 });
+});
+
 
 
