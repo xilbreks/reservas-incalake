@@ -341,75 +341,73 @@ var f = w < 768 ? 2 : 3;
 
 var destinoWasSelected = false;
 var destinoIndex = null;
-var writtenDiv = null;
 
-function filtrarTours(text) {
+function mostrarDestinos(text) {
 	console.log(h);
 	console.log(w);
 	console.log(f);
 
 	var html = "";
-	var cantDivs = 0;
 
 	destinos.forEach((destino, index) => {
 		html = html + `
     	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item" onclick="select(${cantDivs},${index})">
+        <a class="bootcards-summary-item" onclick="selectDestino(${index})">
           <i class="fa fa-3x fa-suitcase"></i>
           <h4>${destino.name} <span class="label label-info">${destino.tours.length}</span></h4>
         </a>
       </div>
 		`;
-
-		if ((index + 1) % f == 0) {
-			cantDivs = cantDivs + 1;
-			html = html + `
-				<div id="space-${cantDivs - 1}">
-				</div>
-			`;
-		}
-
 	});
-	if (Math.ceil(destinos.length / f) > cantDivs) {
-		html = html + `
-			<div id="space-${cantDivs}" class="col-xs-12" >
-			</div>
-		`;
-	}
+	
+	html = html + `
+		<div id="space-tours" class="col-xs-12" >
+		</div>
+	`;
 
 	document.getElementById('destinosCards').innerHTML = html;
 }
 
-function select(cantDivs, index) {
+function selectDestino(index) {
 	// Esconder si ya existia seleccionado
 	if (destinoWasSelected) {
-		document.getElementById(`space-${writtenDiv}`).innerHTML = "";
+		document.getElementById(`space-tours`).innerHTML = "";
 		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
 	}
 	// Esconder si selecciono lo mismo
 	if (index == destinoIndex) {
 		destinoWasSelected = false;
 		destinoIndex = null;
-		writtenDiv = null;
 	}
 	// Mostrar tour si seleciono otro
 	else {
 		destinoWasSelected = true;
 		destinoIndex = index;
-		writtenDiv = cantDivs;
 
-		var content = "";
+		var content = `
+			<div class="page-header">
+				<h3>Tour disponibles de ${destinos[index].name}</h3>
+			</div>
+			<div>
+		`;
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
-				<div class="algo">
-					<div>
-						<strong>${tour.name}</strong>
-					</div>
+				<div>
+					<h4 onclick="selectTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name} <br> 
+						<small>${tour.desc}</small> <br> 
+						<small><a href="${tour.url}">Explorar tour >> </a></small> 
+					</h4>
 				</div>
 			`;
 		});
-		document.getElementById(`space-${cantDivs}`).innerHTML = content;
+		content = content + `
+			</div>
+		`;
+		document.getElementById(`space-tours`).innerHTML = content;
 		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
+		
+		// focus
+		// document.getElementById(`space-tours`).focus();
 	}
 
 
@@ -471,4 +469,9 @@ celular:123456789
 	 * 
 	 */
 
+}
+
+function selectTour(name,id){
+	console.log('seleccionno el tour:',name,id);
+	
 }
