@@ -2151,227 +2151,327 @@
 </head>
 
 <body>
-	<div class="container container-book-now">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<h1>Reservas</h1>
-				<form novalidate>
-					<div class="line-header">
-						<span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
-					</div>
-					<!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
-					<h4><i class="fa fa-map-signs"></i> Tours</h4>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1 div-tours">
-							<div class="col-md-12 div-reserva-header hidden-xs">
-								<div class="col-md-7">Nombre del Tour</div>
-								<div class="col-md-3 text-center">Fecha</div>
-								<div class="col-md-2 text-center">Acción</div>
-							</div>
-							<div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
-								
-							</div>
+    <div class="container container-book-now">
+        <div class="row">
+        <div class="container">
+            <div class="row">
+                <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
 
-							<!-- <table class="table table-bordered">
-								<tr>
-									<th>Nombre del tour</th>
-									<th>Fecha</th>
-									<th>Aciones</th>
-								</tr>
-								<tr>
-									<td>Tour Islas los Uros Medio Dia</td>
-									<td>24-08-2017</td>
-									<td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
-								</tr>
-							</table> -->
-							<!-- Trigger the modal with a button -->
-							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">Agregar Tour aqui</a>
-						</div>
-					</div>
-					<h4><i class="fa fa-bus"></i> Bus Tickets</h4>
-					<div class="row">
-						<div class="col-md-10 col-md-offset-1 div-tickets">
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Servicios Requeridos">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                    </span>
+                                </a>
+                            </li>
 
-							<div class="col-md-12 div-reserva-header hidden-xs">
-								<div class="col-md-4">Bus</div>
-								<div class="col-md-2 text-center">Origen</div>
-								<div class="col-md-2 text-center">Destino</div>
-								<div class="col-md-3 text-center">Fecha</div>
-								<div class="col-md-1 text-center">Acciones</div>
-							</div>
-							<div class="col-md-12 div-content-list-tours col-xs-12">
-								<div class="col-md-12 div-list-tours col-xs-12 ">
-									<div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
-									<div class="col-md-3 text-center list-tours-date col-xs-10">
-							              <div class="input-group">
-										    <span class="input-group-addon fa fa-calendar">							     
-										    </span>
-											<input class="" id="date" name="date" type="date" />
-										</div>
-									</div>
-									<div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-								</div>
-								<div class="col-md-12 div-list-tours col-xs-12 ">
-									<div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
-									<div class="col-md-3 text-center list-tours-date col-xs-10">
-							              <div class="input-group">
-										    <span class="input-group-addon fa fa-calendar">							     
-										    </span>
-											<input class="" id="date" name="date" type="date" />
-										</div>
-									</div>
-									<div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-								</div>
-								
-							</div>
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Información Personal">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
+                                    <span class="round-tab">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-							<table class="table table-bordered">
-								<tr>
-									<th>Bus</th>
-									<th>Origen</th>
-									<th>Destino</th>
-									<th>Fecha</th>
-									<th>Acciones</th>
-								</tr>
-								<tr>
-									<td>Bus directo local cama 160°</td>
-									<td>Puno</td>
-									<td>Cusco</td>
-									<td>24-08-2017</td>
-									<td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
-								</tr>
-							</table>
-							<!-- Trigger the modal with a button -->
-							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">Agregar Ticket aqui</a>
-						</div>
-					</div>
+                    <form role="form">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <h3>Step 1</h3>
+                                <p>This is step 1</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <h3>Step 2</h3>
+                                <p>This is step 2</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <h3>Complete</h3>
+                                <p>You have successfully completed all steps.</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+           </div>
+        </div>
 
-					<div class="line-header">
-						<span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
-					</div>
-					<!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
-					<div class="row">
-						<div class="col-xs-8">
-							<div class="form-group">
-								<label for="name">Nombres y Apellidos</label>
-								<input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<div class="form-group">
-								<label for="nationality">Nacionalidad</label>
-								<input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<label for="email">E-mail</label>
-								<input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<div class="form-group">
-								<label for="numberof">Numero de Pasajeros</label>
-								<input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<div class="form-group">
-								<label for="cellphone">Numero de celular</label>
-								<input type="text" class="form-control" id="cellphone" placeholder="..." required title="Numero de celular">
-							</div>
-						</div>
-					</div>
+            <div class="col-md-12">
+                <h1>Reservas</h1>
+                <form novalidate>
+                    <div class="line-header">
+                        <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
+                    </div>
+                    <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
+                    <h4><i class="fa fa-map-signs"></i> Tours</h4>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 div-tours">
+                            <div class="col-md-12 div-reserva-header hidden-xs">
+                                <div class="col-md-7">Nombre del Tour</div>
+                                <div class="col-md-3 text-center">Fecha</div>
+                                <div class="col-md-2 text-center">Acción</div>
+                            </div>
+                            <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
+                                <!-- <div class="col-md-12 div-list-tours col-xs-12 ">
+                                    <div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
+                                    <div class="col-md-3 text-center list-tours-date col-xs-10">
+                                          <div class="input-group">
+                                            <span class="input-group-addon fa fa-calendar">                              
+                                            </span>
+                                            <input class="" id="date" name="date" type="date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
+                                </div> -->
+                                
+                                
+                            </div>
 
-					<div class="row">
-						<div class="col-xs-12">
-							<a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
-						</div>
-						<div class="col-xs-12 collapse" id="aditional_info">
-							<div class="form-group">
-								<label for="place">Hotel o lugar de Recojo</label>
-								<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
-							</div>
-							<div class="form-group">
-								<label for="extra">Escribanos aqui mas detalles o observaciones</label>
-								<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
-							</div>
-						</div>
-					</div>
+                            <!-- <table class="table table-bordered">
+                                <tr>
+                                    <th>Nombre del tour</th>
+                                    <th>Fecha</th>
+                                    <th>Aciones</th>
+                                </tr>
+                                <tr>
+                                    <td>Tour Islas los Uros Medio Dia</td>
+                                    <td>24-08-2017</td>
+                                    <td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
+                                </tr>
+                            </table> -->
+                            <!-- Trigger the modal with a button -->
+                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">Agregar Tour aqui</a>
+                        </div>
+                    </div>
+                    <h4><i class="fa fa-bus"></i> Bus Tickets</h4>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 div-tickets">
 
-					<div class="row">
-						<div class="col-xs-12">
-							<br>
-							<button type="submit" class="btn btn-primary">Reservar</button>
-						</div>
-					</div>
+                            <div class="col-md-12 div-reserva-header hidden-xs">
+                                <div class="col-md-4">Bus</div>
+                                <div class="col-md-2 text-center">Origen</div>
+                                <div class="col-md-2 text-center">Destino</div>
+                                <div class="col-md-3 text-center">Fecha</div>
+                                <div class="col-md-1 text-center">Acción</div>
+                            </div>
+                            <div class="col-md-12 div-content-list-tours col-xs-12">
+                                <div class="col-md-12 div-list-tours col-xs-12 ">
+                                    <div class="col-md-4">Bus directo local cama 160°</div>
+                                    <div class="col-md-2 text-center col-xs-6">Origen</div>
+                                    <div class="col-md-2 text-center col-xs-6">Destino</div>
+                                    <div class="col-md-3 text-center list-tours-date col-xs-10">
+                                          <div class="input-group">
+                                            <span class="input-group-addon fa fa-calendar">                              
+                                            </span>
+                                            <input class="" id="date" name="date" type="date" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
+                                </div>                              
+                            </div>
 
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Tours Modal -->
-	<div id="toursModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
+                            <!-- <table class="table table-bordered">
+                                <tr>
+                                    <th>Bus</th>
+                                    <th>Origen</th>
+                                    <th>Destino</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                <tr>
+                                    <td>Bus directo local cama 160°</td>
+                                    <td>Puno</td>
+                                    <td>Cusco</td>
+                                    <td>24-08-2017</td>
+                                    <td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
+                                </tr>
+                            </table> -->
+                            <!-- Trigger the modal with a button -->
+                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">Agregar Ticket aqui</a>
+                        </div>
+                    </div>
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Busca tu Tour</h4>
-				</div>
-				<div class="modal-body">
+                    <div class="line-header">
+                        <span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+                    </div>
+                    <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
+                    <div class="row">
+                        <div class="col-md-8 col-xs-12">
+                            <div class="form-group">
+                                <label for="name">Nombres y Apellidos</label>
+                                <input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="form-group">
+                                <label for="nationality">Nacionalidad</label>
+                                <input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="form-group">
+                                <label for="numberof">Numero de Pasajeros</label>
+                                <input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="form-group">
+                                <label for="cellphone">Numero de celular</label>
+                                <input type="text" class="form-control" id="cellphone" placeholder="..." required title="Numero de celular">
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="panel panel-default bootcards-summary">
-						<div class="panel-heading">
-							<h3 class="panel-title">Destinos</h3>
-						</div>
-						<div class="panel-body">
-							<div class="row" id="destinosCards">
-								Cargando...
-							</div>
-						</div>
-					</div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
+                        </div>
+                        <div class="col-xs-12 collapse" id="aditional_info">
+                            <div class="form-group">
+                                <label for="place">Hotel o lugar de Recojo</label>
+                                <textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="extra">Escribanos aqui mas detalles o observaciones</label>
+                                <textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <br>
+                            <button type="submit" class="btn btn-primary">Reservar</button>
+                        </div>
+                    </div>
 
-		</div>
-	</div>
-	<!-- End Modal -->
-	<!-- Bus ticket Modal -->
-	<div id="ticketsModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Tours Modal -->
+    <div id="toursModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Busca tu Bus ticket</h4>
-				</div>
-				<div class="modal-body">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Busca tu Tour</h4>
+                </div>
+                <div class="modal-body">
 
-					naa...
+                    <div class="panel panel-default bootcards-summary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Destinos</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" id="destinosCards">
+                                Cargando...
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
 
-		</div>
-	</div>
-	<!-- End Modal -->
+        </div>
+    </div>
+    <!-- End Modal -->
+    <!-- Bus ticket Modal -->
+    <div id="ticketsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Busca tu Bus ticket</h4>
+                </div>
+                <div class="modal-body">
+
+                    naa...
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Modal -->
 
 </body>
 <br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br>
+<script>
+    $(document).ready(function () {
+    //Initialize tooltips
+    $('.wizard .nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".wizard .next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".wizard .prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+</script>
 </html>
 
 
