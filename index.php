@@ -2150,7 +2150,7 @@
 	<script src="app.js"></script>
 </head>
 
-<body>
+<body onload="getStarts()">
     <div class="container container-book-now">
         <div class="row">
         <div class="container">
@@ -2217,7 +2217,7 @@
 
             <div class="col-md-12">
                 <h1>Reservas</h1>
-                <form novalidate>
+                <div id="formulario">
                     <div class="line-header">
                         <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
                     </div>
@@ -2231,41 +2231,16 @@
                                 <div class="col-md-2 text-center">Acción</div>
                             </div>
                             <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
-                                <!-- <div class="col-md-12 div-list-tours col-xs-12 ">
-                                    <div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
-                                    <div class="col-md-3 text-center list-tours-date col-xs-10">
-                                          <div class="input-group">
-                                            <span class="input-group-addon fa fa-calendar">                              
-                                            </span>
-                                            <input class="" id="date" name="date" type="date" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-                                </div> -->
-                                
-                                
                             </div>
-
-                            <!-- <table class="table table-bordered">
-                                <tr>
-                                    <th>Nombre del tour</th>
-                                    <th>Fecha</th>
-                                    <th>Aciones</th>
-                                </tr>
-                                <tr>
-                                    <td>Tour Islas los Uros Medio Dia</td>
-                                    <td>24-08-2017</td>
-                                    <td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
-                                </tr>
-                            </table> -->
                             <!-- Trigger the modal with a button -->
-                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">Agregar Tour aqui</a>
+                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">
+								+ Agregar Tour aqui
+							</a>
                         </div>
                     </div>
                     <h4><i class="fa fa-bus"></i> Bus Tickets</h4>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 div-tickets">
-
                             <div class="col-md-12 div-reserva-header hidden-xs">
                                 <div class="col-md-4">Bus</div>
                                 <div class="col-md-2 text-center">Origen</div>
@@ -2273,40 +2248,12 @@
                                 <div class="col-md-3 text-center">Fecha</div>
                                 <div class="col-md-1 text-center">Acción</div>
                             </div>
-                            <div class="col-md-12 div-content-list-tours col-xs-12">
-                                <div class="col-md-12 div-list-tours col-xs-12 ">
-                                    <div class="col-md-4">Bus directo local cama 160°</div>
-                                    <div class="col-md-2 text-center col-xs-6">Origen</div>
-                                    <div class="col-md-2 text-center col-xs-6">Destino</div>
-                                    <div class="col-md-3 text-center list-tours-date col-xs-10">
-                                          <div class="input-group">
-                                            <span class="input-group-addon fa fa-calendar">                              
-                                            </span>
-                                            <input class="" id="date" name="date" type="date" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-                                </div>                              
+                            <div class="col-md-12 div-content-list-tours col-xs-12"  id="tickets-screen">
                             </div>
-
-                            <!-- <table class="table table-bordered">
-                                <tr>
-                                    <th>Bus</th>
-                                    <th>Origen</th>
-                                    <th>Destino</th>
-                                    <th>Fecha</th>
-                                    <th>Acciones</th>
-                                </tr>
-                                <tr>
-                                    <td>Bus directo local cama 160°</td>
-                                    <td>Puno</td>
-                                    <td>Cusco</td>
-                                    <td>24-08-2017</td>
-                                    <td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
-                                </tr>
-                            </table> -->
                             <!-- Trigger the modal with a button -->
-                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">Agregar Ticket aqui</a>
+                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">
+								+ Agregar Ticket aqui
+							</a>
                         </div>
                     </div>
 
@@ -2317,13 +2264,13 @@
                     <div class="row">
                         <div class="col-md-8 col-xs-12">
                             <div class="form-group">
-                                <label for="name">Nombres y Apellidos</label>
+                                <label for="name">Nombres y Apellidos <i class="requerido">*</i></label>
                                 <input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
                             </div>
                         </div>
                         <div class="col-md-4 col-xs-12">
                             <div class="form-group">
-                                <label for="nationality">Nacionalidad</label>
+                                <label for="nationality">Nacionalidad <i class="requerido">*</i></label>
                                 <input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
                             </div>
                         </div>
@@ -2331,20 +2278,20 @@
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group">
-                                <label for="email">E-mail</label>
+                                <label for="email">E-mail <i class="requerido">*</i></label>
                                 <input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-6">
                             <div class="form-group">
-                                <label for="numberof">Numero de Pasajeros</label>
+                                <label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
                                 <input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-6">
                             <div class="form-group">
                                 <label for="cellphone">Numero de celular</label>
-                                <input type="text" class="form-control" id="cellphone" placeholder="..." required title="Numero de celular">
+                                <input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
                             </div>
                         </div>
                     </div>
@@ -2368,17 +2315,17 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <br>
-                            <button type="submit" class="btn btn-primary">Reservar</button>
+                            <button type="button" onclick="reservar()" class="btn btn-primary">Reservar</button>
                         </div>
                     </div>
 
-                </form>
+                </div>
             </div>
         </div>
     </div>
     <!-- Tours Modal -->
     <div id="toursModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -2410,7 +2357,7 @@
     <!-- End Modal -->
     <!-- Bus ticket Modal -->
     <div id="ticketsModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -2420,7 +2367,18 @@
                 </div>
                 <div class="modal-body">
 
-                    naa...
+                    <div>
+						<label>Ciudad de Origen</label>
+						<select class="form-control" id="origen" name="origen" onchange="getEnds(this.value)">
+						</select>
+					</div>
+					<div>
+						<label>Ciudad de Destino</label>
+						<select class="form-control" id="destino" name="destino" onchange="buscar_bus()">
+						</select>
+					</div>
+					<div id="div_busqueda">
+					</div>
 
                 </div>
                 <div class="modal-footer">

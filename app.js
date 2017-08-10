@@ -333,15 +333,15 @@ const tickets = [
 ];
 
 var contador = 0;
-var destinosDisponibles = menus.filter((menu)=>menu.options);
-var destinos = destinosDisponibles.map((destino)=>{
+var destinosDisponibles = menus.filter((menu) => menu.options);
+var destinos = destinosDisponibles.map((destino) => {
 	let toursDestino = [];
-	destino.options.forEach(grupo=>{
-		grupo.options.forEach(tour=>{
+	destino.options.forEach(grupo => {
+		grupo.options.forEach(tour => {
 			toursDestino.push({
-				name: tour.name?tour.name.es:null,
-				desc: tour.subname?tour.subname.es:null,
-				url: tour.url?tour.url.es:null,
+				name: tour.name ? tour.name.es : null,
+				desc: tour.subname ? tour.subname.es : null,
+				url: tour.url ? tour.url.es : null,
 				id: contador
 			});
 			contador = contador + 1;
@@ -354,8 +354,13 @@ var destinos = destinosDisponibles.map((destino)=>{
 	}
 });
 
+// Form data
 var selectedTours = [];
 var selectedTickets = [];
+
+// Data for Bus ticket
+var starts = [];
+var ends = [];
 
 var h = window.innerHeight;
 var w = window.innerWidth;
@@ -433,38 +438,6 @@ function toogleTours(index) {
 	}
 
 
-	/*
-		buses.php
-
-		// Lectura de los origenes
-		data: 
-			{
-				tabla: origen
-			}
-		response: 
-		{"html":"<option value=\"0\">Departure City<\/option><option value=\"1\">Puno<\/option><option value=\"2\">Cusco<\/option><option value=\"3\">Arequipa<\/option><option value=\"4\">Chivay<\/option><option value=\"5\">La Paz<\/option><option value=\"6\">Copacabana<\/option><option value=\"7\">Uyuni<\/option><option value=\"8\">Juliaca (Airport)<\/option>"}
-
-		// Lectura de los destinos
-		data: 
-			{
-				tabla: destino,
-				origen: 1
-			}
-		response: 
-		{"html":"<option value=\"0\">Arrival City<\/option><option value=\"2\">Cusco<\/option><option value=\"3\">Arequipa<\/option><option value=\"4\">Copacabana<\/option><option value=\"5\">La Paz<\/option><option value=\"6\">Chivay<\/option><option value=\"8\">Juliaca (Airport)<\/option>"}
-		
-		// Lectura de los buses disponibles
-		data: 
-			{
-				tabla: busqueda,
-				origen: 1,
-				destino: 3
-			}
-		response: 
-		{"html":"<table style=\"width:100%;\" class=\"table table-bordered table-condensed\" id=\"table_bus\"><thead style=\"background: #FFCD42;color: #000;\"><tr><th><\/th><th style=\"display:none;\"><\/th><th style=\"display:none;\"><\/th><th>Salida<\/th><th>Servicio<\/th><th class=\"empresa\">Compa&ntilde;ia<\/th><th>Precio<\/th><\/tr><\/thead><tbody><tr class=\"select\" data-id=\"37\"><td><i class=\"fa fa-square-o\"><\/i><\/td><td style=\"display:none;\">Puno<\/td><td style=\"display:none;\">Arequipa<\/td><td>06:30AM<\/td><td>Bus tur\u00edstico con paradas en ruta <\/td><td class=\"empresa\">4M-Express<\/td><td>$ 42<\/td><\/tr><tr class=\"select\" data-id=\"39\"><td><i class=\"fa fa-square-o\"><\/i><\/td><td style=\"display:none;\">Puno<\/td><td style=\"display:none;\">Arequipa<\/td><td>03:00PM<\/td><td>Bus directo tur\u00edstico semi-cama 140\u00b0<\/td><td class=\"empresa\">Cruz del Sur<\/td><td>$ 27<\/td><\/tr><tr class=\"select\" data-id=\"40\"><td><i class=\"fa fa-square-o\"><\/i><\/td><td style=\"display:none;\">Puno<\/td><td style=\"display:none;\">Arequipa<\/td><td>03:00PM<\/td><td>Bus directo tur\u00edstico Cama 160\u00b0<\/td><td class=\"empresa\">Cruz del Sur<\/td><td>$ 33<\/td><\/tr><tr class=\"select\" data-id=\"42\"><td><i class=\"fa fa-square-o\"><\/i><\/td><td style=\"display:none;\">Puno<\/td><td style=\"display:none;\">Arequipa<\/td><td>10:30PM<\/td><td>Bus directo tur\u00edstico Cama 160\u00b0<\/td><td class=\"empresa\">Cruz del Sur<\/td><td>$ 33<\/td><\/tr><tr class=\"select\" data-id=\"43\"><td><i class=\"fa fa-square-o\"><\/i><\/td><td style=\"display:none;\">Puno<\/td><td style=\"display:none;\">Arequipa<\/td><td>10:30PM<\/td><td>Bus directo tur\u00edstico semi-cama 140\u00b0<\/td><td class=\"empresa\">Cruz del Sur<\/td><td>$ 27<\/td><\/tr><\/tbody><\/table><style>.empresa{display: block;}<\/style>"}
-
-	*/
-
 
 	/**
 	 * Reservar
@@ -493,45 +466,186 @@ celular:123456789
 
 }
 
-function addTour(name, id) {
-	console.log('seleccionno el tour:', name, id);
+function addTour(tourName, tourId) {
 	selectedTours.push({
-		name: name,
-		id: id
+		name: tourName,
+		id: tourId,
+		date: null
 	});
-	
-	renderSelectedTours();
-}
-
-function removeTour(id){
-	selectedTours = selectedTours.filter(tour=>tour.id!=id);
-	renderSelectedTours();
-}
-
-function renderSelectedTours(){
-	var items = "";
-
-	selectedTours.forEach((tour)=>{
-		items = items + `
-			<div class="col-md-12 div-list-tours col-xs-12 ">
-				<div class="col-md-7 list-tours-name"> ${tour.name}
+	let child = `
+			<div class="col-md-12 div-list-tours col-xs-12 " id="detalles-tour-${tourId}">
+				<div class="col-md-7 list-tours-name"> ${tourName}
 				</div>
 				<div class="col-md-3 text-center list-tours-date col-xs-10">
 					<div class="input-group">
 						<span class="input-group-addon fa fa-calendar">							     
 						</span>
-						<input class="" id="date" name="date" type="date" />
+						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
 					</div>
 				</div>
 				<div class="col-md-2 text-center col-xs-2">
-					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tour.id})">
+					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
 			</div>
 		`;
-	});
-
-	document.getElementById('tours-screen').innerHTML = items;
+	$('#tours-screen').append(child);
 
 	$('#toursModal').modal('hide');
 }
+
+function removeTour(id) {
+	selectedTours = selectedTours.filter(tour => tour.id != id);
+
+	var parent = document.getElementById("tours-screen");
+	var child = document.getElementById(`detalles-tour-${id}`);
+	parent.removeChild(child);
+}
+
+function cambiarFechaTour(self) {
+	selectedTours.forEach((tour) => {
+		if (tour.id == self.id.split('-')[1]) {
+			tour.date = self.value
+		}
+	});
+}
+
+/**********************************************************************************************/
+/****************************************  BUS TICKET  ****************************************/
+/**********************************************************************************************/
+
+function addTicket(name, id) {
+	selectedTours.push({
+		name: name,
+		id: id,
+		date: null
+	});
+	renderSelectedTickets();
+}
+
+function removeTicket(id) {
+	selectedTours = selectedTours.filter(tour => tour.id != id);
+	renderSelectedTickets();
+}
+
+function renderSelectedTickets() {
+	var items = "";
+
+	selectedTours.forEach((tour) => {
+		items = items + `
+			<div class="col-md-12 div-list-tours col-xs-12 ">
+        <div class="col-md-4">Bus directo local cama 160°</div>
+        <div class="col-md-2 text-center col-xs-6">Origen</div>
+        <div class="col-md-2 text-center col-xs-6">Destino</div>
+        <div class="col-md-3 text-center list-tours-date col-xs-10">
+          <div class="input-group">
+            <span class="input-group-addon fa fa-calendar">                              
+            </span>
+            <input class="" id="date" name="date" type="date" />
+          </div>
+        </div>
+        <div class="col-md-1 text-center col-xs-2">
+					<span class="btn btn-default btn-xs fa fa-close"></span>
+				</div>
+      </div>                              
+		`;
+	});
+
+	document.getElementById('tours-screen').innerHTML = items;
+	$('#toursModal').modal('hide');
+}
+
+function reservar() {
+	var data = {
+		name: document.getElementById('name').value,
+		nationality: document.getElementById('nationality').value,
+		passengers: document.getElementById('numberof').value,
+		cellphone: document.getElementById('cellphone').value,
+		place: document.getElementById('place').value,
+		extra: document.getElementById('extra').value,
+		tours: selectedTours,
+		tickets: selectedTickets
+	}
+
+	console.log(data);
+	/*
+	$.ajax({
+			type : 'POST',
+			url : url,
+			dataType : 'json',
+			data : {username: input_val},
+			success : function(user_verification){
+					alert("Success");   
+			}
+	});*/
+}
+
+function getStarts() {
+	$.ajax({
+		url: 'http://incalake.com/reservar/buses.php',
+		data: { 'tabla': 'origen' },
+		type: 'POST',
+		dataType: 'Json',
+		success: function (res) {
+			$('#origen').html(res.html);
+		}
+	});
+
+}
+
+function getEnds(origen) {
+	if (origen == 0) {
+		$('#destino').html('<option value="0">Ciudad de Destino</option>').attr('disabled', true);
+	}
+	else {
+		$.ajax({
+			url: 'http://incalake.com/reservar/buses.php',
+			data: { 'tabla': 'destino', 'origen': origen },
+			type: 'POST',
+			dataType: 'Json',
+			success: function (res) {
+				$('#destino').html(res.html).attr('disabled', false);
+			}
+		});
+	}
+}
+
+function buscar_bus() {
+	console.log($('.select'));
+
+
+	$.ajax({
+		url: 'http://incalake.com/reservar/buses.php',
+		data: { 'tabla': 'busqueda', 'origen': $('#origen').val(), 'destino': $('#destino').val() },
+		type: 'POST',
+		dataType: 'json',
+		success: function (res) {
+			console.log(res);
+			$('#div_busqueda').html('').append(`
+				<span class=""></span>
+        <span>Resultados de <b>Origen:</b>
+					<label class="label label-primary" style="font-size:14px;"> 
+						${$('#origen option:selected').html()}
+					</label>
+          <b>Destino:</b>
+					<label class="label label-primary" style="font-size:14px;"> 
+						${$('#destino option:selected').html()}
+					</label>
+        </span>
+        <br>
+				<span>
+          Seleccione un BUS de nuestro listado
+				</span>
+			`).append(res.html);
+
+			
+		}
+	});
+};
+
+$('.select').click(function(){
+	console.log('ioio');
+	console.log($(this).data('id').value);
+});
+
+

@@ -1,3 +1,7 @@
+/*para datos requeridos del formulario*/
+.requerido{
+    color: red;
+}
 /*GLOBAL*/
 :root{
   --color-primary: #1e6496;
