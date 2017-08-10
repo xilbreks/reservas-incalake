@@ -62,7 +62,7 @@ body{
 span.round-tab {
     width: 70px;
     height: 70px;
-    line-height: 70px;
+    /*line-height: 70px !important;*/
     display: inline-block;
     border-radius: 100px;
     background: #fff;
@@ -75,6 +75,7 @@ span.round-tab {
 }
 span.round-tab i{
     color:#555555;
+    line-height: 70px;
 }
 .wizard li.active span.round-tab {
     background: #fff;
