@@ -22,7 +22,69 @@
 <body>
 	<div class="container container-book-now">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+		<div class="container">
+			<div class="row">
+				<section>
+		        <div class="wizard">
+		            <div class="wizard-inner">
+		                <div class="connecting-line"></div>
+		                <ul class="nav nav-tabs" role="tablist">
+
+		                    <li role="presentation" class="active">
+		                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Servicios Requeridos">
+		                            <span class="round-tab">
+		                                <i class="glyphicon glyphicon-folder-open"></i>
+		                            </span>
+		                        </a>
+		                    </li>
+
+		                    <li role="presentation" class="disabled">
+		                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Información Personal">
+		                            <span class="round-tab">
+		                                <i class="glyphicon glyphicon-pencil"></i>
+		                            </span>
+		                        </a>
+		                    </li>
+		                    <li role="presentation" class="disabled">
+		                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
+		                            <span class="round-tab">
+		                                <i class="glyphicon glyphicon-ok"></i>
+		                            </span>
+		                        </a>
+		                    </li>
+		                </ul>
+		            </div>
+
+		            <form role="form">
+		                <div class="tab-content">
+		                    <div class="tab-pane active" role="tabpanel" id="step1">
+		                        <h3>Step 1</h3>
+		                        <p>This is step 1</p>
+		                        <ul class="list-inline pull-right">
+		                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+		                        </ul>
+		                    </div>
+		                    <div class="tab-pane" role="tabpanel" id="step2">
+		                        <h3>Step 2</h3>
+		                        <p>This is step 2</p>
+		                        <ul class="list-inline pull-right">
+		                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+		                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+		                        </ul>
+		                    </div>
+		                    <div class="tab-pane" role="tabpanel" id="complete">
+		                        <h3>Complete</h3>
+		                        <p>You have successfully completed all steps.</p>
+		                    </div>
+		                    <div class="clearfix"></div>
+		                </div>
+		            </form>
+		        </div>
+		    </section>
+		   </div>
+		</div>
+
+			<div class="col-md-12">
 				<h1>Reservas</h1>
 				<form novalidate>
 					<div class="line-header">
@@ -88,11 +150,13 @@
 								<div class="col-md-2 text-center">Origen</div>
 								<div class="col-md-2 text-center">Destino</div>
 								<div class="col-md-3 text-center">Fecha</div>
-								<div class="col-md-1 text-center">Acciones</div>
+								<div class="col-md-1 text-center">Acción</div>
 							</div>
 							<div class="col-md-12 div-content-list-tours col-xs-12">
 								<div class="col-md-12 div-list-tours col-xs-12 ">
-									<div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
+									<div class="col-md-4">Bus directo local cama 160°</div>
+									<div class="col-md-2 text-center col-xs-6">Origen</div>
+									<div class="col-md-2 text-center col-xs-6">Destino</div>
 									<div class="col-md-3 text-center list-tours-date col-xs-10">
 							              <div class="input-group">
 										    <span class="input-group-addon fa fa-calendar">							     
@@ -100,23 +164,11 @@
 											<input class="" id="date" name="date" type="date" />
 										</div>
 									</div>
-									<div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-								</div>
-								<div class="col-md-12 div-list-tours col-xs-12 ">
-									<div class="col-md-7 list-tours-name"> enim unde cumque? Vero fugit vitae ullam maxime quidem.</div>
-									<div class="col-md-3 text-center list-tours-date col-xs-10">
-							              <div class="input-group">
-										    <span class="input-group-addon fa fa-calendar">							     
-										    </span>
-											<input class="" id="date" name="date" type="date" />
-										</div>
-									</div>
-									<div class="col-md-2 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
-								</div>
-								
+									<div class="col-md-1 text-center col-xs-2"><span class="btn btn-default btn-xs fa fa-close"></span></div>
+								</div>								
 							</div>
 
-							<table class="table table-bordered">
+							<!-- <table class="table table-bordered">
 								<tr>
 									<th>Bus</th>
 									<th>Origen</th>
@@ -131,7 +183,7 @@
 									<td>24-08-2017</td>
 									<td><span class="btn btn-default"><i class="fa fa-minus"></i></span></td>
 								</tr>
-							</table>
+							</table> -->
 							<!-- Trigger the modal with a button -->
 							<a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">Agregar Ticket aqui</a>
 						</div>
@@ -142,13 +194,13 @@
 					</div>
 					<!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
 					<div class="row">
-						<div class="col-xs-8">
+						<div class="col-md-8 col-xs-12">
 							<div class="form-group">
 								<label for="name">Nombres y Apellidos</label>
 								<input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
 							</div>
 						</div>
-						<div class="col-xs-4">
+						<div class="col-md-4 col-xs-12">
 							<div class="form-group">
 								<label for="nationality">Nacionalidad</label>
 								<input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
@@ -156,19 +208,19 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-6">
+						<div class="col-md-6 col-xs-12">
 							<div class="form-group">
 								<label for="email">E-mail</label>
 								<input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
 							</div>
 						</div>
-						<div class="col-xs-3">
+						<div class="col-md-3 col-xs-6">
 							<div class="form-group">
 								<label for="numberof">Numero de Pasajeros</label>
 								<input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
 							</div>
 						</div>
-						<div class="col-xs-3">
+						<div class="col-md-3 col-xs-6">
 							<div class="form-group">
 								<label for="cellphone">Numero de celular</label>
 								<input type="text" class="form-control" id="cellphone" placeholder="..." required title="Numero de celular">
@@ -262,7 +314,43 @@
 </body>
 <br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br>
+<script>
+	$(document).ready(function () {
+    //Initialize tooltips
+    $('.wizard .nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".wizard .next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".wizard .prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+</script>
 </html>
 
 
