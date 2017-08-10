@@ -415,9 +415,9 @@ function toogleTours(index) {
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
 				<div>
-					<h4 onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name} <br> 
+					<h4><span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
-						<small><a href="${tour.url}">Explorar tour >> </a></small> 
+						<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
 					</h4>
 				</div>
 			`;
