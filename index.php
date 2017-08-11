@@ -1043,7 +1043,7 @@
     /*===========================================================================================================================================*/
 
 
-/*================================================================== MENU 4 ===================================================================*/
+    /*================================================================== MENU 4 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -1402,7 +1402,7 @@
     /*================================================================== FIN MENU 4 ===================================================================*/
     /*===========================================================================================================================================*/
 
-/*================================================================== MENU 5 ===================================================================*/
+    /*================================================================== MENU 5 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -2214,120 +2214,136 @@
             </section>
            </div>
         </div>
+        <div class="col-md-12">
+            <h1>Reservas</h1>
+            <div id="formulario">
+                <div class="line-header">
+                    <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
+                </div>
+                <div class="row" id="error-msg1" style="display:none">
+                    <div class="alert alert-danger">
+                        <strong>Selecciona al menos un tour o bus ticket</strong>
+                    </div>
+                </div>
+                <div class="row" id="error-msg2" style="display:none">
+                    <div class="alert alert-danger">
+                        <strong>Fecha no seleccionada</strong>
+                    </div>
+                </div>
 
-            <div class="col-md-12">
-                <h1>Reservas</h1>
-                <div id="formulario">
-                    <div class="line-header">
-                        <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
-                    </div>
-                    <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
-                    <h4>
-                        <i class="fa fa-map-signs"></i> Tours 
-                        <i href="#" data-toggle="tooltip" title="Alguna ayuda aqui"><span class="fa fa-question-circle-o"></span></i>
-                    </h4>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1 div-tours">
-                            <div class="col-md-12 div-reserva-header hidden-xs">
-                                <div class="col-md-7">Nombre del Tour</div>
-                                <div class="col-md-3 text-center">Fecha</div>
-                                <div class="col-md-2 text-center">Acción</div>
-                            </div>
-                            <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
-                            </div>
-                            <!-- Trigger the modal with a button -->
-                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">
-								+ Agregar Tour aqui
-							</a>
+                <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
+                <h4>
+                    <i class="fa fa-map-signs"></i> Tours 
+                    <i href="#" data-toggle="tooltip" title="Alguna ayuda aqui"><span class="fa fa-question-circle-o"></span></i>
+                </h4>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 div-tours">
+                        <div class="col-md-12 div-reserva-header hidden-xs">
+                            <div class="col-md-7">Nombre del Tour</div>
+                            <div class="col-md-3 text-center">Fecha</div>
+                            <div class="col-md-2 text-center">Acción</div>
                         </div>
-                    </div>
-                    <h4>
-                        <i class="fa fa-bus"></i> Bus Tickets
-                        <i href="#" data-toggle="tooltip" title="Algo que decir? Pues dilo"><span class="fa fa-question-circle-o"></span></i>
-                    </h4>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1 div-tickets">
-                            <div class="col-md-12 div-reserva-header hidden-xs">
-                                <div class="col-md-5">Bus</div>
-                                <div class="col-md-3 text-center">Origen - Destino</div>
-                                <div class="col-md-3 text-center">Fecha</div>
-                                <div class="col-md-1 text-center">Acción</div>
-                            </div>
-                            <div class="col-md-12 div-content-list-tours col-xs-12"  id="tickets-screen">
-                            </div>
-                            <!-- Trigger the modal with a button -->
-                            <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">
-								+ Agregar Ticket aqui
-							</a>
+                        <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
                         </div>
+                        <!-- Trigger the modal with a button -->
+                        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">
+							+ Agregar Tour aqui
+						</a>
                     </div>
+                </div>
+                <h4>
+                    <i class="fa fa-bus"></i> Bus Tickets
+                    <i href="#" data-toggle="tooltip" title="Algo que decir? Pues dilo"><span class="fa fa-question-circle-o"></span></i>
+                </h4>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 div-tickets">
+                        <div class="col-md-12 div-reserva-header hidden-xs">
+                            <div class="col-md-5">Bus</div>
+                            <div class="col-md-3 text-center">Origen - Destino</div>
+                            <div class="col-md-3 text-center">Fecha</div>
+                            <div class="col-md-1 text-center">Acción</div>
+                        </div>
+                        <div class="col-md-12 div-content-list-tours col-xs-12"  id="tickets-screen">
+                        </div>
+                        <!-- Trigger the modal with a button -->
+                        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">
+							+ Agregar Ticket aqui
+						</a>
+                    </div>
+                </div>
 
-                    <div class="line-header">
-                        <span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+                <div class="line-header">
+                    <span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+                </div>
+                <div class="row" id="error-msg3" style="display:none">
+                    <div class="alert alert-danger">
+                        <strong>Completa los campos requeridos!</strong>
                     </div>
-                    <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
-                    <div class="row">
-                        <div class="col-md-8 col-xs-12">
-                            <div class="form-group">
-                                <label for="name">Nombres y Apellidos <i class="requerido">*</i></label>
-                                <input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-xs-12">
-                            <div class="form-group">
-                                <label for="nationality">Nacionalidad <i class="requerido">*</i></label>
-                                <input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                            <div class="form-group">
-                                <label for="email">E-mail <i class="requerido">*</i></label>
-                                <input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="form-group">
-                                <label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
-                                <input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="form-group">
-                                <label for="cellphone">Numero de celular</label>
-                                <input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
-                            </div>
+                </div>
+                            
+                <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <div class="form-group">
+                            <label for="name">Nombres y Apellidos <i class="requerido">*</i></label>
+                            <input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
                         </div>
                     </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            <label for="nationality">Nacionalidad <i class="requerido">*</i></label>
+                            <input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="email">E-mail <i class="requerido">*</i></label>
+                            <input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <div class="form-group">
+                            <label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
+                            <input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <div class="form-group">
+                            <label for="cellphone">Numero de celular</label>
+                            <input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
+                    </div>
+                    <div class="col-xs-12 collapse" id="aditional_info">
+                        <div class="form-group">
+                            <label for="place">Hotel o lugar de Recojo</label>
+                            <textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
                         </div>
-                        <div class="col-xs-12 collapse" id="aditional_info">
-                            <div class="form-group">
-                                <label for="place">Hotel o lugar de Recojo</label>
-                                <textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="extra">Escribanos aqui mas detalles o observaciones</label>
-                                <textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="extra">Escribanos aqui mas detalles o observaciones</label>
+                            <textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <br>
-                            <button type="button" onclick="reservar()" class="btn btn-primary">Reservar</button>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <br>
+                        <button type="button" onclick="reservar()" class="btn btn-primary">Reservar</button>
                     </div>
-
                 </div>
             </div>
+            
         </div>
     </div>
+</div>
     <!-- Tours Modal -->
     <div id="toursModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
