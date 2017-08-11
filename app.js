@@ -370,9 +370,9 @@ var destinoWasSelected = false;
 var destinoIndex = null;
 
 function mostrarDestinos(text) {
-	console.log(h);
-	console.log(w);
-	console.log(f);
+	//console.log(h);
+	//console.log(w);
+	//console.log(f);
 
 	var html = "";
 
@@ -437,33 +437,6 @@ function toogleTours(index) {
 		// document.getElementById(`space-tours`).focus();
 	}
 
-
-
-	/**
-	 * Reservar
-	 * http://incalake.com/reservar/email/reservar.php POST application/x-www-form-urlencoded
-	 * 
-oferta:
-nombres:j
-pais:q
-email:alalala@gmail.com
-npax:1
-hotel:
-nombre_tour[]:Tren nocturno de Puno a Cusco Belmond Explorer (2D)
-fecha_excursion[]:10-Aug-2017
-id_tour[]:1
-url_tour[]:http://incalake.com/tren-puno-cusco
-buscador_excursiones:
-fecha_otro_tour:
-detalle_otro_tour:
-origen:0
-bus[]:Puno-Arequipa / 06:30AM / Bus turístico con paradas en ruta  / 4M-Express
-bfecha[]:15-Aug-2017
-detalles:lalalalalala
-celular:123456789
-	 * 
-	 */
-
 }
 
 function addTour(tourName, tourId) {
@@ -513,33 +486,8 @@ function cambiarFechaTour(self) {
 /**********************************************************************************************/
 /****************************************  BUS TICKET  ****************************************/
 /**********************************************************************************************/
-function reservar() {
-	var data = {
-		name: document.getElementById('name').value,
-		nationality: document.getElementById('nationality').value,
-		passengers: document.getElementById('numberof').value,
-		cellphone: document.getElementById('cellphone').value,
-		place: document.getElementById('place').value,
-		extra: document.getElementById('extra').value,
-		tours: selectedTours,
-		tickets: selectedTickets
-	}
-
-	console.log(data);
-	/*
-	$.ajax({
-			type : 'POST',
-			url : url,
-			dataType : 'json',
-			data : {username: input_val},
-			success : function(user_verification){
-					alert("Success");   
-			}
-	});*/
-}
-
 function getStarts() {
-	$('[data-toggle="tooltip"]').tooltip();   
+	$('[data-toggle="tooltip"]').tooltip();
 
 	$.ajax({
 		url: 'http://incalake.com/reservar/buses.php',
@@ -624,22 +572,22 @@ function buscar_bus() {
 							break;
 					}
 				});
-				addTicket(idTicket, origen, destino, hora, tipobus, nombrebus,costo);
+				addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo);
 			});
 
 		}
 	});
 };
 
-function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus,costo) {
+function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	selectedTickets.push({
 		id: idTicket,
 		origen: origen,
 		destino: destino,
 		hora: hora,
-		tipobus: tipobus,
+		bus: tipobus,
 		nombrebus: nombrebus,
-		costo: costo,
+		precio: costo,
 		date: null
 	});
 	let child = `
@@ -674,10 +622,89 @@ function removeTicket(id) {
 	parent.removeChild(child);
 }
 
-function cambiarFechaTicket(self){
+function cambiarFechaTicket(self) {
 	selectedTickets.forEach((ticket) => {
 		if (ticket.id == self.id.split('-')[1]) {
 			ticket.date = self.value
+		}
+	});
+}
+
+/**********************************************************************************************/
+/*****************************************  RESERVAS  *****************************************/
+/**********************************************************************************************/
+
+function reservar() {
+	// Limpiar cualquier alerta anterior
+	document.getElementById('error-msg1').setAttribute('style','display: none');
+	document.getElementById('error-msg2').setAttribute('style','display: none');
+	document.getElementById('error-msg3').setAttribute('style','display: none');
+
+	// Veficar servicios requeridos
+	if(selectedTours.length==0 && selectedTickets.length==0){
+		console.log(selectedTours);
+		document.getElementById('error-msg1').setAttribute('style','display: block');
+	}
+	selectedTours.forEach((tour)=>{
+		if(!tour.date){
+			document.getElementById(`tour-${tour.id}-date`).focus();
+			document.getElementById('error-msg2').setAttribute('style','display: block');
+			return;
+		}
+	});
+	selectedTickets.forEach((ticket)=>{
+		if(!ticket.date){
+			document.getElementById(`ticket-${ticket.id}-date`).focus();
+			document.getElementById('error-msg2').setAttribute('style','display: block');
+			return;
+		}
+	});
+
+	// Veficar informacion personal
+	if(document.getElementById('name').value.length < 1){
+		document.getElementById('name').focus();
+		document.getElementById('error-msg3').setAttribute('style','display: block');
+		return;
+	}
+	if(document.getElementById('nationality').value.length < 1 ){
+		document.getElementById('nationality').focus();
+		document.getElementById('error-msg3').setAttribute('style','display: block');
+		return;
+	}
+	if(document.getElementById('numberof').value.length < 1){
+		document.getElementById('numberof').focus();
+		document.getElementById('error-msg3').setAttribute('style','display: block');
+		return;
+	}
+	if(document.getElementById('email').value.length < 1){
+		document.getElementById('email').focus();
+		document.getElementById('error-msg3').setAttribute('style','display: block');
+		return;
+	}
+
+	var data = {
+		nombres: document.getElementById('name').value,
+		pais: document.getElementById('nationality').value,
+		npax: document.getElementById('numberof').value,
+		celular: document.getElementById('cellphone').value,
+		hotel: document.getElementById('place').value,
+		detalles: document.getElementById('extra').value,
+		email: document.getElementById('email').value,
+		tours: selectedTours,
+		buses: selectedTickets,
+	}
+
+	console.log(data);
+
+	document.getElementById('formulario').setAttribute('class','cargando');
+
+	$.ajax({
+		type: 'POST',
+		url: 'http://incalake.com/reservar/email/reservar-cms.php',
+		dataType: 'json',
+		data: data,
+		success: function (res) {
+			document.getElementById('formulario').innerHTML = res.msg;
 		}
 	});
 }
