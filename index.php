@@ -2222,7 +2222,10 @@
                         <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
                     </div>
                     <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
-                    <h4><i class="fa fa-map-signs"></i> Tours</h4>
+                    <h4>
+                        <i class="fa fa-map-signs"></i> Tours 
+                        <i href="#" data-toggle="tooltip" title="Alguna ayuda aqui"><span class="fa fa-question-circle-o"></span></i>
+                    </h4>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 div-tours">
                             <div class="col-md-12 div-reserva-header hidden-xs">
@@ -2238,13 +2241,15 @@
 							</a>
                         </div>
                     </div>
-                    <h4><i class="fa fa-bus"></i> Bus Tickets</h4>
+                    <h4>
+                        <i class="fa fa-bus"></i> Bus Tickets
+                        <i href="#" data-toggle="tooltip" title="Algo que decir? Pues dilo"><span class="fa fa-question-circle-o"></span></i>
+                    </h4>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 div-tickets">
                             <div class="col-md-12 div-reserva-header hidden-xs">
-                                <div class="col-md-4">Bus</div>
-                                <div class="col-md-2 text-center">Origen</div>
-                                <div class="col-md-2 text-center">Destino</div>
+                                <div class="col-md-5">Bus</div>
+                                <div class="col-md-3 text-center">Origen - Destino</div>
                                 <div class="col-md-3 text-center">Fecha</div>
                                 <div class="col-md-1 text-center">Acción</div>
                             </div>

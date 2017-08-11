@@ -513,48 +513,6 @@ function cambiarFechaTour(self) {
 /**********************************************************************************************/
 /****************************************  BUS TICKET  ****************************************/
 /**********************************************************************************************/
-
-function addTicket(name, id) {
-	selectedTours.push({
-		name: name,
-		id: id,
-		date: null
-	});
-	renderSelectedTickets();
-}
-
-function removeTicket(id) {
-	selectedTours = selectedTours.filter(tour => tour.id != id);
-	renderSelectedTickets();
-}
-
-function renderSelectedTickets() {
-	var items = "";
-
-	selectedTours.forEach((tour) => {
-		items = items + `
-			<div class="col-md-12 div-list-tours col-xs-12 ">
-        <div class="col-md-4">Bus directo local cama 160°</div>
-        <div class="col-md-2 text-center col-xs-6">Origen</div>
-        <div class="col-md-2 text-center col-xs-6">Destino</div>
-        <div class="col-md-3 text-center list-tours-date col-xs-10">
-          <div class="input-group">
-            <span class="input-group-addon fa fa-calendar">                              
-            </span>
-            <input class="" id="date" name="date" type="date" />
-          </div>
-        </div>
-        <div class="col-md-1 text-center col-xs-2">
-					<span class="btn btn-default btn-xs fa fa-close"></span>
-				</div>
-      </div>                              
-		`;
-	});
-
-	document.getElementById('tours-screen').innerHTML = items;
-	$('#toursModal').modal('hide');
-}
-
 function reservar() {
 	var data = {
 		name: document.getElementById('name').value,
@@ -581,6 +539,8 @@ function reservar() {
 }
 
 function getStarts() {
+	$('[data-toggle="tooltip"]').tooltip();   
+
 	$.ajax({
 		url: 'http://incalake.com/reservar/buses.php',
 		data: { 'tabla': 'origen' },
@@ -639,22 +599,86 @@ function buscar_bus() {
 			`).append(res.html);
 
 			$('.select').click(function () {
-				console.log('ioio');
-				console.log($(this).data('id'));
+				let idTicket = $(this).data('id');
+				let origen;
+				let destino;
+				let hora;
+				let tipobus;
+				let nombrebus;
+				let costo;
 				$(this).children('td').each(function (index) {
-					switch(index){
-						case 0: campo1 = $(this).text();
+					switch (index) {
+						case 0: ;
+							break;
+						case 1: origen = $(this).text();
+							break;
+						case 2: destino = $(this).text();
+							break;
+						case 3: hora = $(this).text();
+							break;
+						case 4: nombrebus = $(this).text();
+							break;
+						case 5: tipobus = $(this).text();
+							break;
+						case 6: costo = $(this).text();
 							break;
 					}
-					console.log($(this).text())
 				});
+				addTicket(idTicket, origen, destino, hora, tipobus, nombrebus,costo);
 			});
 
 		}
 	});
-	console.log($('.select').html());
 };
 
+function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus,costo) {
+	selectedTickets.push({
+		id: idTicket,
+		origen: origen,
+		destino: destino,
+		hora: hora,
+		tipobus: tipobus,
+		nombrebus: nombrebus,
+		costo: costo,
+		date: null
+	});
+	let child = `
+			<div class="col-md-12 div-list-tours col-xs-12 " id="detalles-ticket-${idTicket}">
+				<div class="col-md-5 list-tours-name"> ${nombrebus} / ${tipobus} / ${costo}
+				</div>
+				<div class="col-md-3 list-tours-name text-center"> ${origen} - ${destino}
+				</div>
+				<div class="col-md-3 text-center list-tours-date col-xs-10">
+					<div class="input-group">
+						<span class="input-group-addon fa fa-calendar">							     
+						</span>
+						<input class="" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)" />
+					</div>
+				</div>
+				<div class="col-md-1 text-center col-xs-2">
+					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTicket(${idTicket})">
+					</span>
+				</div>
+			</div>
+		`;
+	$('#tickets-screen').append(child);
 
+	$('#ticketsModal').modal('hide');
+}
 
+function removeTicket(id) {
+	selectedTickets = selectedTickets.filter(ticket => ticket.id != id);
+
+	var parent = document.getElementById("tickets-screen");
+	var child = document.getElementById(`detalles-ticket-${id}`);
+	parent.removeChild(child);
+}
+
+function cambiarFechaTicket(self){
+	selectedTickets.forEach((ticket) => {
+		if (ticket.id == self.id.split('-')[1]) {
+			ticket.date = self.value
+		}
+	});
+}
 
