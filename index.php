@@ -2412,6 +2412,12 @@
     </div>
     <!-- End Modal -->
     <br>
+<div id="div-loader">
+    <div class="loader">
+    Loading ...
+    </div>
+</div>
+
 </body>
 <script>
     $(document).ready(function () {

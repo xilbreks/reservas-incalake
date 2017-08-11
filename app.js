@@ -415,15 +415,20 @@ function toogleTours(index) {
 			<div class="page-header">
 				<h3>Tour disponibles de ${destinos[index].name}</h3>
 			</div>
-			<div>
+			<div class="col-md-12 togle-list-tours">
 		`;
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
-				<div>
-					<h4><span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
+				<div class="col-md-12">
+					<div class="col-md-10">
+						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
 						<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
-					</h4>
+					</div>
+					<div class="col-md-2">
+						<div><span onclick="addTour(\'${tour.name}\',${tour.id})" class="btn btn-xs btn-default fa fa-plus">Selecionar</span></div>
+					</div>
+
 				</div>
 			`;
 		});
@@ -696,7 +701,7 @@ function reservar() {
 
 	console.log(data);
 
-	document.getElementById('formulario').setAttribute('class','cargando');
+	document.getElementById('div-loader').setAttribute('style','display:block');
 
 	$.ajax({
 		type: 'POST',
@@ -704,6 +709,7 @@ function reservar() {
 		dataType: 'json',
 		data: data,
 		success: function (res) {
+			document.getElementById('div-loader').setAttribute('style','display:none');
 			document.getElementById('formulario').innerHTML = res.msg;
 		}
 	});
