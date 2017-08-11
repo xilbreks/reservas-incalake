@@ -701,7 +701,7 @@ function reservar() {
 
 	console.log(data);
 
-	document.getElementById('formulario').setAttribute('class','cargando');
+	document.getElementById('div-loader').setAttribute('style','display:block');
 
 	$.ajax({
 		type: 'POST',
@@ -709,6 +709,7 @@ function reservar() {
 		dataType: 'json',
 		data: data,
 		success: function (res) {
+			document.getElementById('div-loader').setAttribute('style','display:none');
 			document.getElementById('formulario').innerHTML = res.msg;
 		}
 	});

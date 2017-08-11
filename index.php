@@ -2410,6 +2410,13 @@
         </div>
     </div>
     <!-- End Modal -->
+<div id="div-loader">
+    <div class="loader">
+    Loading ...
+    </div>
+</div>
+
+
 
 </body>
 <br><br><br><br><br><br><br><br><br>
