@@ -2152,68 +2152,69 @@
 
 <body onload="getStarts()">
     <div class="container container-book-now">
-        <div class="row">
-        <div class="container">
-            <div class="row">
-                <section>
-                <div class="wizard">
-                    <div class="wizard-inner">
-                        <div class="connecting-line"></div>
-                        <ul class="nav nav-tabs" role="tablist">
+        <!--<div class="row">
+            <div class="container">
+                <div class="row">
+                    <section>
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs" role="tablist">
 
-                            <li role="presentation" class="active">
-                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Servicios Requeridos">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-folder-open"></i>
-                                    </span>
-                                </a>
-                            </li>
+                                <li role="presentation" class="active">
+                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Servicios Requeridos">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                        </span>
+                                    </a>
+                                </li>
 
-                            <li role="presentation" class="disabled">
-                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Información Personal">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-pencil"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li role="presentation" class="disabled">
-                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
-                                    <span class="round-tab">
-                                        <i class="glyphicon glyphicon-ok"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <form role="form">
-                        <div class="tab-content">
-                            <div class="tab-pane active" role="tabpanel" id="step1">
-                                <h3>Step 1</h3>
-                                <p>This is step 1</p>
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="step2">
-                                <h3>Step 2</h3>
-                                <p>This is step 2</p>
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="complete">
-                                <h3>Complete</h3>
-                                <p>You have successfully completed all steps.</p>
-                            </div>
-                            <div class="clearfix"></div>
+                                <li role="presentation" class="disabled">
+                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Información Personal">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li role="presentation" class="disabled">
+                                    <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
+                                        <span class="round-tab">
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    </form>
-                </div>
-            </section>
+
+                        <form role="form">
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                    <h3>Step 1</h3>
+                                    <p>This is step 1</p>
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="step2">
+                                    <h3>Step 2</h3>
+                                    <p>This is step 2</p>
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="complete">
+                                    <h3>Complete</h3>
+                                    <p>You have successfully completed all steps.</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
            </div>
         </div>
+        -->
         <div class="col-md-12">
             <h1>Reservas</h1>
             <div id="formulario">
@@ -2340,7 +2341,7 @@
                     </div>
                 </div>
             </div>
-            
+            <br>
         </div>
     </div>
 </div>
@@ -2410,10 +2411,8 @@
         </div>
     </div>
     <!-- End Modal -->
-
+    <br>
 </body>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
 <script>
     $(document).ready(function () {
     //Initialize tooltips
