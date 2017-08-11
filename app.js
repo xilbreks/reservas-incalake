@@ -650,20 +650,27 @@ function reservar() {
 		console.log(selectedTours);
 		document.getElementById('error-msg1').setAttribute('style','display: block');
 	}
+	// Veficar fechas de tours y tickets
+	let falatFechaTour = false;
 	selectedTours.forEach((tour)=>{
 		if(!tour.date){
 			document.getElementById(`tour-${tour.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style','display: block');
+			falatFechaTour = true;
 			return;
 		}
 	});
+	if(falatFechaTour) return;
+	let falatFechaTicket = false;
 	selectedTickets.forEach((ticket)=>{
 		if(!ticket.date){
 			document.getElementById(`ticket-${ticket.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style','display: block');
+			falatFechaTicket = true;
 			return;
 		}
 	});
+	if(falatFechaTicket) return;
 
 	// Veficar informacion personal
 	if(document.getElementById('name').value.length < 1){
@@ -711,6 +718,7 @@ function reservar() {
 		success: function (res) {
 			document.getElementById('div-loader').setAttribute('style','display:none');
 			document.getElementById('formulario').innerHTML = res.msg;
+			$(function(){$(".nueva_reserva").click(function(){document.location.reload();});})
 		}
 	});
 }
