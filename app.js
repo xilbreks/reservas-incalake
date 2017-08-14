@@ -1,337 +1,3 @@
-const destinoss = [
-	{
-		name: 'Puno',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Cusco',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Bolivia',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Nasca',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Loreto',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Ades',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Lima',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	},
-	{
-		name: 'Arequipa',
-		tours: [
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			},
-			{
-				name: 'Tren nocturno de Puno a Cusco Belmond Explorer (2D)',
-				desc: 'Visitalo en verano y podras disfrutarlo...',
-				id: '01',
-				url: 'http://www.google.com'
-			}
-		]
-	}
-];
-const tickets = [
-
-];
-
 var contador = 0;
 var destinosDisponibles = menus.filter((menu) => menu.options);
 var destinos = destinosDisponibles.map((destino) => {
@@ -369,7 +35,7 @@ var f = w < 768 ? 2 : 3;
 var destinoWasSelected = false;
 var destinoIndex = null;
 
-function mostrarDestinos(text) {
+function mostrarDestinos() {
 	//console.log(h);
 	//console.log(w);
 	//console.log(f);
@@ -723,3 +389,42 @@ function reservar() {
 	});
 }
 
+/**********************************************************************************************/
+/****************************************  Live Search  ***************************************/
+/**********************************************************************************************/
+
+function liveSearch(text){
+	console.log(text);
+
+
+	var html = "";
+
+	res = destinos.filter((destino, index)=>{
+		// si el tamaño de tour es mayor que cero
+		return destino.tours.filter((tour)=>{
+			return tour.name.toLowerCase().indexOf(text) != -1;
+		}).length;
+	});
+	console.log('filtrado',res)
+
+	destinos.forEach((destino, index) => {
+		html = html + `
+    	<div class="col-xs-6 col-sm-4" id="destino-${index}">
+        <a class="bootcards-summary-item" onclick="toogleTours(${index})">
+          <i class="fa fa-3x fa-suitcase"></i>
+          <h4>${destino.name} <span class="label label-info">${destino.tours.length}</span></h4>
+        </a>
+      </div>
+		`;
+	});
+
+	html = html + `
+		<div id="space-tours" class="col-xs-12" >
+		</div>
+	`;
+
+	document.getElementById('destinosCards').innerHTML = html;
+
+	document.getElementById('destinosCards').innerHTML = 'kha?!';
+	// if no texto mostrarDestinos()
+}

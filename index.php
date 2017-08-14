@@ -2247,7 +2247,7 @@
                         <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
                         </div>
                         <!-- Trigger the modal with a button -->
-                        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos(123)">
+                        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#toursModal" onclick="mostrarDestinos()">
 							+ Agregar Tour aqui
 						</a>
                     </div>
@@ -2360,6 +2360,7 @@
                     <div class="panel panel-default bootcards-summary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Destinos</h3>
+                            <input type="text" placeholder="Filtrar..." onkeyup="liveSearch(this.value)" style="float:right">
                         </div>
                         <div class="panel-body">
                             <div class="row" id="destinosCards">
