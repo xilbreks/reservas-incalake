@@ -39,6 +39,7 @@ function mostrarDestinos() {
 	//console.log(h);
 	//console.log(w);
 	//console.log(f);
+	document.getElementById('search_box_tours').value = '';
 
 	var html = "";
 
@@ -394,37 +395,117 @@ function reservar() {
 /**********************************************************************************************/
 
 function liveSearch(text){
-	console.log(text);
+	//console.log('{',text,'}');
+	let text2 = '';
+	text.trim().split(' ').filter(e=>e!='').forEach(t=>{
+		text2 = text2 + t + ' ';
+	})
+	text2 = text2.trim();
+	//console.log('{',text2,'}');
+	text = text2;
 
-
-	var html = "";
-
-	res = destinos.filter((destino, index)=>{
-		// si el tamaño de tour es mayor que cero
-		return destino.tours.filter((tour)=>{
-			return tour.name.toLowerCase().indexOf(text) != -1;
-		}).length;
-	});
-	console.log('filtrado',res)
-
-	destinos.forEach((destino, index) => {
-		html = html + `
-    	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item" onclick="toogleTours(${index})">
-          <i class="fa fa-3x fa-suitcase"></i>
-          <h4>${destino.name} <span class="label label-info">${destino.tours.length}</span></h4>
-        </a>
-      </div>
+	if(text.length<1) {
+		mostrarDestinos();
+		return;
+	}
+	else{
+		text = text.toLowerCase();
+		var content = `
+			<div class="page-header">
+				<h4>Resultados de Busqueda</h4>
+			</div>
+			<div class="col-md-12 togle-list-tours">
 		`;
-	});
 
-	html = html + `
-		<div id="space-tours" class="col-xs-12" >
+		let coincidences = destinos.map((destino)=>{
+			return {
+				name: destino.name,
+				tours: destino.tours.filter((tour)=>tour.name.toLowerCase().indexOf(text) != -1)
+			};
+		})
+		.filter((destino)=>destino.tours.length>0);
+		coincidences
+		.forEach((destino,index)=>{
+			content = content + `
+				<div class="col-md-12" style="background-color:grey">
+				Tours de ${destino.name}
+				</div>
+			`;
+			destino.tours.forEach((tour)=>{
+				content = content + `
+					<div class="col-md-12">
+						<div class="col-md-10">
+							<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
+							<small>${tour.desc}</small> <br> 
+							<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
+						</div>
+						<div class="col-md-2">
+							<div><span onclick="addTour(\'${tour.name}\',${tour.id})" class="btn btn-xs btn-default fa fa-plus">Selecionar</span></div>
+						</div>
+
+					</div>
+				`;
+			});
+		});
+
+		// Si no hay resultados
+		if(coincidences.length==0){
+			content = content + `
+				Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
+				<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
+			`;
+		}
+		
+
+		content = content + `
+			</div>
+		`;
+
+		document.getElementById('destinosCards').innerHTML = content;
+	}
+}
+
+/**********************************************************************************************/
+/****************************************  Live Search  ***************************************/
+/**********************************************************************************************/
+var cont_custom_tours = 10000;
+function addTourPersonalizado(){
+	cont_custom_tours = cont_custom_tours + 1;
+	let content = `
+		<div>
+			<label for="detalles_p">Escribenos los detalles del tour que desea realizar</label>
+			<textarea class="form-control" id="detalles_p" placeholder="aqui" rows="5"></textarea>
+			<br>
+			<button class="btn btn-positive" onclick="addTourCustomTour(${cont_custom_tours})">Agregar</button>
 		</div>
 	`;
-
-	document.getElementById('destinosCards').innerHTML = html;
-
-	document.getElementById('destinosCards').innerHTML = 'kha?!';
-	// if no texto mostrarDestinos()
+	document.getElementById('destinosCards').innerHTML = content;
 }
+function addTourCustomTour(tourId){
+	selectedTours.push({
+		name: document.getElementById('detalles_p').value,
+		id: tourId,
+		date: null
+	});
+	let child = `
+			<div class="col-md-12 div-list-tours col-xs-12 " id="detalles-tour-${tourId}">
+				<div class="col-md-7 list-tours-name"> ${document.getElementById('detalles_p').value}
+				</div>
+				<div class="col-md-3 text-center list-tours-date col-xs-10">
+					<div class="input-group">
+						<span class="input-group-addon fa fa-calendar">							     
+						</span>
+						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
+					</div>
+				</div>
+				<div class="col-md-2 text-center col-xs-2">
+					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
+					</span>
+				</div>
+			</div>
+		`;
+	$('#tours-screen').append(child);
+
+	$('#toursModal').modal('hide');
+}
+

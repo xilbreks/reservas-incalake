@@ -2359,8 +2359,9 @@
 
                     <div class="panel panel-default bootcards-summary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Destinos</h3>
-                            <input type="text" placeholder="Filtrar..." onkeyup="liveSearch(this.value)" style="float:right">
+                            <a class="btn btn-button" onclick="mostrarDestinos()">Destinos</a>
+                            <a class="btn btn-button" onclick="addTourPersonalizado()">Quiero un tour personalizado</a>
+                            <input type="text" placeholder="Filtrar..." onkeyup="liveSearch(this.value)" style="float:right" id="search_box_tours">
                         </div>
                         <div class="panel-body">
                             <div class="row" id="destinosCards">
