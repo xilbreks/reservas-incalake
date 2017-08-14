@@ -226,9 +226,25 @@ padding: 0;
 	width: 100%;
 	line-height: 25px;
 }
-/*--------*/
+/*----MODAL----*/
 .selecionado{
-    background-color: red;
+    background-color: var(--color-primary);
+}
+.selecionado:hover a{
+	color: #fff !important;
+}
+.selecionado>a{
+	background: var(--color-primary) !important;
+    color: #f5f5f5;
+}
+.selecionado>a:hover{
+	cursor: none !important;
+}
+.selecionado>a>*:first-child{
+	color: #f5f5f5 !important;
+}
+#destinosCards>*>a:hover{
+	cursor: pointer !important;
 }
 /*DIV TICKETS*/
 .div-tickets .div-reserva-header{
@@ -284,315 +300,14 @@ padding: 0;
 	border-width: 1px;
 	border-color: #eee;
 }
-/*------------*/
-.rating-xs{
-  font-size: 15px;
-  float: left;
-}
-.rating-container .filled-stars{
-  color: #fec701;
-  -webkit-text-stroke: 1px #d8ab09;
-  text-shadow: 1px 1px #d8ab09; 
-}
-/*inicio*/
-
-.div-details{
-  padding-left: 0;
-}
-.div-details .btn-default {
-    background: rgba(226, 226, 226, 0.35);
-    color: #6f6d6d;
-    border-color: #dcdcdc;
-}
-.rating-container{
-  display: grid;
-}
-.div-precios{
-  
-    display: table-cell;
-    height: 100%;
-     background: #187eba; 
-    
-}
-.div-precios .div-align-flex{
-     display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
- 
-  width: 100%;
-  height: 100%;
-}
-.div-precios .div-content-align-flex{
-  display: flex;
-  flex-flow: column;
- 
-  justify-content: center;
-  text-align: center;
-}
-.div-precios  .btn-default {
-    background: rgba(186, 152, 152, 0);
-    color: #fff;
-}
-.div-precios .precio{
-  font-weight: bold;
-  font-size: 20px;
-  color: #fff;
-}
-.div-precios .cantidad, .div-precios .desde{
-  font-size: 18px;
-  color: #ccc;
-}    
-/**/
-.div-img-lugar{
-  padding: 0;
-}
-.div-img-lugar img{
-
-width: 100%;
-position: relative;
-}
-/*.div-img-lugar .div-lugar{
-  position: absolute;
-  top: 30%;
-  z-index: 1;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: bold;
-}
-.div-img-lugar .div-lugar>span{
-padding: 10px;
-    background: rgba(92, 184, 92, 0.86);
-    font-size: 40px;
-}
-.div-img-lugar .div-lugar>p{
-padding: 10px;
-    
-}*/
-.quantity-service{
-  padding: 5px;
-  background: rgba(24, 128, 190, 0.65);
-}
-.div-txt-servicio>div{
-  background: var(--color-primary);
-    color: #fff;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 15px;
-}
-.div-txt-filtrar{
- /*padding-bottom: 5px;*/
-}
-.div-txt-filtrar>div{
-  background: var(--color-complement);
-  padding: 5px;
-  font-weight: bold;
-}
-@media (max-width: 768px){
-.div-options-products .panel-option.col-xs-12 .panel-heading{
-  background: var(--color-primary);
-    color: #f5f5f5;
-}
-.div-options-products .panel-option.col-xs-12 .panel-body{
-  padding: 0;
-}
-}
-
-    
-    
-
-.div-img-lugar #custom-search-input{
-      position: absolute;
-    top: 75%;
-    z-index: 1;
-}
-.div-img-lugar .div-color{
-  position: absolute;
-    top: 0;
-    left: 0; 
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.13);
-}
-/*DIV LIST PORDUCTS*/
-@media (max-width: 768px){
-  .div-list-product{
-    padding: 0;
-  }
-  .div-list-product .div-precios{
-  height: auto;
-  width: 100%;
-  background: none;
-  }
-  .div-list-product .card-content h3{
-    font-size: 16px;
-
-  }
-  
-  
-  /*.div-square .card-image,.div-square .card-content,.div-square .div-details{
-    width: 100%;
-  }*/
-
-
-  .div-list-product .card-title-product a{
-    /*color: #fff;*/
-
-  }
-  .div-list-product .div-precios  .btn-default{
-  background: var(--color-primary);
-  color: #f5f5f5;
-  }
-
-  .div-list-product .div-content-align-flex .precio{
-    color: #1880be;
-  }
-  .div-list-product .div-precios .div-content-align-flex, .div-list-product .div-content-align-flex .cantidad {
-  display: inline;
-  }
+.togle-list-tours>*:nth-child(even){
+	background: #f5f5f5;
 
 }
-
-
-.card-price {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.68);
-    
-}
-.precio-antes{
-line-height: 25px;
-text-decoration:line-through;
-}
-.precio-ahora{
-  background: rgba(211, 40, 35, 0.86);
-    color: #fff;
-    padding: 8px;
-}
-#products-div{
-  padding: 0;
-}
-#products-div .container{
-  height: 100%;
-        /*margin-top: 20px;*/
-            display: grid;
-}
-.card {
-  
-  /*width: 100%;*/
+.togle-list-tours>div:hover{
+	background: #ddd;
 }
 
-.card {
-  /*margin-top: 0.9em;*/
-  box-sizing: border-box;
-  border-radius: 0.2em;
-  background-clip: padding-box;
-  /*padding: 10px;*/
-  
-  /*padding: 0;*/
-  /*background: #fff;*/
-  margin-bottom: 20px;
-}
-.card-div-inside{
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  height: 100%;
-  display: table;
-  background: #fff;
-  padding: 0;
-  width: 100%;
-}
-
-.card-title-product a{
-      color: #337ab7;
-}
-.dropdown-menu {
-    right: 0 !important;
-    left: auto;
-}
-
-.card .card-image {
-  position: relative;
-  /*padding: 1%;*/
-  padding: 0;
-  /*overflow: hidden;*/
-}
-.card .card-image img {
-  border-radius: 0.2em 0.2em 0 0;
-  background-clip: padding-box;
-  position: relative;
-  /*z-index: -1;*/
-      /*min-height: 150px;*/
-}
-.card .card-image .card-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0.3em;
-}
-.div-list-product .card-content{
-height: 100%;
-}
-.div-square .card-content{
-height: auto;
-}
-.card-content{
-  /*height: 100%;*/
-  display: table-cell;
-  padding: 2%;
-}
-.card-content h3{
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.card .card-action {
-  border-top: 0.1em solid rgba(160, 160, 160, 0.2);
-  padding: 0.9em;
-}
-.card .card-action a {
-  
-  /*color: #105984;*/
-  margin-right: 0.1em;
-  transition: color 0.3s ease;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.card .card-action a:hover {
-  /*color: #438cb7;*/
-  text-decoration: none;
-  font-weight: bold;
-} 
-/*DIVS MODO LIST*/
-
-
-/*divs modo square*/
-.div-square .card-image,.div-square .card-content,.div-square .div-details{
-  width: 100%;
-}
-.div-square .div-description,.div-square .div-go,.div-square .div-duration,.div-square .div-category, .div-square .div-precios .cantidad,.div-square .div-precios .btn-more-details{
-  display: none;
-}
-.div-square .card-content{
-  padding: 10px;
-}
-.div-square .card-title-product a{
-  /*color: #fff;*/
-
-}
-.div-square .card-content h3{
-  font-size: 16px;
-}
-.div-square .div-precios{
-  height: auto;
-  width: 100%;
-  background: none;
-}
-.div-square .div-content-align-flex .precio{
-  color: #1880be;
-}
-.div-square .div-precios .div-content-align-flex {
-display: inline;
-}
 /*CATEGORRY LIST*/
 #category_selected .badge,#duration_selected .badge{
   background: var(--color-danger);
@@ -642,3 +357,34 @@ display: none;
 }
 
 /*------------*/
+
+.center-div {
+    display: table;
+    width: 100%;
+    /*height: 100%; */
+    /*border: 1px dotted blue;*/
+}
+.center-div>*:first-child{
+	width: 100%;
+}
+.v-align {
+	width: 10%;
+	float: none !important;
+    /*padding: 10px;*/
+    /*border: 1px dashed gray;*/
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    color: #f5f5f5;
+}
+.box:hover{
+	background: #054d97 !important;
+}

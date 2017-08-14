@@ -2415,6 +2415,16 @@
     Loading ...
     </div>
 </div>
+<div class="center-div col-md-12">
+    <div class="col-md-10">
+        asd <br><br><br><br>
+    </div>
+
+        <div class="col-md-2 v-align">
+            <div class="box">xx</div>
+        </div>
+    
+</div>
 
 
 
