@@ -1,5 +1,6 @@
 const languages = ['es','en'];
-const language = languages[1];
+const choosen = 1;
+const language = languages[choosen];
 /**********************************************************************************************/
 /*************************************  No me acuerso ahorita  *************************************/
 /**********************************************************************************************/
@@ -44,6 +45,7 @@ var destinoIndex = null;
 
 function mostrarDestinos() {
 	document.getElementById('search_box_tours').value = '';
+	document.getElementById('busca_tu_tour').innerHTML = ['Busca tu Tour','Find your tour'][choosen];
 
 	var html = "";
 
@@ -439,14 +441,14 @@ function liveSearch(text){
 			`;
 			destino.tours.forEach((tour)=>{
 				content = content + `
-					<div class="col-md-12">
+					<div class="col-md-12 center-div">
 						<div class="col-md-10">
 							<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 							<small>${tour.desc}</small> <br> 
 							<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
 						</div>
-						<div class="col-md-2">
-							<div><span onclick="addTour(\'${tour.name}\',${tour.id})" class="btn btn-xs btn-default fa fa-plus">Selecionar</span></div>
+						<div class="col-md-2 v-align">
+							<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >Selecionar</span></div>
 						</div>
 
 					</div>
