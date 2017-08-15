@@ -224,10 +224,11 @@ padding: 0;
     line-height: 30px;
 }
 .div-tours .div-list-tours .list-tours-date .input-group-addon{
-    padding: 5px;
+    /*padding: 5px;*/
+    padding: 7px;
 } 
 .div-tours .div-list-tours .list-tours-date .input-group input{
-    width: 100%;
+    /*width: 100%;*/
     line-height: 25px;
 }
 /*----MODAL----*/
@@ -251,6 +252,9 @@ padding: 0;
     cursor: pointer !important;
 }
 /*DIV BUSES TICKETS*/
+.input-group-addon, .input-group-btn{
+    width: auto !important;
+}
 .div-tickets .div-reserva-header{
     background: var(--color-primary);
     text-align: center;
@@ -301,10 +305,10 @@ padding: 0;
     line-height: 30px;
 }
 .div-tickets .div-list-buses .list-buses-date .input-group-addon{
-    padding: 5px;
+    padding: 7px;
 } 
 .div-tickets .div-list-buses .list-buses-date .input-group input{
-    width: 100%;
+    /*width: 100%;*/
     line-height: 25px;
 }
 /*toggle list tours*/

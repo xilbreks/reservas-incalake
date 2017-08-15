@@ -2239,10 +2239,10 @@
                 </h4>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 div-tours">
-                        <div class="col-md-12 div-reserva-header hidden-xs">
-                            <div class="col-md-7">Nombre del Tour</div>
-                            <div class="col-md-3 text-center">Fecha</div>
-                            <div class="col-md-2 text-center">Acción</div>
+                        <div class="col-md-12 col-sm-12 div-reserva-header hidden-xs">
+                            <div class="col-md-7 col-sm-7">Nombre del Tour</div>
+                            <div class="col-md-3 text-center col-sm-4">Fecha</div>
+                            <div class="col-md-2 text-center col-sm-1">Acción</div>
                         </div>
                         <div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
                         </div>
@@ -2258,11 +2258,11 @@
                 </h4>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 div-tickets">
-                        <div class="col-md-12 div-reserva-header hidden-xs">
-                            <div class="col-md-5">Bus</div>
-                            <div class="col-md-3 text-center">Origen - Destino</div>
-                            <div class="col-md-3 text-center">Fecha</div>
-                            <div class="col-md-1 text-center">Acción</div>
+                        <div class="col-md-12 col-sm-12 div-reserva-header hidden-xs">
+                            <div class="col-md-5 col-sm-4">Bus</div>
+                            <div class="col-md-3 text-center col-sm-3">Origen - Destino</div>
+                            <div class="col-md-3 text-center col-sm-4">Fecha</div>
+                            <div class="col-md-1 text-center col-sm-1">Acción</div>
                         </div>
                         <div class="col-md-12 div-content-list-buses col-xs-12"  id="tickets-screen">
                         </div>
