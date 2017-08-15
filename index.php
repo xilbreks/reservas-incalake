@@ -2216,26 +2216,26 @@
         </div>
         -->
         <div class="col-md-12">
-            <h1>Reservas</h1>
+            <h1 id="titulo_reservas"></h1>
             <div id="formulario">
                 <div class="line-header">
-                    <span style="font-size:1.3em;font-weight:bold" id="services">Servicios Requeridos</span>
+                    <span style="font-size:1.3em;font-weight:bold" id="services"></span>
                 </div>
                 <div class="row" id="error-msg1" style="display:none">
                     <div class="alert alert-danger">
-                        <strong>Selecciona al menos un tour o bus ticket</strong>
+                        <strong id="error-msg1-content"></strong>
                     </div>
                 </div>
                 <div class="row" id="error-msg2" style="display:none">
                     <div class="alert alert-danger">
-                        <strong>Fecha no seleccionada</strong>
+                        <strong id="error-msg2-content"></strong>
                     </div>
                 </div>
 
                 <!-- <hr style="margin-top:-0.3em;border-top:1px solid #e2e2e2"> -->
                 <h4>
                     <i class="fa fa-map-signs"></i> Tours 
-                    <i href="#" data-toggle="tooltip" title="Alguna ayuda aqui"><span class="fa fa-question-circle-o"></span></i>
+                    <i href="#" data-toggle="tooltip" title="Alguna ayuda aqui" id="ayuda1"><span class="fa fa-question-circle-o"></span></i>
                 </h4>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 div-tours">
@@ -2254,7 +2254,7 @@
                 </div>
                 <h4>
                     <i class="fa fa-bus"></i> Bus Tickets
-                    <i href="#" data-toggle="tooltip" title="Algo que decir? Pues dilo"><span class="fa fa-question-circle-o"></span></i>
+                    <i href="#" data-toggle="tooltip" title="" id="ayuda2"><span class="fa fa-question-circle-o"></span></i>
                 </h4>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 div-tickets">
@@ -2274,11 +2274,11 @@
                 </div>
 
                 <div class="line-header">
-                    <span style="font-size:1.3em;font-weight:bold" id="information">Informacion Personal</span>
+                    <span style="font-size:1.3em;font-weight:bold" id="information"></span>
                 </div>
                 <div class="row" id="error-msg3" style="display:none">
                     <div class="alert alert-danger">
-                        <strong>Completa los campos requeridos!</strong>
+                        <strong id="error-msg3-content"></strong>
                     </div>
                 </div>
                             
@@ -2286,49 +2286,49 @@
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
                         <div class="form-group">
-                            <label for="name">Nombres y Apellidos <i class="requerido">*</i></label>
+                            <label for="name"><span id="label_for_name"></span> <i class="requerido">*</i></label>
                             <input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
-                            <label for="nationality">Nacionalidad <i class="requerido">*</i></label>
+                            <label for="nationality"><span id="label_for_nationality"></span> <i class="requerido">*</i></label>
                             <input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-xs-12">
+                    <div class="col-md-8 col-xs-12">
                         <div class="form-group">
-                            <label for="email">E-mail <i class="requerido">*</i></label>
+                            <label for="email"><span id="label_for_email"></span> <i class="requerido">*</i></label>
                             <input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-6">
+                    <div class="col-md-4 col-xs-12">
                         <div class="form-group">
-                            <label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
+                            <label for="numberof"><span id="label_for_numberof"></span> <i class="requerido">*</i></label>
                             <input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-6">
-                        <div class="form-group">
-                            <label for="cellphone">Numero de celular</label>
-                            <input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="#aditional_info" data-toggle="collapse">Detalles Opcionales <i class="fa fa-sort-desc"></i></a>
+                        <a href="#aditional_info" data-toggle="collapse">
+                            <span id="label_detalles_opcionales"></span><i class="fa fa-sort-desc"></i>
+                        </a>
                     </div>
                     <div class="col-xs-12 collapse" id="aditional_info">
                         <div class="form-group">
-                            <label for="place">Hotel o lugar de Recojo</label>
+                            <label for="cellphone" id="label_for_cellphone">Numero de celular</label>
+                            <input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
+                        </div>
+                        <div class="form-group">
+                            <label for="place" id="label_for_hotel">Hotel o lugar de Recojo</label>
                             <textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="extra">Escribanos aqui mas detalles o observaciones</label>
+                            <label for="extra" id="label_for_extra">Escribanos aqui mas detalles o observaciones</label>
                             <textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
                         </div>
                     </div>
@@ -2337,7 +2337,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <br>
-                        <button type="button" onclick="reservar()" class="btn btn-primary">Reservar</button>
+                        <button type="button" onclick="reservar()" class="btn btn-primary" id="boton_reservar_all"></button>
                     </div>
                 </div>
             </div>
@@ -2433,6 +2433,30 @@
 </body>
 <script>
     $(document).ready(function () {
+    // Cambiar idioma de la reserva
+	document.getElementById('titulo_reservas').innerHTML = ['Reservas','Reservations'][choosen];
+	document.getElementById('services').innerHTML = ['Servicios Requeridos','Services required'][choosen];
+	document.getElementById('information').innerHTML = ['Informacion Personal','Personal Information'][choosen];
+	//document.getElementById('search_box_tours').placeholder = ['Filtrar...','Filter...'][choosen];
+	document.getElementById('label_for_name').innerHTML = ['Nombres y Apellidos','Full Name'][choosen];
+    document.getElementById('label_for_nationality').innerHTML = ['Nacionalidad','Nacionality'][choosen];
+    document.getElementById('label_for_email').innerHTML = ['Email','Email'][choosen];
+    document.getElementById('label_for_numberof').innerHTML = ['Numero de Pasajeros','Number of passengers'][choosen];
+    document.getElementById('label_for_cellphone').innerHTML = ['Numero de Celular o telefono','Cellphone'][choosen];
+    document.getElementById('label_detalles_opcionales').innerHTML = ['Detalles Opcionales ','Optional Details '][choosen];
+    document.getElementById('boton_reservar_all').innerHTML = ['Reservar','Book'][choosen];
+    document.getElementById('error-msg1-content').innerHTML = ['Selecciona al menos un tour o bus ticket','Select at least one tour or Bus Ticket'][choosen];
+    document.getElementById('error-msg2-content').innerHTML = ['Fecha no seleccionada','Date was not selected'][choosen];
+    document.getElementById('error-msg3-content').innerHTML = ['Completa los campos requeridos','Fill out the required fields'][choosen];
+    document.getElementById('ayuda1').title = ['Alguna aiuda aqui','Jhon Cena'][choosen];
+    document.getElementById('ayuda2').title = ['Alguna aiuda aqui','Jhon Cena'][choosen];
+    document.getElementById('label_for_hotel').innerHTML = ['Hotel o lugar de recojo','Hotel or pick up location'][choosen];
+    document.getElementById('label_for_extra').innerHTML = ['Escribanos aqui mas detalles u observaciones','Write us more details or comments'][choosen];
+    
+    setTimeout(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    }, 50);
+
     //Initialize tooltips
     $('.wizard .nav-tabs > li a[title]').tooltip();
     
