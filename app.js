@@ -12,7 +12,7 @@ var destinos = destinosDisponibles.map((destino) => {
 		grupo.options.forEach(tour => {
 			toursDestino.push({
 				name: tour.name ? (language=='es'?tour.name.es:(tour.name.en?tour.name.en:'')) : null,
-				desc: tour.subname ? (language=='es'?tour.subname.es:tour.subname.en) : null,
+				desc: tour.subname ? (language=='es'?tour.subname.es:tour.subname.en) : '',
 				url: tour.url ? (language=='es'?tour.url.es:tour.url.en) : null,
 				id: contador
 			});
