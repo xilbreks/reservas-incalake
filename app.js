@@ -1,5 +1,5 @@
 const languages = ['es','en'];
-const choosen = 1;
+const choosen = 0;
 const language = languages[choosen];
 /**********************************************************************************************/
 /*************************************  No me acuerso ahorita  *************************************/
@@ -171,8 +171,6 @@ function cambiarFechaTour(self) {
 /****************************************  BUS TICKET  ****************************************/
 /**********************************************************************************************/
 function getStarts() {
-	$('[data-toggle="tooltip"]').tooltip();
-
 	$.ajax({
 		url: 'http://incalake.com/reservar/buses.php',
 		data: { 'tabla': 'origen' },
