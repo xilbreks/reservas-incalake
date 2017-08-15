@@ -1,13 +1,19 @@
+const languages = ['es','en'];
+const language = languages[1];
+/**********************************************************************************************/
+/*************************************  No me acuerso ahorita  *************************************/
+/**********************************************************************************************/
 var contador = 0;
 var destinosDisponibles = menus.filter((menu) => menu.options);
+
 var destinos = destinosDisponibles.map((destino) => {
 	let toursDestino = [];
 	destino.options.forEach(grupo => {
 		grupo.options.forEach(tour => {
 			toursDestino.push({
-				name: tour.name ? tour.name.es : null,
-				desc: tour.subname ? tour.subname.es : null,
-				url: tour.url ? tour.url.es : null,
+				name: tour.name ? (language=='es'?tour.name.es:(tour.name.en?tour.name.en:'')) : null,
+				desc: tour.subname ? (language=='es'?tour.subname.es:tour.subname.en) : null,
+				url: tour.url ? (language=='es'?tour.url.es:tour.url.en) : null,
 				id: contador
 			});
 			contador = contador + 1;
@@ -15,10 +21,11 @@ var destinos = destinosDisponibles.map((destino) => {
 	});
 
 	return {
-		name: destino.name.es,
+		name: (language=='es'?destino.name.es:destino.name.en),
 		tours: toursDestino
 	}
 });
+console.log(destinos);
 
 // Form data
 var selectedTours = [];
@@ -36,9 +43,6 @@ var destinoWasSelected = false;
 var destinoIndex = null;
 
 function mostrarDestinos() {
-	//console.log(h);
-	//console.log(w);
-	//console.log(f);
 	document.getElementById('search_box_tours').value = '';
 
 	var html = "";
@@ -110,7 +114,9 @@ function toogleTours(index) {
 	}
 
 }
-
+/**********************************************************************************************/
+/******************************************  TOURS  *******************************************/
+/**********************************************************************************************/
 function addTour(tourName, tourId) {
 	selectedTours.push({
 		name: tourName,
