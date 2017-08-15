@@ -171,9 +171,9 @@ span.round-tab:hover {
 }
 /*-----------*/
 .container-book-now{
-		background: #fff;
+        background: #fff;
 }
-	.line-header{
+    .line-header{
   display: block;
     margin: 10px 0 25px 0;
     border-bottom: 1px solid var(--color-complement);
@@ -193,119 +193,142 @@ span.round-tab:hover {
 }
 /*DIV TOURS*/
 .div-tours .div-reserva-header{
-	background: var(--color-primary);
-	text-align: center;
-	color: #f5f5f5;
-	line-height: 30px;
-	font-weight: 700;
+    background: var(--color-primary);
+    text-align: center;
+    color: #f5f5f5;
+    line-height: 30px;
+    font-weight: 700;
 }
 .div-tours .div-content-list-tours{
-	padding: 0;
+    padding: 0;
     border-style: none solid none solid;
     border-width: 1px;
     border-color: #ccc;
 }
+.div-tours .div-content-list-tours>*:nth-child(even){
+    background: #f5f5f5 !important;
+
+}
 .div-tours .div-list-tours{
-	    border-bottom: solid;
+        border-bottom: solid;
     border-width: 1px;
     border-color: #ccc;
 padding: 0;
     /*height: 40px;*/
 }
 .div-tours .div-list-tours .list-tours-name{
-/*line-height: 30px;	*/
+/*line-height: 30px;    */
 }
 .div-tours .div-list-tours>*{
-	padding: 3px 10px;
-	line-height: 30px;
+    padding: 3px 10px;
+    line-height: 30px;
 }
 .div-tours .div-list-tours .list-tours-date .input-group-addon{
-	padding: 5px;
+    padding: 5px;
 } 
 .div-tours .div-list-tours .list-tours-date .input-group input{
-	width: 100%;
-	line-height: 25px;
+    width: 100%;
+    line-height: 25px;
 }
 /*----MODAL----*/
 .selecionado{
     background-color: var(--color-primary);
 }
 .selecionado:hover a{
-	color: #fff !important;
+    color: #fff !important;
 }
 .selecionado>a{
-	background: var(--color-primary) !important;
+    background: var(--color-primary) !important;
     color: #f5f5f5;
 }
 .selecionado>a:hover{
-	cursor: none !important;
+    cursor: none !important;
 }
 .selecionado>a>*:first-child{
-	color: #f5f5f5 !important;
+    color: #f5f5f5 !important;
 }
 #destinosCards>*>a:hover{
-	cursor: pointer !important;
+    cursor: pointer !important;
 }
-/*DIV TICKETS*/
+/*DIV BUSES TICKETS*/
 .div-tickets .div-reserva-header{
-	background: var(--color-primary);
-	text-align: center;
-	color: #f5f5f5;
-	line-height: 30px;
-	font-weight: 700;
+    background: var(--color-primary);
+    text-align: center;
+    color: #f5f5f5;
+    line-height: 30px;
+    font-weight: 700;
 }
 .div-tickets .div-reserva-header>*:nth-last-child(1){
 padding: 0;
 }
-.div-tickets .div-content-list-tours{
-	padding: 0;
+.div-tickets .div-content-list-buses{
+    padding: 0;
     border-style: none solid none solid;
     border-width: 1px;
     border-color: #ccc;
 }
-.div-tickets .div-list-tours{
-	    border-bottom: solid;
+.div-tickets .div-list-buses{
+        border-bottom: solid;
     border-width: 1px;
     border-color: #ccc;
 padding: 0;
     /*height: 40px;*/
 }
-.div-tickets .div-list-tours .list-tours-name{
-/*line-height: 30px;	*/
+.div-tickets .div-content-list-buses>*:nth-child(even){
+    background: #f5f5f5 !important;
 }
-.div-tickets .div-list-tours>*{
-	padding: 3px 10px;
-	line-height: 30px;
+
+.div-tickets .div-list-buses .list-tours-buses{
+/*line-height: 30px;    */
 }
-.div-tickets .div-list-tours .list-tours-date .input-group-addon{
-	padding: 5px;
+@media (max-width: 768px){
+    .div-tickets .div-list-buses .list-tours-where{
+    float: left !important;
+    }
+    .div-tickets, .div-tours{
+    padding: 0;     
+    }
+    .div-tickets .div-content-list-buses .div-list-buses,.div-tours .div-content-list-tours .div-list-tours{
+    border-top: solid;
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 0;
+    }
+}
+
+.div-tickets .div-list-buses>*{
+    padding: 3px 10px;
+    line-height: 30px;
+}
+.div-tickets .div-list-buses .list-buses-date .input-group-addon{
+    padding: 5px;
 } 
-.div-tickets .div-list-tours .list-tours-date .input-group input{
-	width: 100%;
-	line-height: 25px;
+.div-tickets .div-list-buses .list-buses-date .input-group input{
+    width: 100%;
+    line-height: 25px;
 }
 /*toggle list tours*/
 .togle-list-tours{
-	padding: 0 !important;
-	border-left: solid;
-	border-right: solid;
-	border-top: solid;
-	
+    padding: 0 !important;
+    border-left: solid;
+    border-right: solid;
+    border-top: solid;
+    
 }
 .togle-list-tours>*{
-	border-bottom: solid;
-	padding: 0.5%;
+    border-bottom: solid;
+    padding: 0.5%;
 }
 .togle-list-tours,.togle-list-tours>*{
-	border-width: 1px;
-	border-color: #eee;
+    border-width: 1px;
+    border-color: #eee;
 }
 .togle-list-tours>*:nth-child(even){
-	background: #f5f5f5;
+    background: #f5f5f5;
 
 }
 .togle-list-tours>div:hover{
-	background: #ddd;
+    background: #ddd;
 }
 
 /*CATEGORRY LIST*/
@@ -364,14 +387,20 @@ display: none;
     /*height: 100%; */
     /*border: 1px dotted blue;*/
 }
+@media (max-width: 768px){
+    .center-div{
+        display: block;
+    }
+}
 .center-div>*:first-child{
-	width: 100%;
+    width: 100%;
 }
 .v-align {
-	width: 10%;
-	float: none !important;
+    /*width: 10%;*/
+    float: none !important;
     /*padding: 10px;*/
     /*border: 1px dashed gray;*/
+    /*comentairo*/
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -386,5 +415,5 @@ display: none;
     color: #f5f5f5;
 }
 .box:hover{
-	background: #054d97 !important;
+    background: #054d97 !important;
 }
