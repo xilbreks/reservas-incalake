@@ -2353,15 +2353,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="busca_tu_tour">Busca tu Tour</h4>
+                    <h4 class="modal-title" id="busca_tu_tour"></h4>
                 </div>
                 <div class="modal-body">
 
                     <div class="panel panel-default bootcards-summary">
                         <div class="panel-heading">
-                            <a class="btn btn-button" onclick="mostrarDestinos()">Destinos</a>
-                            <a class="btn btn-button" onclick="addTourPersonalizado()">Quiero un tour personalizado</a>
-                            <input type="text" placeholder="Filtrar..." onkeyup="liveSearch(this.value)" style="float:right" id="search_box_tours">
+                            <a class="btn btn-button" onclick="mostrarDestinos()" id="boton_destinos"></a>
+                            <a class="btn btn-button" onclick="addTourPersonalizado()" id="boton_quiero_personalizado"></a>
+                            <input type="text" onkeyup="liveSearch(this.value)" style="float:right" id="search_box_tours">
                         </div>
                         <div class="panel-body">
                             <div class="row" id="destinosCards">
@@ -2372,7 +2372,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="boton_cerrar_modal"></button>
                 </div>
             </div>
 

@@ -46,6 +46,10 @@ var destinoIndex = null;
 function mostrarDestinos() {
 	document.getElementById('search_box_tours').value = '';
 	document.getElementById('busca_tu_tour').innerHTML = ['Busca tu Tour','Find your tour'][choosen];
+	document.getElementById('boton_destinos').innerHTML = ['Destinos','Destinies'][choosen];
+	document.getElementById('boton_quiero_personalizado').innerHTML = ['Quiero un tour personalizado','I wanna a customize tour'][choosen];
+	document.getElementById('search_box_tours').placeholder = ['Filtrar...','Filter...'][choosen];
+	document.getElementById('boton_cerrar_modal').innerHTML = ['Cerrar','Close'][choosen];
 
 	var html = "";
 
@@ -420,7 +424,7 @@ function liveSearch(text){
 		text = text.toLowerCase();
 		var content = `
 			<div class="page-header">
-				<h4>Resultados de Busqueda</h4>
+				<h4>${['Resultados','Results'][choosen]}</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
@@ -458,10 +462,17 @@ function liveSearch(text){
 
 		// Si no hay resultados
 		if(coincidences.length==0){
-			content = content + `
-				Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
-				<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
-			`;
+			if(choosen==1){
+				content = content + `
+					We are sorry, We couldn't find your tour. If you want you can have a customize tour.<br>
+					<a class="btn btn-link" onclick="addTourPersonalizado()">I want a customize tour</a>
+				`;
+			}else if(choosen==0){
+				content = content + `
+					Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
+					<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
+				`;
+			}
 		}
 		
 
