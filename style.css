@@ -417,3 +417,54 @@ display: none;
 .box:hover{
     background: #054d97 !important;
 }
+/*--------------BOOTSCARD MODAL---------------*/
+.bootcards-summary .panel-body .bootcards-summary-item {
+    background: #f5f5f5;
+    display: block;
+    border-radius: 4px;
+    padding: 25px 10px;
+    text-align: center;
+    position: relative;
+    height: 130px;
+}
+.bootcards-summary .panel-body .bootcards-summary-item:hover {
+    text-decoration: none;
+    background: #eee;
+}
+.bootcards-summary .panel-body .bootcards-summary-item {
+    background: #f5f5f5;
+    display: block;
+    border-radius: 4px;
+    padding: 25px 10px;
+    text-align: center;
+    position: relative;
+    height: 130px;
+}
+.bootcards-summary .panel-body .bootcards-summary-item>i {
+    color: #bbb;
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.bootcards-summary .panel-body>.row>div {
+    padding: 8px;
+}
+.bootcards-summary .panel-body .bootcards-summary-item .badge, .bootcards-summary .panel-body .bootcards-summary-item .label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+@media (max-width: 400px){
+    .bootcards-summary .panel-body .bootcards-summary-item {
+        padding: 15px 5px;
+    }
+}
+.bootcards-summary-item *{
+    line-height: normal !important;
+    font-weight: normal !important;
+    text-transform: uppercase !important;
+    margin: auto;
+}
+.bootcards-summary-item h4 *, .bootcards-summary-item h4 {
+    font-size: medium !important;
+}
