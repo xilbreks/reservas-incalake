@@ -2264,7 +2264,7 @@
                             <div class="col-md-3 text-center">Fecha</div>
                             <div class="col-md-1 text-center">Acción</div>
                         </div>
-                        <div class="col-md-12 div-content-list-tours col-xs-12"  id="tickets-screen">
+                        <div class="col-md-12 div-content-list-buses col-xs-12"  id="tickets-screen">
                         </div>
                         <!-- Trigger the modal with a button -->
                         <a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">

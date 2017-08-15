@@ -250,7 +250,7 @@ padding: 0;
 #destinosCards>*>a:hover{
     cursor: pointer !important;
 }
-/*DIV TICKETS*/
+/*DIV BUSES TICKETS*/
 .div-tickets .div-reserva-header{
     background: var(--color-primary);
     text-align: center;
@@ -278,7 +278,7 @@ padding: 0;
     background: #f5f5f5 !important;
 }
 
-.div-tickets .div-list-buses .list-tours-name{
+.div-tickets .div-list-buses .list-tours-buses{
 /*line-height: 30px;    */
 }
 @media (max-width: 768px){
@@ -300,10 +300,10 @@ padding: 0;
     padding: 3px 10px;
     line-height: 30px;
 }
-.div-tickets .div-list-buses .list-tours-date .input-group-addon{
+.div-tickets .div-list-buses .list-buses-date .input-group-addon{
     padding: 5px;
 } 
-.div-tickets .div-list-buses .list-tours-date .input-group input{
+.div-tickets .div-list-buses .list-buses-date .input-group input{
     width: 100%;
     line-height: 25px;
 }
