@@ -421,7 +421,7 @@ function liveSearch(text){
 	else{
 		text = text.toLowerCase();
 		var content = `
-			<div class="page-header">
+			<div class="">
 				<h4>${['Resultados','Results'][choosen]}</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
@@ -437,7 +437,7 @@ function liveSearch(text){
 		coincidences
 		.forEach((destino,index)=>{
 			content = content + `
-				<div class="col-md-12" style="background-color:grey">
+				<div class="col-md-12 div-title-search ">
 				Tours de ${destino.name}
 				</div>
 			`;
