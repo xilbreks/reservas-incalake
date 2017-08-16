@@ -23,7 +23,8 @@ var destinos = destinosDisponibles.map((destino) => {
 
 	return {
 		name: (language=='es'?destino.name.es:destino.name.en),
-		tours: toursDestino
+		tours: toursDestino,
+		img: destino.thumbnail
 	}
 });
 console.log(destinos);
@@ -57,7 +58,7 @@ function mostrarDestinos() {
 		html = html + `
     	<div class="col-xs-6 col-sm-4" id="destino-${index}">
         <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
-        <img src="http://www.kcuscotours.com/wp-content/uploads/2014/07/puno-lago-titicaca.jpg" alt="" style="
+        <img src="${destino.img}" alt="" style="
     position: absolute;
     top: 0;
     left: 0;
