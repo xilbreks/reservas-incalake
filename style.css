@@ -13,6 +13,10 @@ html{
   height: 100%;
 
 }
+html *{
+    font-family: Pontano Sans;
+}
+
 /*p,h1,h2,h4,h5,div,span,td,body{
   
 }*/
@@ -130,7 +134,7 @@ span.round-tab:hover {
     margin: 5px auto;
     border-radius: 100%;
     padding: 0;
-    margin: 15px auto;
+    margin: 15px auto;f
 }
 
     .wizard .nav-tabs > li a:hover {
@@ -255,6 +259,25 @@ padding: 0;
 #destinosCards>*>a:hover{
     cursor: pointer !important;
 }
+#toursModal .modal-title {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+#toursModal .panel-heading a{
+    color : #f5f5f5 !important;
+}
+#toursModal #search_box_tours{
+    /*height: 30px;*/
+}
+#toursModal .title-category-search{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #337ab7;
+    color: #f5f5f5;
+}
+
 /*DIV BUSES TICKETS*/
 .input-group-addon, .input-group-btn{
     width: auto !important;

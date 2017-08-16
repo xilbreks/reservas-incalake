@@ -45,7 +45,7 @@ var destinoIndex = null;
 
 function mostrarDestinos() {
 	document.getElementById('search_box_tours').value = '';
-	document.getElementById('busca_tu_tour').innerHTML = ['Busca tu Tour','Find your tour'][choosen];
+	document.getElementById('busca_tu_tour').innerHTML = ['Seleciona tu Tour','Select your tour'][choosen];
 	document.getElementById('boton_destinos').innerHTML = ['Destinos','Destinies'][choosen];
 	document.getElementById('boton_quiero_personalizado').innerHTML = ['Quiero un tour personalizado','I wanna a customize tour'][choosen];
 	document.getElementById('search_box_tours').placeholder = ['Filtrar...','Filter...'][choosen];
@@ -56,9 +56,16 @@ function mostrarDestinos() {
 	destinos.forEach((destino, index) => {
 		html = html + `
     	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item" onclick="toogleTours(${index})">
+        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
+        <img src="http://www.kcuscotours.com/wp-content/uploads/2014/07/puno-lago-titicaca.jpg" alt="" style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+">
           <i class="fa fa-3x fa-suitcase"></i>
-          <h4>${destino.name} <span class="label label-info">${destino.tours.length}</span></h4>
+          <h4><span class="title-category-search">${destino.name}</span><span class="label label-primary">${destino.tours.length}</span></h4>
         </a>
       </div>
 		`;
