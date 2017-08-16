@@ -1,5 +1,4 @@
 <?php
-	# require('http://incalake.com/menu/data__.php');
     $menus = [];
     $menus = [
     /********************************************     menu 1 ***************************************************/       
@@ -793,7 +792,8 @@
                 ],
                 
                 /****** FIN menu Nivel II ******/
-            ],  
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/tours-lago-titicaca.png",
         ],
 
         /*===========================================================   FIN  menu 1  ===================================================================*/
@@ -1036,14 +1036,15 @@
                 ],
                 /****** FIN menu Nivel II ******/
 
-            ]
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/tours-bolivia.png",
         ],
                 
     /*================================================================== FIN MENU 3 ===================================================================*/
     /*===========================================================================================================================================*/
 
 
-    /*================================================================== MENU 4 ===================================================================*/
+        /*================================================================== MENU 4 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -1062,7 +1063,7 @@
 
                     "img" => '//incalake.com/menu/img/Tours-tenedencia-en-Cusco.png',
                     "name" => [
-                            "es" => "Tours tenedencia en Cusco",
+                            "es" => "Tours tendencia en Cusco",
                             "en" => "Tendencies in Cusco"
                     ],
                     "options" => [
@@ -1395,14 +1396,15 @@
                 ],
                 /****** FIN menu Nivel II ******/
 
-            ]
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/tours-cusco.png",
         ],
 
 
     /*================================================================== FIN MENU 4 ===================================================================*/
     /*===========================================================================================================================================*/
 
-    /*================================================================== MENU 5 ===================================================================*/
+        /*================================================================== MENU 5 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -1606,7 +1608,8 @@
                 ],
                 /****** FIN menu Nivel II ******/
 
-            ]
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/tours-arequipa.png",
         ],
 
 
@@ -1909,7 +1912,8 @@
                 ],
                 /****** FIN menu Nivel II ******/
 
-            ]
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/buses.png",
         ],
 
 
@@ -1931,7 +1935,7 @@
                 /********** menu - Nivel II ***********/
                 [
 
-                    "img" => '//incalake.com/menu/img/tours-privados-en-Puno.png',
+                    "img" => 'http://incalake.com/menu/img/ofertas-incalake.jpg',
                     "name" => [
                             "es" => "Ofertas o acuerdos",
                             "en" => "Tour Deals"
@@ -1985,7 +1989,7 @@
                 /********** menu - Nivel II ***********/
                 [
 
-                    "img" => '//incalake.com/img/slider/index/large/cañon-colca2.png',
+                    "img" => 'http://incalake.com/menu/img/ofertas-incalake.jpg',
                     "name" => [
                         "es" => "Eligenos y descubre beneficios",
                         "en" => "Advantages to buy tours with us",
@@ -2039,7 +2043,7 @@
                 /********** menu - Nivel II ***********/
                 [
 
-                    "img" => '//incalake.com/img/slider/index/large/cañon-colca2.png',
+                    "img" => 'http://incalake.com/menu/img/ofertas-incalake.jpg',
                     "name" => [
                             "es" => "Hoteles en oferta",
                             "en" => "Hotels with Good Deals"
@@ -2079,7 +2083,7 @@
                 /********** menu - Nivel II ***********/
                 [
 
-                    // "img" => '//incalake.com/img/slider/index/large/cañon-colca2.png',
+                    "img" => 'http://incalake.com/menu/img/ofertas-incalake.jpg',
                     "name" => [
                             "es" => "Otros servicios",
                             "en" => "Other services"
@@ -2102,7 +2106,8 @@
                     ]
                 ],
                 /****** FIN menu Nivel II ******/
-            ]
+            ],
+            "thumbnail"=>"//incalake.com/menu/img/thumbnail/ofertas.png",
         ],
         [
             "url" => [
@@ -2330,73 +2335,77 @@
 		</div>
 	</div>
 	<!-- Tours Modal -->
-	<div id="toursModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
+    <div id="toursModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title" id="busca_tu_tour"></h4>
-				</div>
-				<div class="modal-body">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="busca_tu_tour"></h4>
+                </div>
+                <div class="modal-body">
 
-					<div class="panel panel-default bootcards-summary">
-						<div class="panel-heading">
-							<a class="btn btn-button" onclick="mostrarDestinos()" id="boton_destinos"></a>
-							<a class="btn btn-button" onclick="addTourPersonalizado()" id="boton_quiero_personalizado"></a>
-							<input type="text" onkeyup="liveSearch(this.value)" style="float:right" id="search_box_tours">
-						</div>
-						<div class="panel-body">
-							<div class="row" id="destinosCards">
-								Cargando...
-							</div>
-						</div>
-					</div>
+                    <div class="panel panel-primary bootcards-summary">
+                        <div class="panel-heading">
+                        <div class="input-group" style="float: left;">
+                          <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                          <input type="text" class="form-control" onkeyup="liveSearch(this.value)" style="float:left;" id="search_box_tours">
+                        </div>
+                            
+                            <a class="btn btn-button " onclick="mostrarDestinos()" id="boton_destinos"></a>
+                            <a class="btn btn-button " onclick="addTourPersonalizado()" id="boton_quiero_personalizado"></a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" id="destinosCards">
+                                Cargando...
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" id="boton_cerrar_modal"></button>
-				</div>
-			</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="boton_cerrar_modal"></button>
+                </div>
+            </div>
 
-		</div>
-	</div>
-	<!-- End Modal -->
-	<!-- Bus ticket Modal -->
-	<div id="ticketsModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-lg">
+        </div>
+    </div>
+    <!-- End Modal -->
+    <!-- Bus ticket Modal -->
+    <div id="ticketsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Busca tu Bus ticket</h4>
-				</div>
-				<div class="modal-body">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Busca tu Bus ticket</h4>
+                </div>
+                <div class="modal-body">
 
-				<div>
-						<label>Ciudad de Origen</label>
-						<select class="form-control" id="origen" name="origen" onchange="getEnds(this.value)">
-						</select>
-					</div>
-					<div>
-						<label>Ciudad de Destino</label>
-						<select class="form-control" id="destino" name="destino" onchange="buscar_bus()">
-						</select>
-					</div>
-					<div id="div_busqueda">
-					</div>
+                    <div>
+                        <label>Ciudad de Origen</label>
+                        <select class="form-control" id="origen" name="origen" onchange="getEnds(this.value)">
+                        </select>
+                    </div>
+                    <div>
+                        <label>Ciudad de Destino</label>
+                        <select class="form-control" id="destino" name="destino" onchange="buscar_bus()">
+                        </select>
+                    </div>
+                    <div id="div_busqueda">
+                    </div>
 
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
 
-		</div>
-	</div>
-	<!-- End Modal -->
+        </div>
+    </div>
+    <!-- End Modal -->
 	<br>
 	<div id="div-loader">
 		<div class="loader">
