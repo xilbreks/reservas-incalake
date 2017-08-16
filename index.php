@@ -2157,7 +2157,7 @@
 
 <!-- Pagina Interna(Toda la app de reserva) -->
 
-<body onload="getStarts()">
+<body>
 
 	<!-- Contenedor para los pasos que el usuario debera pasar -->
 	<div class="container container-book-now">
@@ -2318,7 +2318,6 @@
 											<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
 											<li><button type="button" class="btn btn-primary" onclick="checkPersonalInformation()">Reservar</button></li>
 										</ul>
-										<button type="button"  class="btn btn-primary" >Reservar</button>
 									</div>
 									<div class="tab-pane" role="tabpanel" id="complete">
 										<h3>Completado</h3>
@@ -2343,7 +2342,7 @@
             <div class="modal-content">
                 <div class="modal-header" >
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="busca_tu_tour"></h4>
+                    <h4 class="modal-title">Seleciona tu Tour</h4>
                 </div>
                 <div class="modal-body">
 
@@ -2351,11 +2350,11 @@
                         <div class="panel-heading">
                         <div class="input-group" style="float: left;">
                           <span class="input-group-addon"><span class="fa fa-search"></span></span>
-                          <input type="text" class="form-control" onkeyup="liveSearch(this.value)" style="float:left;" id="search_box_tours">
+                          <input type="text" class="form-control" onkeyup="liveSearch(this.value)" placeholder="Buscar..." style="float:left;" id="search_box_tours">
                         </div>
                             
-                            <a class="btn btn-button " onclick="mostrarDestinos()" id="boton_destinos"></a>
-                            <a class="btn btn-button " onclick="addTourPersonalizado()" id="boton_quiero_personalizado"></a>
+                            <a class="btn btn-button " onclick="mostrarDestinos()">Destinos</a>
+                            <a class="btn btn-button " onclick="addTourPersonalizado()">Quiero un tour personalizado</a>
                         </div>
                         <div class="panel-body">
                             <div class="row" id="destinosCards">
@@ -2366,7 +2365,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="boton_cerrar_modal"></button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
 

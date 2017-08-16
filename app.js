@@ -1,166 +1,39 @@
 /**********************************************************************************************/
-/***************************  Debe ejecutarse al cargar la pagina  ****************************/
+/***************************    SCRIPT PARA LA PAGINA EN ESPAÑOL  *****************************/
 /**********************************************************************************************/
-$(document).ready(function () {
-
-	$('[data-toggle="tooltip"]').tooltip();
-	$('.wizard .nav-tabs > li a[title]').tooltip();
-
-	//Wizard
-	$('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-		var $target = $(e.target);
-		if ($target.parent().hasClass('disabled')) {
-			return false;
-		}
-	});
-
-	$(".wizard .prev-step").click(function (e) {
-		var $active = $('.wizard .nav-tabs li.active');
-		prevTab($active);
-	});
-
-});
-
-function checkToursAndBuses() {
-	// Verificar que haya al menos 1 tour o 1 bus
-
-	// Limpiar cualquier alerta anterior
-	document.getElementById('error-msg1').setAttribute('style', 'display: none');
-	document.getElementById('error-msg2').setAttribute('style', 'display: none');
-
-	// Veficar servicios requeridos
-	if (selectedTours.length == 0 && selectedTickets.length == 0) {
-		document.getElementById('error-msg1').setAttribute('style', 'display: block');
-		return;
-	}
-	// Veficar fechas de tours y tickets
-	let falatFechaTour = false;
-	selectedTours.forEach((tour) => {
-		if (!tour.date) {
-			document.getElementById(`tour-${tour.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTour = true;
-			return;
-		}
-	});
-	if (falatFechaTour) return;
-	let falatFechaTicket = false;
-	selectedTickets.forEach((ticket) => {
-		if (!ticket.date) {
-			document.getElementById(`ticket-${ticket.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTicket = true;
-			return;
-		}
-	});
-	if (falatFechaTicket) return;
-
-	var $active = $('.wizard .nav-tabs li.active');
-	$active.next().removeClass('disabled');
-	nextTab($active);
-}
-
-function checkPersonalInformation() {
-	// Verificar que los datos sean correctos
-
-	// Veficar informacion personal
-	if (document.getElementById('name').value.length < 1) {
-		document.getElementById('name').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('nationality').value.length < 1) {
-		document.getElementById('nationality').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('numberof').value.length < 1) {
-		document.getElementById('numberof').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('email').value.length < 1) {
-		document.getElementById('email').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-
-	var data = {
-		nombres: document.getElementById('name').value,
-		pais: document.getElementById('nationality').value,
-		npax: document.getElementById('numberof').value,
-		celular: document.getElementById('cellphone').value,
-		hotel: document.getElementById('place').value,
-		detalles: document.getElementById('extra').value,
-		email: document.getElementById('email').value,
-		tours: selectedTours,
-		buses: selectedTickets,
-	}
-
-	console.log(data);
-
-	document.getElementById('div-loader').setAttribute('style', 'display:block');
-
-	$.ajax({
-		type: 'POST',
-		url: 'http://incalake.com/reservar/email/reservar-cms.php',
-		dataType: 'json',
-		data: data,
-		success: function (res) {
-			document.getElementById('div-loader').setAttribute('style', 'display:none');
-			document.getElementById('respuesta').innerHTML = res.msg;
-			var $active = $('.wizard .nav-tabs li.active');
-			$active.next().removeClass('disabled');
-			nextTab($active);
-		}
-	});
-	// document.location.reload(); .nueva_reserva
-}
-
-function nextTab(elem) {
-	$(elem).next().find('a[data-toggle="tab"]').click();
-}
-function prevTab(elem) {
-	$(elem).prev().find('a[data-toggle="tab"]').click();
-}
-
-
-const languages = ['es', 'en'];
-const choosen = 0;
-const language = languages[choosen];
 /**********************************************************************************************/
-/*************************************  No me acuerso ahorita  *************************************/
+/************************************  Variables globales  ************************************/
 /**********************************************************************************************/
-var contador = 0;
 var destinosDisponibles = menus.filter((menu) => menu.options);
+var i = 0;
 
 var destinos = destinosDisponibles.map((destino) => {
 	let toursDestino = [];
 	destino.options.forEach(grupo => {
 		grupo.options.forEach(tour => {
 			toursDestino.push({
-				name: tour.name ? (language == 'es' ? tour.name.es : (tour.name.en ? tour.name.en : '')) : null,
-				desc: tour.subname ? (language == 'es' ? tour.subname.es : tour.subname.en) : '',
-				url: tour.url ? (language == 'es' ? tour.url.es : tour.url.en) : null,
-				id: contador
+				name: tour.name ? tour.name.es : null,
+				desc: tour.subname ? tour.subname.es : '',
+				url: tour.url ? tour.url.es : null,
+				id: i
 			});
-			contador = contador + 1;
+			i = i + 1;
 		});
 	});
 
 	return {
-		name: (language == 'es' ? destino.name.es : destino.name.en),
+		name: destino.name.es,
 		tours: toursDestino,
 		img: destino.thumbnail
 	}
 });
 console.log(destinos);
 
-// Form data
+// Array de Tours y Bus tickets seleccionados
 var selectedTours = [];
 var selectedTickets = [];
 
-// Data for Bus ticket
+// Array de Origen y destino de bus tickets
 var starts = [];
 var ends = [];
 
@@ -171,13 +44,11 @@ var f = w < 768 ? 2 : 3;
 var destinoWasSelected = false;
 var destinoIndex = null;
 
+/**********************************************************************************************/
+/******************************************  TOURS  *******************************************/
+/**********************************************************************************************/
 function mostrarDestinos() {
 	document.getElementById('search_box_tours').value = '';
-	document.getElementById('busca_tu_tour').innerHTML = ['Seleciona tu Tour', 'Select your tour'][choosen];
-	document.getElementById('boton_destinos').innerHTML = ['Destinos', 'Destinies'][choosen];
-	document.getElementById('boton_quiero_personalizado').innerHTML = ['Quiero un tour personalizado', 'I wanna a customize tour'][choosen];
-	document.getElementById('search_box_tours').placeholder = ['Filtrar...', 'Filter...'][choosen];
-	document.getElementById('boton_cerrar_modal').innerHTML = ['Cerrar', 'Close'][choosen];
 
 	var html = "";
 
@@ -185,13 +56,12 @@ function mostrarDestinos() {
 		html = html + `
     	<div class="col-xs-6 col-sm-4" id="destino-${index}">
         <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
-        <img src="${destino.img}" alt="" style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-">
+        	<img src="${destino.img}" alt="" style="
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 100%;">
           <i class="fa fa-3x fa-suitcase"></i>
           <h4><span class="title-category-search">${destino.name}</span><span class="label label-primary">${destino.tours.length}</span></h4>
         </a>
@@ -255,9 +125,7 @@ function toogleTours(index) {
 	}
 
 }
-/**********************************************************************************************/
-/******************************************  TOURS  *******************************************/
-/**********************************************************************************************/
+
 function addTour(tourName, tourId) {
 	selectedTours.push({
 		name: tourName,
@@ -315,7 +183,6 @@ function getStarts() {
 			$('#origen').html(res.html);
 		}
 	});
-
 }
 
 function getEnds(origen) {
@@ -338,7 +205,6 @@ function getEnds(origen) {
 function buscar_bus() {
 	console.log($('.select'));
 
-
 	$.ajax({
 		url: 'http://incalake.com/reservar/buses.php',
 		data: { 'tabla': 'busqueda', 'origen': $('#origen').val(), 'destino': $('#destino').val() },
@@ -347,19 +213,9 @@ function buscar_bus() {
 		success: function (res) {
 			console.log(res);
 			$('#div_busqueda').html('').append(`
-				<span class=""></span>
-        <span>Resultados de <b>Origen:</b>
-					<label class="label label-primary" style="font-size:14px;"> 
-						${$('#origen option:selected').html()}
-					</label>
-          <b>Destino:</b>
-					<label class="label label-primary" style="font-size:14px;"> 
-						${$('#destino option:selected').html()}
-					</label>
-        </span>
-        <br>
+				<div>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </div>
 				<span>
-          Seleccione un BUS de nuestro listado
+          Seleccione un BUS
 				</span>
 			`).append(res.html);
 
@@ -443,94 +299,6 @@ function cambiarFechaTicket(self) {
 	selectedTickets.forEach((ticket) => {
 		if (ticket.id == self.id.split('-')[1]) {
 			ticket.date = self.value
-		}
-	});
-}
-
-/**********************************************************************************************/
-/*****************************************  RESERVAS  *****************************************/
-/**********************************************************************************************/
-
-function reservar() {
-	// Limpiar cualquier alerta anterior
-	document.getElementById('error-msg1').setAttribute('style', 'display: none');
-	document.getElementById('error-msg2').setAttribute('style', 'display: none');
-	document.getElementById('error-msg3').setAttribute('style', 'display: none');
-
-	// Veficar servicios requeridos
-	if (selectedTours.length == 0 && selectedTickets.length == 0) {
-		console.log(selectedTours);
-		document.getElementById('error-msg1').setAttribute('style', 'display: block');
-	}
-	// Veficar fechas de tours y tickets
-	let falatFechaTour = false;
-	selectedTours.forEach((tour) => {
-		if (!tour.date) {
-			document.getElementById(`tour-${tour.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTour = true;
-			return;
-		}
-	});
-	if (falatFechaTour) return;
-	let falatFechaTicket = false;
-	selectedTickets.forEach((ticket) => {
-		if (!ticket.date) {
-			document.getElementById(`ticket-${ticket.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTicket = true;
-			return;
-		}
-	});
-	if (falatFechaTicket) return;
-
-	// Veficar informacion personal
-	if (document.getElementById('name').value.length < 1) {
-		document.getElementById('name').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('nationality').value.length < 1) {
-		document.getElementById('nationality').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('numberof').value.length < 1) {
-		document.getElementById('numberof').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-	if (document.getElementById('email').value.length < 1) {
-		document.getElementById('email').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		return;
-	}
-
-	var data = {
-		nombres: document.getElementById('name').value,
-		pais: document.getElementById('nationality').value,
-		npax: document.getElementById('numberof').value,
-		celular: document.getElementById('cellphone').value,
-		hotel: document.getElementById('place').value,
-		detalles: document.getElementById('extra').value,
-		email: document.getElementById('email').value,
-		tours: selectedTours,
-		buses: selectedTickets,
-	}
-
-	console.log(data);
-
-	document.getElementById('div-loader').setAttribute('style', 'display:block');
-
-	$.ajax({
-		type: 'POST',
-		url: 'http://incalake.com/reservar/email/reservar-cms.php',
-		dataType: 'json',
-		data: data,
-		success: function (res) {
-			document.getElementById('div-loader').setAttribute('style', 'display:none');
-			document.getElementById('formulario').innerHTML = res.msg;
-			$(function () { $(".nueva_reserva").click(function () { document.location.reload(); }); })
 		}
 	});
 }
@@ -659,5 +427,145 @@ function addTourCustomTour(tourId) {
 	$('#tours-screen').append(child);
 
 	$('#toursModal').modal('hide');
+}
+/**********************************************************************************************/
+/***************************  Debe ejecutarse al cargar la pagina  ****************************/
+/**********************************************************************************************/
+$(document).ready(function () {
+
+	$('[data-toggle="tooltip"]').tooltip();
+	$('.wizard .nav-tabs > li a[title]').tooltip();
+
+	//Wizard
+	$('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+		var $target = $(e.target);
+		if ($target.parent().hasClass('disabled')) {
+			return false;
+		}
+	});
+
+	$(".wizard .prev-step").click(function (e) {
+		var $active = $('.wizard .nav-tabs li.active');
+		prevTab($active);
+	});
+
+	getStarts();
+
+});
+/**********************************************************************************************/
+/*******************************  Control de flujo en los pasos  ******************************/
+/**********************************************************************************************/
+function checkToursAndBuses() {
+	// Verificar que haya al menos 1 tour o 1 bus
+
+	// Limpiar cualquier alerta anterior
+	document.getElementById('error-msg1').setAttribute('style', 'display: none');
+	document.getElementById('error-msg2').setAttribute('style', 'display: none');
+
+	// Veficar servicios requeridos
+	if (selectedTours.length == 0 && selectedTickets.length == 0) {
+		document.getElementById('error-msg1').setAttribute('style', 'display: block');
+		return;
+	}
+	// Veficar fechas de tours y tickets
+	let falatFechaTour = false;
+	selectedTours.forEach((tour) => {
+		if (!tour.date) {
+			document.getElementById(`tour-${tour.id}-date`).focus();
+			document.getElementById('error-msg2').setAttribute('style', 'display: block');
+			falatFechaTour = true;
+			return;
+		}
+	});
+	if (falatFechaTour) return;
+	let falatFechaTicket = false;
+	selectedTickets.forEach((ticket) => {
+		if (!ticket.date) {
+			document.getElementById(`ticket-${ticket.id}-date`).focus();
+			document.getElementById('error-msg2').setAttribute('style', 'display: block');
+			falatFechaTicket = true;
+			return;
+		}
+	});
+	if (falatFechaTicket) return;
+
+	var $active = $('.wizard .nav-tabs li.active');
+	$active.next().removeClass('disabled');
+	nextTab($active);
+}
+
+function checkPersonalInformation() {
+	// Verificar que los datos sean correctos
+	document.getElementById('div_for_name').setAttribute('class', 'form-group');
+	document.getElementById('div_for_nationality').setAttribute('class', 'form-group');
+	document.getElementById('div_for_email').setAttribute('class', 'form-group');
+	document.getElementById('div_for_numberof').setAttribute('class', 'form-group');
+	// Veficar informacion personal
+	if (document.getElementById('name').value.length < 1) {
+		document.getElementById('name').focus();
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
+		document.getElementById('div_for_name').setAttribute('class', 'form-group has-error');
+		return;
+	}
+	if (document.getElementById('nationality').value.length < 1) {
+		document.getElementById('nationality').focus();
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
+		document.getElementById('div_for_nationality').setAttribute('class', 'form-group has-error');
+		return;
+	}
+	if (document.getElementById('email').value.length < 1) {
+		document.getElementById('email').focus();
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
+		document.getElementById('div_for_email').setAttribute('class', 'form-group has-error');
+		return;
+	}
+	if (document.getElementById('numberof').value.length < 1) {
+		document.getElementById('numberof').focus();
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
+		document.getElementById('div_for_numberof').setAttribute('class', 'form-group has-error');
+		return;
+	}
+
+	var data = {
+		nombres: document.getElementById('name').value,
+		pais: document.getElementById('nationality').value,
+		npax: document.getElementById('numberof').value,
+		celular: document.getElementById('cellphone').value,
+		hotel: document.getElementById('place').value,
+		detalles: document.getElementById('extra').value,
+		email: document.getElementById('email').value,
+		tours: selectedTours,
+		buses: selectedTickets,
+	}
+
+	console.log(data);
+
+	document.getElementById('div-loader').setAttribute('style', 'display:block');
+
+	$.ajax({
+		type: 'POST',
+		url: 'http://incalake.com/reservar/email/reservar-cms.php',
+		dataType: 'json',
+		data: data,
+		success: function (res) {
+			document.getElementById('div-loader').setAttribute('style', 'display:none');
+			document.getElementById('respuesta').innerHTML = res.msg;
+			var $active = $('.wizard .nav-tabs li.active');
+			$active.next().removeClass('disabled');
+			nextTab($active);
+			$active.addClass('disabled');
+			$active.prev().addClass('disabled');
+			$(".nueva_reserva").click(function (e) {
+				document.location.reload(); 
+			});
+		}
+	});
+}
+
+function nextTab(elem) {
+	$(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+	$(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
