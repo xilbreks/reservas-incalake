@@ -325,7 +325,7 @@ function liveSearch(text) {
 		text = text.toLowerCase();
 		var content = `
 			<div class="">
-				<h4>${['Resultados', 'Results'][choosen]}</h4>
+				<h4>Resultados</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
@@ -363,17 +363,10 @@ function liveSearch(text) {
 
 		// Si no hay resultados
 		if (coincidences.length == 0) {
-			if (choosen == 1) {
-				content = content + `
-					We are sorry, We couldn't find your tour. If you want you can have a customize tour.<br>
-					<a class="btn btn-link" onclick="addTourPersonalizado()">I want a customize tour</a>
-				`;
-			} else if (choosen == 0) {
-				content = content + `
-					Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
-					<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
-				`;
-			}
+			content = content + `
+				Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
+				<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
+			`;
 		}
 
 
