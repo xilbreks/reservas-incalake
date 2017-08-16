@@ -2384,22 +2384,24 @@
                 </div>
                 <div class="modal-body">
 
-                    <div>
-                        <label>Ciudad de Origen</label>
-                        <select class="form-control" id="origen" name="origen" onchange="getEnds(this.value)">
-                        </select>
-                    </div>
-                    <div>
-                        <label>Ciudad de Destino</label>
-                        <select class="form-control" id="destino" name="destino" onchange="buscar_bus()">
-                        </select>
-                    </div>
-                    <div id="div_busqueda">
+                    <div class="container-fluid" style="padding: 0">
+                        <div class="col-md-6 col-sm-6">
+                            <label>Ciudad de Origen</label>
+                            <select class="form-control" id="origen" name="origen" onchange="getEnds(this.value)">
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <label>Ciudad de Destino</label>
+                            <select class="form-control" id="destino" name="destino" onchange="buscar_bus()">
+                            </select>
+                        </div>
+                        <div id="div_busqueda">
+                        </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
 

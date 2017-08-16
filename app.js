@@ -387,7 +387,7 @@ function addTourPersonalizado() {
 			<label for="detalles_p">Escribenos los detalles del tour que desea realizar</label>
 			<textarea class="form-control" id="detalles_p" placeholder="aqui" rows="5"></textarea>
 			<br>
-			<button class="btn btn-positive" onclick="addTourCustomTour(${cont_custom_tours})">Agregar</button>
+			<button class="btn btn-primary" onclick="addTourCustomTour(${cont_custom_tours})">Agregar</button>
 		</div>
 	`;
 	document.getElementById('destinosCards').innerHTML = content;
