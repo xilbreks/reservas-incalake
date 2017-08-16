@@ -56,18 +56,14 @@ function mostrarDestinos() {
 
 	destinos.forEach((destino, index) => {
 		html = html + `
-    	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
-        <img src="${destino.img}" alt="" style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-">
-          <i class="fa fa-3x fa-suitcase"></i>
-          <h4><span class="title-category-search">${destino.name}</span><span class="label label-primary">${destino.tours.length}</span></h4>
-        </a>
+    	<div class="col-xs-6 col-sm-4 div-category-search" id="destino-${index}">
+    		<div class="img-thumbnail list-category-search">
+		        <a class="bootcards-summary-item " onclick="toogleTours(${index})">
+		        <img class="img-category-search" src="${destino.img}" alt="">
+		          <i class="fa fa-3x fa-suitcase"></i>
+		          <h4><span class="title-category-search">${destino.name}</span><span class="count-category-search label label-primary">${destino.tours.length}</span></h4>
+		        </a>
+	        </div>
       </div>
 		`;
 	});
@@ -84,7 +80,8 @@ function toogleTours(index) {
 	// Esconder si ya existia seleccionado
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
-		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
+		$(`destino-${destinoIndex}`).removeClass('selecionado');
+		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
 	}
 	// Esconder si selecciono lo mismo
 	if (index == destinoIndex) {
@@ -121,7 +118,8 @@ function toogleTours(index) {
 			</div>
 		`;
 		document.getElementById(`space-tours`).innerHTML = content;
-		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
+		$(`destino-${destinoIndex}`).addClass('selecionado');
+		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
 		// focus
 		// document.getElementById(`space-tours`).focus();
