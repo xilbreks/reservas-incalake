@@ -285,7 +285,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 		`;
 	$('#tickets-screen').append(child);
 	$('.con_calendario input').datepicker({
-		'format': 'm/d/yyyy',
+		'format': 'd-MM-yyyy',
     'autoclose': true
 	});
 	$('#ticketsModal').modal('hide');
@@ -422,7 +422,7 @@ function addTourCustomTour(tourId) {
 		`;
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
-		'format': 'm/d/yyyy',
+		'format': 'd-MM-yyyy',
     'autoclose': true
 	});
 	$('#toursModal').modal('hide');
