@@ -246,8 +246,11 @@ padding: 0;
 .selecionado:hover a{
     color: #fff !important;
 }
-.selecionado .title-category-search,.selecionado .count-category-search{
+.selecionado .title-category-search,.selecionado .count-category-search, #toursModal .title-result-category-tours{
     background: var(--color-secondary) !important;
+}
+#toursModal .title-result-category-tours{
+    color: #f5f5f5;
 }
 /*.selecionado>a:hover{
     cursor: none !important;
@@ -509,13 +512,14 @@ display: none;
         padding: 15px 5px;
     }
 }
-.bootcards-summary-item *{
+.bootcards-summary-item *, #toursModal .page-header *{
     line-height: normal !important;
     /*font-weight: normal !important;*/
     font-weight: 600 !important;
     text-transform: uppercase !important;
     margin: auto;
 }
-.bootcards-summary-item h4 *, .bootcards-summary-item h4 {
+.bootcards-summary-item h4 *, .bootcards-summary-item h4,#toursModal .page-header * {
     font-size: medium !important;
 }
+ .toursModal .page-header

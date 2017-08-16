@@ -131,7 +131,8 @@ function toogleTours(index) {
 	// Esconder si ya existia seleccionado
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
-		$(`destino-${destinoIndex}`).removeClass('selecionado');
+		$(`#destino-${destinoIndex}`).removeClass('selecionado');
+		// console.log($(`#destino-${destinoIndex}`));
 		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
 	}
 	// Esconder si selecciono lo mismo
@@ -146,19 +147,19 @@ function toogleTours(index) {
 
 		var content = `
 			<div class="page-header">
-				<h3>Tour disponibles de ${destinos[index].name}</h3>
+				<h3>Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></h3>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
-				<div class="col-md-12 center-div">
-					<div class="col-md-10">
+				<div class="col-md-12 center-div col-xs-12">
+					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
 						<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
 					</div>
-					<div class="col-md-2 v-align">
+					<div class="col-md-2 col-xs-2 v-align">
 						<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >Selecionar</span></div>
 					</div>
 
@@ -169,7 +170,7 @@ function toogleTours(index) {
 			</div>
 		`;
 		document.getElementById(`space-tours`).innerHTML = content;
-		$(`destino-${destinoIndex}`).addClass('selecionado');
+		$(`#destino-${destinoIndex}`).addClass('selecionado');
 		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
 		// focus
