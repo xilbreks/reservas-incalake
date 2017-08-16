@@ -264,17 +264,16 @@ function addTour(tourName, tourId) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-tours col-xs-12 center-div" id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name col-sm-7"> ${tourName}
+			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div" id="detalles-tour-${tourId}">
+				<div class="col-md-8 list-tours-name col-sm-7 col-xs-12"> ${tourName}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
+				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)"">
+                    </div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
+				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
@@ -407,19 +406,18 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-buses col-xs-12 center-div" id="detalles-ticket-${idTicket}">
-				<div class="col-md-5 list-buses-name col-sm-4"> ${nombrebus} / ${tipobus} / ${costo}
+			<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${idTicket}">
+				<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${nombrebus} / ${tipobus} / ${costo}
 				</div>
 				<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${origen} - ${destino}
 				</div>
-				<div class="col-md-3 text-center list-buses-date col-xs-10 col-sm-4 v-align">
+				<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)">
+                    </div>					
 				</div>
-				<div class="col-md-1 text-center col-xs-2 col-sm-1 v-align">
+				<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTicket(${idTicket})">
 					</span>
 				</div>
@@ -639,17 +637,16 @@ function addTourCustomTour(tourId) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-tours col-xs-12 center-div " id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name col-xs-12 col-sm-7"> ${document.getElementById('detalles_p').value}
+			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-${tourId}">
+				<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${document.getElementById('detalles_p').value}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
+				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)">
+                    </div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
+				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>

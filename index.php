@@ -2161,29 +2161,29 @@
 
 	<!-- Contenedor para los pasos que el usuario debera pasar -->
 	<div class="container container-book-now">
-		<div class="row">
+		<div class="">
 			<div class="container">
-				<div class="row">
+				<div class="">
 					<section>
 
 						<div class="wizard">
-							<h1>Reservas</h1>
+							<h1 class="title-reservas">Reservas</h1>
 							<div class="wizard-inner">
 								<div class="connecting-line"></div>
 								<ul class="nav nav-tabs" role="tablist">
 									<li role="presentation" class="active">
 										<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Servicios Requeridos">
-                      <span class="round-tab">
-                        <i class="glyphicon glyphicon-folder-open"></i>
-                      </span>
-                    </a>
+                                          <span class="round-tab">
+                                            <i class="glyphicon glyphicon-folder-open"></i>
+                                          </span>
+                                        </a>
 									</li>
 									<li role="presentation" class="disabled">
 										<a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Información Personal">
-                      <span class="round-tab">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                      </span>
-                    </a>
+                                          <span class="round-tab">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                          </span>
+                                        </a>
 									</li>
 									<li role="presentation" class="disabled">
 										<a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
@@ -2201,12 +2201,12 @@
 										<div class="line-header">
 											<span style="font-size:1.3em;font-weight:bold">Servicios</span>
 										</div>
-										<div class="row" id="error-msg1" style="display:none">
+										<div class="col-md-12" id="error-msg1" style="display:none">
 											<div class="alert alert-danger">
 												<strong>Selecciona al menos un tour o Bus ticket</strong>
 											</div>
 										</div>
-										<div class="row" id="error-msg2" style="display:none">
+										<div class="col-md-12" id="error-msg2" style="display:none">
 											<div class="alert alert-danger">
 												<strong>Fecha no seleccionada</strong>
 											</div>
@@ -2218,10 +2218,10 @@
 										</h4>
 										<div class="row">
 											<div class="col-md-10 col-md-offset-1 div-tours">
-												<div class="col-md-12 div-reserva-header hidden-xs">
-													<div class="col-md-7">Nombre del Tour</div>
-													<div class="col-md-3 text-center">Fecha</div>
-													<div class="col-md-2 text-center">Acción</div>
+												<div class="col-md-12 col-sm-12 div-reserva-header hidden-xs">
+													<div class="col-md-8 col-sm-8 ">Nombre del Tour</div>
+													<div class="col-md-3 col-sm-3 text-center">Fecha</div>
+													<div class="col-md-1 col-sm-1 text-center">Acción</div>
 												</div>
 												<div class="col-md-12 div-content-list-tours col-xs-12" id="tours-screen">
 												</div>
@@ -2237,11 +2237,11 @@
 										</h4>
 										<div class="row">
 											<div class="col-md-10 col-md-offset-1 div-tickets">
-												<div class="col-md-12 div-reserva-header hidden-xs">
-													<div class="col-md-5">Bus</div>
-													<div class="col-md-3 text-center">Origen - Destino</div>
-													<div class="col-md-3 text-center">Fecha</div>
-													<div class="col-md-1 text-center">Acción</div>
+												<div class="col-md-12 col-sm-12 div-reserva-header hidden-xs">
+													<div class="col-md-5 col-sm-5">Bus</div>
+													<div class="col-md-3 col-sm-3 text-center">Origen - Destino</div>
+													<div class="col-md-3 col-sm-3 text-center">Fecha</div>
+													<div class="col-md-1 col-sm-1 text-center">Acción</div>
 												</div>
 												<div class="col-md-12 div-content-list-buses col-xs-12" id="tickets-screen">
 												</div>
