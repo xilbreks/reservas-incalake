@@ -54,17 +54,14 @@ function mostrarDestinos() {
 
 	destinos.forEach((destino, index) => {
 		html = html + `
-    	<div class="col-xs-6 col-sm-4" id="destino-${index}">
-        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
-        	<img src="${destino.img}" alt="" style="
-						position: absolute;
-						top: 0;
-						left: 0;
-						height: 100%;
-						width: 100%;">
-          <i class="fa fa-3x fa-suitcase"></i>
-          <h4><span class="title-category-search">${destino.name}</span><span class="label label-primary">${destino.tours.length}</span></h4>
-        </a>
+    	<div class="col-xs-6 col-sm-4 div-category-search" id="destino-${index}">
+	    	<div class="img-thumbnail list-category-search">
+		        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
+		        	<img class="img-category-search" src="${destino.img}" alt="" >
+		          <i class="fa fa-3x fa-suitcase"></i>
+		          <h4><span class="title-category-search">${destino.name}</span><span class="count-category-search label label-primary">${destino.tours.length}</span></h4>
+		        </a>
+	        </div>
       </div>
 		`;
 	});
@@ -81,7 +78,9 @@ function toogleTours(index) {
 	// Esconder si ya existia seleccionado
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
-		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
+		$(`#destino-${destinoIndex}`).removeClass('selecionado');
+		// console.log($(`#destino-${destinoIndex}`));
+		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
 	}
 	// Esconder si selecciono lo mismo
 	if (index == destinoIndex) {
@@ -95,19 +94,19 @@ function toogleTours(index) {
 
 		var content = `
 			<div class="page-header">
-				<h3>Tour disponibles de ${destinos[index].name}</h3>
+				<h3>Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></h3>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
 		destinos[index].tours.forEach((tour) => {
 			content = content + `
-				<div class="col-md-12 center-div">
-					<div class="col-md-10">
+				<div class="col-md-12 center-div col-xs-12">
+					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
 						<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
 					</div>
-					<div class="col-md-2 v-align">
+					<div class="col-md-2 col-xs-2 v-align">
 						<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >Selecionar</span></div>
 					</div>
 
@@ -118,7 +117,8 @@ function toogleTours(index) {
 			</div>
 		`;
 		document.getElementById(`space-tours`).innerHTML = content;
-		document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
+		$(`#destino-${destinoIndex}`).addClass('selecionado');
+		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
 		// focus
 		// document.getElementById(`space-tours`).focus();
@@ -133,17 +133,16 @@ function addTour(tourName, tourId) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-tours col-xs-12 center-div" id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name col-sm-7"> ${tourName}
+			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div" id="detalles-tour-${tourId}">
+				<div class="col-md-8 list-tours-name col-sm-7 col-xs-12"> ${tourName}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
+				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)"">
+                    </div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
+				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
@@ -264,19 +263,18 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-buses col-xs-12 center-div" id="detalles-ticket-${idTicket}">
-				<div class="col-md-5 list-buses-name col-sm-4"> ${nombrebus} / ${tipobus} / ${costo}
+			<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${idTicket}">
+				<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${nombrebus} / ${tipobus} / ${costo}
 				</div>
 				<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${origen} - ${destino}
 				</div>
-				<div class="col-md-3 text-center list-buses-date col-xs-10 col-sm-4 v-align">
+				<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)">
+                    </div>					
 				</div>
-				<div class="col-md-1 text-center col-xs-2 col-sm-1 v-align">
+				<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTicket(${idTicket})">
 					</span>
 				</div>
@@ -401,17 +399,16 @@ function addTourCustomTour(tourId) {
 		date: null
 	});
 	let child = `
-			<div class="col-md-12 div-list-tours col-xs-12 center-div " id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name col-xs-12 col-sm-7"> ${document.getElementById('detalles_p').value}
+			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-${tourId}">
+				<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${document.getElementById('detalles_p').value}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
+				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-calendar">							     
-						</span>
-						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
-					</div>
+                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)">
+                    </div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
+				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
