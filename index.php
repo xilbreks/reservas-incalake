@@ -2161,13 +2161,13 @@
 
 	<!-- Contenedor para los pasos que el usuario debera pasar -->
 	<div class="container container-book-now">
-
 		<div class="row">
 			<div class="container">
 				<div class="row">
 					<section>
+
 						<div class="wizard">
-							<h1 id="titulo_reservas"></h1>
+							<h1>Reservas</h1>
 							<div class="wizard-inner">
 								<div class="connecting-line"></div>
 								<ul class="nav nav-tabs" role="tablist">
@@ -2199,16 +2199,16 @@
 								<div class="tab-content">
 									<div class="tab-pane active" role="tabpanel" id="step1">
 										<div class="line-header">
-											<span style="font-size:1.3em;font-weight:bold" id="services"></span>
+											<span style="font-size:1.3em;font-weight:bold">Servicios</span>
 										</div>
 										<div class="row" id="error-msg1" style="display:none">
 											<div class="alert alert-danger">
-												<strong id="error-msg1-content"></strong>
+												<strong>Selecciona al menos un tour o Bus ticket</strong>
 											</div>
 										</div>
 										<div class="row" id="error-msg2" style="display:none">
 											<div class="alert alert-danger">
-												<strong id="error-msg2-content"></strong>
+												<strong>Fecha no seleccionada</strong>
 											</div>
 										</div>
 										
@@ -2259,24 +2259,24 @@
 
 									<div class="tab-pane" role="tabpanel" id="step2">
 										<div class="line-header">
-											<span style="font-size:1.3em;font-weight:bold" id="information"></span>
+											<span style="font-size:1.3em;font-weight:bold">Informacion Personal</span>
 										</div>
 										<div class="row" id="error-msg3" style="display:none">
 											<div class="alert alert-danger">
-												<strong id="error-msg3-content"></strong>
+												<strong>Completa los campos requeridos</strong>
 											</div>
 										</div>
 
 										<div class="row">
 											<div class="col-md-8 col-xs-12">
 												<div class="form-group" id="div_for_name">
-													<label for="name"><span id="label_for_name"></span> <i class="requerido">*</i></label>
+													<label for="name">Nombres y Apellios <i class="requerido">*</i></label>
 													<input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
 												</div>
 											</div>
 											<div class="col-md-4 col-xs-12">
 												<div class="form-group" id="div_for_nationality">
-													<label for="nationality"><span id="label_for_nationality"></span> <i class="requerido">*</i></label>
+													<label for="nationality">Nacionalidad <i class="requerido">*</i></label>
 													<input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
 												</div>
 											</div>
@@ -2284,19 +2284,19 @@
 										<div class="row">
 											<div class="col-md-6 col-xs-12">
 												<div class="form-group" id="div_for_email">
-													<label for="email"><span id="label_for_email"></span> <i class="requerido">*</i></label>
+													<label for="email">Email <i class="requerido">*</i></label>
 													<input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
 												</div>
 											</div>
 											<div class="col-md-3 col-xs-12">
 												<div class="form-group" id="div_for_numberof">
-													<label for="numberof"><span id="label_for_numberof"></span> <i class="requerido">*</i></label>
+													<label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
 													<input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
 												</div>
 											</div>
 											<div class="col-md-3 col-xs-12">
 												<div class="form-group" id="div_for_cellphone">
-													<label for="cellphone" id="label_for_cellphone">Numero de celular</label>
+													<label for="cellphone">Numero de celular</label>
 													<input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
 												</div>
 											</div>
@@ -2304,11 +2304,11 @@
 										<div class="row">
 											<div class="col-xs-12">
 												<div class="form-group" id="div_for_hotel">
-													<label for="place" id="label_for_hotel">Hotel o lugar de Recojo</label>
+													<label for="place">Hotel o lugar de Recojo</label>
 													<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
 												</div>
 												<div class="form-group" id="div_for_extra">
-													<label for="extra" id="label_for_extra">Escribanos aqui mas detalles o observaciones</label>
+													<label for="extra">Escribanos aqui mas detalles o observaciones</label>
 													<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
 												</div>
 											</div>
@@ -2316,7 +2316,7 @@
 
 										<ul class="list-inline pull-right">
 											<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-											<li><button type="button" class="btn btn-primary" onclick="checkPersonalInformation()" id="boton_reservar_all">Reservar</button></li>
+											<li><button type="button" class="btn btn-primary" onclick="checkPersonalInformation()">Reservar</button></li>
 										</ul>
 										<button type="button"  class="btn btn-primary" >Reservar</button>
 									</div>
@@ -2328,12 +2328,13 @@
 								</div>
 							</form>
 						</div>
+
 					</section>
 				</div>
 			</div>
-			<!-- Hasta aqui es los pasos que debio seguir ese tio :v -->
 		</div>
 	</div>
+	<!-- - - - - - - - - - - - - -  - - - - - - - -->
 	<!-- Tours Modal -->
     <div id="toursModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -2424,70 +2425,5 @@
 	</div>
 
 </body>
-<script>
-	$(document).ready(function () {
-		// Cambiar idioma de la reserva
-		document.getElementById('titulo_reservas').innerHTML = ['Reservas', 'Reservations'][choosen];
-		document.getElementById('services').innerHTML = ['Servicios Requeridos', 'Services required'][choosen];
-		document.getElementById('information').innerHTML = ['Informacion Personal', 'Personal Information'][choosen];
-		//document.getElementById('search_box_tours').placeholder = ['Filtrar...','Filter...'][choosen];
-		document.getElementById('label_for_name').innerHTML = ['Nombres y Apellidos', 'Full Name'][choosen];
-		document.getElementById('label_for_nationality').innerHTML = ['Nacionalidad', 'Nacionality'][choosen];
-		document.getElementById('label_for_email').innerHTML = ['Email', 'Email'][choosen];
-		document.getElementById('label_for_numberof').innerHTML = ['Numero de Pasajeros', 'Number of passengers'][choosen];
-		document.getElementById('label_for_cellphone').innerHTML = ['Numero de Celular o telefono', 'Cellphone'][choosen];
-		document.getElementById('label_detalles_opcionales').innerHTML = ['Detalles Opcionales ', 'Optional Details '][choosen];
-		document.getElementById('boton_reservar_all').innerHTML = ['Reservar', 'Book'][choosen];
-		document.getElementById('error-msg1-content').innerHTML = ['Selecciona al menos un tour o bus ticket', 'Select at least one tour or Bus Ticket'][choosen];
-		document.getElementById('error-msg2-content').innerHTML = ['Fecha no seleccionada', 'Date was not selected'][choosen];
-		document.getElementById('error-msg3-content').innerHTML = ['Completa los campos requeridos', 'Fill out the required fields'][choosen];
-		document.getElementById('ayuda1').title = ['Alguna aiuda aqui', 'Jhon Cena'][choosen];
-		document.getElementById('ayuda2').title = ['Alguna aiuda aqui', 'Jhon Cena'][choosen];
-		document.getElementById('label_for_hotel').innerHTML = ['Hotel o lugar de recojo', 'Hotel or pick up location'][choosen];
-		document.getElementById('label_for_extra').innerHTML = ['Escribanos aqui mas detalles u observaciones', 'Write us more details or comments'][choosen];
-
-		setTimeout(function () {
-			$('[data-toggle="tooltip"]').tooltip();
-		}, 50);
-
-		//Initialize tooltips
-		$('.wizard .nav-tabs > li a[title]').tooltip();
-
-		//Wizard
-		$('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-			var $target = $(e.target);
-			if ($target.parent().hasClass('disabled')) {
-				return false;
-			}
-		});
-
-		$(".wizard .prev-step").click(function (e) {
-			var $active = $('.wizard .nav-tabs li.active');
-			prevTab($active);
-		});
-	});
-
-	function checkToursAndBuses(){
-		// Verificar que haya al menos 1 tour o 1 bus
-		var $active = $('.wizard .nav-tabs li.active');
-		$active.next().removeClass('disabled');
-		nextTab($active);
-	}
-
-	function checkPersonalInformation(){
-		// Verificar que los datos sean correctos
-		var $active = $('.wizard .nav-tabs li.active');
-		$active.next().removeClass('disabled');
-		nextTab($active);
-	}
-
-	function nextTab(elem) {
-		$(elem).next().find('a[data-toggle="tab"]').click();
-	}
-	function prevTab(elem) {
-		$(elem).prev().find('a[data-toggle="tab"]').click();
-	}
-
-</script>
 
 </html>

@@ -1,4 +1,55 @@
-const languages = ['es','en'];
+/**********************************************************************************************/
+/***************************  Debe ejecutarse al cargar la pagina  ****************************/
+/**********************************************************************************************/
+$(document).ready(function () {
+
+	setTimeout(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	}, 500);
+
+	//Initialize tooltips
+	$('.wizard .nav-tabs > li a[title]').tooltip();
+
+	//Wizard
+	$('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+		var $target = $(e.target);
+		if ($target.parent().hasClass('disabled')) {
+			console.log('mmm bloqueado');
+			return false;
+		} else {
+			console.log('pase ud');
+		}
+	});
+
+	$(".wizard .prev-step").click(function (e) {
+		var $active = $('.wizard .nav-tabs li.active');
+		prevTab($active);
+	});
+});
+
+function checkToursAndBuses() {
+	// Verificar que haya al menos 1 tour o 1 bus
+	var $active = $('.wizard .nav-tabs li.active');
+	$active.next().removeClass('disabled');
+	nextTab($active);
+}
+
+function checkPersonalInformation() {
+	// Verificar que los datos sean correctos
+	var $active = $('.wizard .nav-tabs li.active');
+	$active.next().removeClass('disabled');
+	nextTab($active);
+}
+
+function nextTab(elem) {
+	$(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+	$(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+
+const languages = ['es', 'en'];
 const choosen = 0;
 const language = languages[choosen];
 /**********************************************************************************************/
@@ -12,9 +63,9 @@ var destinos = destinosDisponibles.map((destino) => {
 	destino.options.forEach(grupo => {
 		grupo.options.forEach(tour => {
 			toursDestino.push({
-				name: tour.name ? (language=='es'?tour.name.es:(tour.name.en?tour.name.en:'')) : null,
-				desc: tour.subname ? (language=='es'?tour.subname.es:tour.subname.en) : '',
-				url: tour.url ? (language=='es'?tour.url.es:tour.url.en) : null,
+				name: tour.name ? (language == 'es' ? tour.name.es : (tour.name.en ? tour.name.en : '')) : null,
+				desc: tour.subname ? (language == 'es' ? tour.subname.es : tour.subname.en) : '',
+				url: tour.url ? (language == 'es' ? tour.url.es : tour.url.en) : null,
 				id: contador
 			});
 			contador = contador + 1;
@@ -22,7 +73,7 @@ var destinos = destinosDisponibles.map((destino) => {
 	});
 
 	return {
-		name: (language=='es'?destino.name.es:destino.name.en),
+		name: (language == 'es' ? destino.name.es : destino.name.en),
 		tours: toursDestino,
 		img: destino.thumbnail
 	}
@@ -46,11 +97,11 @@ var destinoIndex = null;
 
 function mostrarDestinos() {
 	document.getElementById('search_box_tours').value = '';
-	document.getElementById('busca_tu_tour').innerHTML = ['Seleciona tu Tour','Select your tour'][choosen];
-	document.getElementById('boton_destinos').innerHTML = ['Destinos','Destinies'][choosen];
-	document.getElementById('boton_quiero_personalizado').innerHTML = ['Quiero un tour personalizado','I wanna a customize tour'][choosen];
-	document.getElementById('search_box_tours').placeholder = ['Filtrar...','Filter...'][choosen];
-	document.getElementById('boton_cerrar_modal').innerHTML = ['Cerrar','Close'][choosen];
+	document.getElementById('busca_tu_tour').innerHTML = ['Seleciona tu Tour', 'Select your tour'][choosen];
+	document.getElementById('boton_destinos').innerHTML = ['Destinos', 'Destinies'][choosen];
+	document.getElementById('boton_quiero_personalizado').innerHTML = ['Quiero un tour personalizado', 'I wanna a customize tour'][choosen];
+	document.getElementById('search_box_tours').placeholder = ['Filtrar...', 'Filter...'][choosen];
+	document.getElementById('boton_cerrar_modal').innerHTML = ['Cerrar', 'Close'][choosen];
 
 	var html = "";
 
@@ -326,56 +377,56 @@ function cambiarFechaTicket(self) {
 
 function reservar() {
 	// Limpiar cualquier alerta anterior
-	document.getElementById('error-msg1').setAttribute('style','display: none');
-	document.getElementById('error-msg2').setAttribute('style','display: none');
-	document.getElementById('error-msg3').setAttribute('style','display: none');
+	document.getElementById('error-msg1').setAttribute('style', 'display: none');
+	document.getElementById('error-msg2').setAttribute('style', 'display: none');
+	document.getElementById('error-msg3').setAttribute('style', 'display: none');
 
 	// Veficar servicios requeridos
-	if(selectedTours.length==0 && selectedTickets.length==0){
+	if (selectedTours.length == 0 && selectedTickets.length == 0) {
 		console.log(selectedTours);
-		document.getElementById('error-msg1').setAttribute('style','display: block');
+		document.getElementById('error-msg1').setAttribute('style', 'display: block');
 	}
 	// Veficar fechas de tours y tickets
 	let falatFechaTour = false;
-	selectedTours.forEach((tour)=>{
-		if(!tour.date){
+	selectedTours.forEach((tour) => {
+		if (!tour.date) {
 			document.getElementById(`tour-${tour.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style','display: block');
+			document.getElementById('error-msg2').setAttribute('style', 'display: block');
 			falatFechaTour = true;
 			return;
 		}
 	});
-	if(falatFechaTour) return;
+	if (falatFechaTour) return;
 	let falatFechaTicket = false;
-	selectedTickets.forEach((ticket)=>{
-		if(!ticket.date){
+	selectedTickets.forEach((ticket) => {
+		if (!ticket.date) {
 			document.getElementById(`ticket-${ticket.id}-date`).focus();
-			document.getElementById('error-msg2').setAttribute('style','display: block');
+			document.getElementById('error-msg2').setAttribute('style', 'display: block');
 			falatFechaTicket = true;
 			return;
 		}
 	});
-	if(falatFechaTicket) return;
+	if (falatFechaTicket) return;
 
 	// Veficar informacion personal
-	if(document.getElementById('name').value.length < 1){
+	if (document.getElementById('name').value.length < 1) {
 		document.getElementById('name').focus();
-		document.getElementById('error-msg3').setAttribute('style','display: block');
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
 		return;
 	}
-	if(document.getElementById('nationality').value.length < 1 ){
+	if (document.getElementById('nationality').value.length < 1) {
 		document.getElementById('nationality').focus();
-		document.getElementById('error-msg3').setAttribute('style','display: block');
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
 		return;
 	}
-	if(document.getElementById('numberof').value.length < 1){
+	if (document.getElementById('numberof').value.length < 1) {
 		document.getElementById('numberof').focus();
-		document.getElementById('error-msg3').setAttribute('style','display: block');
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
 		return;
 	}
-	if(document.getElementById('email').value.length < 1){
+	if (document.getElementById('email').value.length < 1) {
 		document.getElementById('email').focus();
-		document.getElementById('error-msg3').setAttribute('style','display: block');
+		document.getElementById('error-msg3').setAttribute('style', 'display: block');
 		return;
 	}
 
@@ -393,7 +444,7 @@ function reservar() {
 
 	console.log(data);
 
-	document.getElementById('div-loader').setAttribute('style','display:block');
+	document.getElementById('div-loader').setAttribute('style', 'display:block');
 
 	$.ajax({
 		type: 'POST',
@@ -401,9 +452,9 @@ function reservar() {
 		dataType: 'json',
 		data: data,
 		success: function (res) {
-			document.getElementById('div-loader').setAttribute('style','display:none');
+			document.getElementById('div-loader').setAttribute('style', 'display:none');
 			document.getElementById('formulario').innerHTML = res.msg;
-			$(function(){$(".nueva_reserva").click(function(){document.location.reload();});})
+			$(function () { $(".nueva_reserva").click(function () { document.location.reload(); }); })
 		}
 	});
 }
@@ -412,45 +463,45 @@ function reservar() {
 /****************************************  Live Search  ***************************************/
 /**********************************************************************************************/
 
-function liveSearch(text){
+function liveSearch(text) {
 	//console.log('{',text,'}');
 	let text2 = '';
-	text.trim().split(' ').filter(e=>e!='').forEach(t=>{
+	text.trim().split(' ').filter(e => e != '').forEach(t => {
 		text2 = text2 + t + ' ';
 	})
 	text2 = text2.trim();
 	//console.log('{',text2,'}');
 	text = text2;
 
-	if(text.length<1) {
+	if (text.length < 1) {
 		mostrarDestinos();
 		return;
 	}
-	else{
+	else {
 		text = text.toLowerCase();
 		var content = `
 			<div class="">
-				<h4>${['Resultados','Results'][choosen]}</h4>
+				<h4>${['Resultados', 'Results'][choosen]}</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
 
-		let coincidences = destinos.map((destino)=>{
+		let coincidences = destinos.map((destino) => {
 			return {
 				name: destino.name,
-				tours: destino.tours.filter((tour)=>tour.name.toLowerCase().indexOf(text) != -1)
+				tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
 			};
 		})
-		.filter((destino)=>destino.tours.length>0);
+			.filter((destino) => destino.tours.length > 0);
 		coincidences
-		.forEach((destino,index)=>{
-			content = content + `
+			.forEach((destino, index) => {
+				content = content + `
 				<div class="col-md-12 div-title-search ">
 				Tours de ${destino.name}
 				</div>
 			`;
-			destino.tours.forEach((tour)=>{
-				content = content + `
+				destino.tours.forEach((tour) => {
+					content = content + `
 					<div class="col-md-12 center-div">
 						<div class="col-md-10">
 							<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
@@ -463,24 +514,24 @@ function liveSearch(text){
 
 					</div>
 				`;
+				});
 			});
-		});
 
 		// Si no hay resultados
-		if(coincidences.length==0){
-			if(choosen==1){
+		if (coincidences.length == 0) {
+			if (choosen == 1) {
 				content = content + `
 					We are sorry, We couldn't find your tour. If you want you can have a customize tour.<br>
 					<a class="btn btn-link" onclick="addTourPersonalizado()">I want a customize tour</a>
 				`;
-			}else if(choosen==0){
+			} else if (choosen == 0) {
 				content = content + `
 					Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
 					<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
 				`;
 			}
 		}
-		
+
 
 		content = content + `
 			</div>
@@ -494,7 +545,7 @@ function liveSearch(text){
 /****************************************  Live Search  ***************************************/
 /**********************************************************************************************/
 var cont_custom_tours = 10000;
-function addTourPersonalizado(){
+function addTourPersonalizado() {
 	cont_custom_tours = cont_custom_tours + 1;
 	let content = `
 		<div>
@@ -506,7 +557,7 @@ function addTourPersonalizado(){
 	`;
 	document.getElementById('destinosCards').innerHTML = content;
 }
-function addTourCustomTour(tourId){
+function addTourCustomTour(tourId) {
 	selectedTours.push({
 		name: document.getElementById('detalles_p').value,
 		id: tourId,
