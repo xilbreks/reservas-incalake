@@ -137,9 +137,9 @@ function addTour(tourName, tourId) {
 				<div class="col-md-8 list-tours-name col-sm-7 col-xs-12"> ${tourName}
 				</div>
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
-					<div class="input-group">
+					<div class="input-group con_calendario">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)"">
+                        <input class="form-control" id="tour-${tourId}-date" name="date" type="text" onchange="cambiarFechaTour(this)"">
                     </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
@@ -149,7 +149,7 @@ function addTour(tourName, tourId) {
 			</div>
 		`;
 	$('#tours-screen').append(child);
-
+	$('.con_calendario input').datepicker({});
 	$('#toursModal').modal('hide');
 }
 
@@ -269,9 +269,9 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 				<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${origen} - ${destino}
 				</div>
 				<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
-					<div class="input-group">
+					<div class="input-group con_calendario">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                        <input class="form-control" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)">
+                        <input class="form-control" id="ticket-${idTicket}-date" name="date" type="text" onchange="cambiarFechaTicket(this)">
                     </div>					
 				</div>
 				<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
@@ -281,7 +281,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 			</div>
 		`;
 	$('#tickets-screen').append(child);
-
+	$('.con_calendario input').datepicker({});
 	$('#ticketsModal').modal('hide');
 }
 
@@ -403,10 +403,10 @@ function addTourCustomTour(tourId) {
 				<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${document.getElementById('detalles_p').value}
 				</div>
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
-					<div class="input-group">
-                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                        <input class="form-control" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)">
-                    </div>
+					<div class="input-group con_calendario">
+            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+            <input class="form-control" id="tour-${tourId}-date" name="date" type="text" onchange="cambiarFechaTour(this)">
+          </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
@@ -415,7 +415,7 @@ function addTourCustomTour(tourId) {
 			</div>
 		`;
 	$('#tours-screen').append(child);
-
+	$('.con_calendario input').datepicker({});
 	$('#toursModal').modal('hide');
 }
 /**********************************************************************************************/

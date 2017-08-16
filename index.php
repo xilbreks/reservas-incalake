@@ -2151,6 +2151,10 @@
 	<script src="node_modules/bootstrap3/dist/js/bootstrap.min.js" type="text/javascript"></script>
 	<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css"> -->
 	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script> -->
+	<link rel="stylesheet" href="node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+	<script src="node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="node_modules/jquery-timepicker/jquery.timepicker.css">
+	<script src="node_modules/jquery-timepicker/jquery.timepicker.js" type="text/javascript"></script>
 	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
 	<script src="app.js"></script>
 </head>
