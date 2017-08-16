@@ -131,16 +131,16 @@ function addTour(tourName, tourId) {
 	});
 	let child = `
 			<div class="col-md-12 div-list-tours col-xs-12 center-div" id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name"> ${tourName}
+				<div class="col-md-7 list-tours-name col-sm-7"> ${tourName}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align">
+				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
 					<div class="input-group">
 						<span class="input-group-addon fa fa-calendar">							     
 						</span>
 						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
 					</div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align">
+				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
@@ -274,18 +274,18 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	});
 	let child = `
 			<div class="col-md-12 div-list-buses col-xs-12 center-div" id="detalles-ticket-${idTicket}">
-				<div class="col-md-5 list-buses-name"> ${nombrebus} / ${tipobus} / ${costo}
+				<div class="col-md-5 list-buses-name col-sm-4"> ${nombrebus} / ${tipobus} / ${costo}
 				</div>
-				<div class="col-md-3 list-tours-where text-center v-align col-xs-12"> ${origen} - ${destino}
+				<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${origen} - ${destino}
 				</div>
-				<div class="col-md-3 text-center list-buses-date col-xs-10 v-align">
+				<div class="col-md-3 text-center list-buses-date col-xs-10 col-sm-4 v-align">
 					<div class="input-group">
 						<span class="input-group-addon fa fa-calendar">							     
 						</span>
 						<input class="" id="ticket-${idTicket}-date" name="date" type="date" onchange="cambiarFechaTicket(this)" />
 					</div>
 				</div>
-				<div class="col-md-1 text-center col-xs-2 v-align">
+				<div class="col-md-1 text-center col-xs-2 col-sm-1 v-align">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTicket(${idTicket})">
 					</span>
 				</div>
@@ -421,7 +421,7 @@ function liveSearch(text){
 	else{
 		text = text.toLowerCase();
 		var content = `
-			<div class="page-header">
+			<div class="">
 				<h4>${['Resultados','Results'][choosen]}</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
@@ -437,7 +437,7 @@ function liveSearch(text){
 		coincidences
 		.forEach((destino,index)=>{
 			content = content + `
-				<div class="col-md-12" style="background-color:grey">
+				<div class="col-md-12 div-title-search ">
 				Tours de ${destino.name}
 				</div>
 			`;
@@ -506,16 +506,16 @@ function addTourCustomTour(tourId){
 	});
 	let child = `
 			<div class="col-md-12 div-list-tours col-xs-12 center-div " id="detalles-tour-${tourId}">
-				<div class="col-md-7 list-tours-name col-xs-12"> ${document.getElementById('detalles_p').value}
+				<div class="col-md-7 list-tours-name col-xs-12 col-sm-7"> ${document.getElementById('detalles_p').value}
 				</div>
-				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align">
+				<div class="col-md-3 text-center list-tours-date col-xs-10 v-align col-sm-4">
 					<div class="input-group">
 						<span class="input-group-addon fa fa-calendar">							     
 						</span>
 						<input class="" id="tour-${tourId}-date" name="date" type="date" onchange="cambiarFechaTour(this)" />
 					</div>
 				</div>
-				<div class="col-md-2 text-center col-xs-2 v-align">
+				<div class="col-md-2 text-center col-xs-2 v-align col-sm-1">
 					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>

@@ -29,13 +29,13 @@ body{
 }
 /*CSS SNIPPETS */
 .wizard {
-    margin: 20px auto;
+    /*margin: 20px auto;*/
     background: #fff;
 }
 
     .wizard .nav-tabs {
         position: relative;
-        margin: 40px auto;
+        /*margin: 40px auto;*/
         margin-bottom: 0;
         border-bottom-color: #e0e0e0;
     }
@@ -48,7 +48,7 @@ body{
     height: 2px;
     background: #e0e0e0;
     position: absolute;
-    width: 80%;
+    width: 71%;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -64,8 +64,8 @@ body{
 }
 
 span.round-tab {
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     /*line-height: 70px !important;*/
     display: inline-block;
     border-radius: 100px;
@@ -79,7 +79,8 @@ span.round-tab {
 }
 span.round-tab i{
     color:#555555;
-    line-height: 70px;
+    line-height: 35px;
+    font-size: 15px;
 }
 .wizard li.active span.round-tab {
     background: #fff;
@@ -123,11 +124,13 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs > li a {
-    width: 70px;
-    height: 70px;
-    margin: 20px auto;
+    width: 40px;
+    height: 40px;
+    /*margin: 20px auto;*/
+    margin: 5px auto;
     border-radius: 100%;
     padding: 0;
+    margin: 15px auto;
 }
 
     .wizard .nav-tabs > li a:hover {
@@ -136,7 +139,8 @@ span.round-tab:hover {
 
 .wizard .tab-pane {
     position: relative;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
+    padding-top: 10px;
 }
 
 .wizard h3 {
@@ -224,10 +228,11 @@ padding: 0;
     line-height: 30px;
 }
 .div-tours .div-list-tours .list-tours-date .input-group-addon{
-    padding: 5px;
+    /*padding: 5px;*/
+    padding: 7px;
 } 
 .div-tours .div-list-tours .list-tours-date .input-group input{
-    width: 100%;
+    /*width: 100%;*/
     line-height: 25px;
 }
 /*----MODAL----*/
@@ -251,6 +256,9 @@ padding: 0;
     cursor: pointer !important;
 }
 /*DIV BUSES TICKETS*/
+.input-group-addon, .input-group-btn{
+    width: auto !important;
+}
 .div-tickets .div-reserva-header{
     background: var(--color-primary);
     text-align: center;
@@ -301,10 +309,10 @@ padding: 0;
     line-height: 30px;
 }
 .div-tickets .div-list-buses .list-buses-date .input-group-addon{
-    padding: 5px;
+    padding: 7px;
 } 
 .div-tickets .div-list-buses .list-buses-date .input-group input{
-    width: 100%;
+    /*width: 100%;*/
     line-height: 25px;
 }
 /*toggle list tours*/
@@ -473,4 +481,9 @@ display: none;
 }
 #destinosCards>*{
     cursor: pointer;
+}
+/*------SEARCH-----------*/
+.div-title-search{
+    background-color: var(--color-primary);
+    color: #f5f5f5;
 }
