@@ -2203,12 +2203,14 @@
 											<span style="font-size:1.3em;font-weight:bold">Servicios</span>
 										</div>
 										<div class="col-md-12" id="error-msg1" style="display:none">
-											<div class="alert alert-danger">
+											<div class="alert alert-danger alert-dismissable fade in">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 												<strong>Selecciona al menos un tour o Bus ticket</strong>
 											</div>
 										</div>
 										<div class="col-md-12" id="error-msg2" style="display:none">
-											<div class="alert alert-danger">
+											<div class="alert alert-danger alert-dismissable fade in">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 												<strong>Fecha no seleccionada</strong>
 											</div>
 										</div>
@@ -2263,7 +2265,8 @@
 											<span style="font-size:1.3em;font-weight:bold">Informacion Personal</span>
 										</div>
 										<div class="row" id="error-msg3" style="display:none">
-											<div class="alert alert-danger">
+											<div class="alert alert-danger alert-dismissable fade in">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
 												<strong>Completa los campos requeridos</strong>
 											</div>
 										</div>
@@ -2330,12 +2333,14 @@
 						</div>
 					</section>
 			</div>
-            <div>
+            <div class="col-md-12 alert alert-info">
                 <p>
-                Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
+                    <strong>NOTA</strong>
+                </p>
+                <p> Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
                 o llamanos a los siguentes numeros:
                 </p>
-                <ul>
+                <ul class="list-unstyled">
                     <li> <i class="fa fa-mobile"></i> +51 957585843 (Movistar)</li>
                     <li> <i class="fa fa-mobile"></i> +51 956060988 (Movistar)</li>
                     <li> <i class="fa fa-whatsapp"></i> +51 949755305 (Claro - Whatsapp)</li>
@@ -2421,7 +2426,8 @@
 	<br>
 	<div id="div-loader" class="text-center">
 		<div class="sub-loader ">
-			<div class="loader">Loading...</div>
+        <h4>Enviando Información Espere Porfavor...</h4>
+			<div class="loader"></div>
 		</div>
 	</div>
 <!-- 	<div class="center-div col-md-12">

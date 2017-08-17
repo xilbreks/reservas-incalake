@@ -143,7 +143,7 @@ function addTour(tourName, tourId) {
                     </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
-					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
+					<span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
 			</div>
@@ -286,7 +286,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
                     </div>					
 				</div>
 				<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
-					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTicket(${idTicket})">
+					<span class="btn btn-default btn-sm fa fa-close" onclick="removeTicket(${idTicket})">
 					</span>
 				</div>
 			</div>
@@ -426,7 +426,7 @@ function addTourCustomTour(tourId) {
           </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
-					<span class="btn btn-default btn-xs fa fa-close" onclick="removeTour(${tourId})">
+					<span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(${tourId})">
 					</span>
 				</div>
 			</div>
@@ -595,3 +595,6 @@ function prevTab(elem) {
 	$(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
+$('.close').on('closed.bs.alert', function () {
+  // do something…
+})
