@@ -271,6 +271,10 @@ padding: 0;
     line-height: 25px;
 }
 /*----MODAL----*/
+#toursModal .modal-backdrop,#ticketsModal .modal-backdrop{
+    position: fixed !important;
+
+}
 .selecionado{
     /*background-color: var(--color-primary);*/
 }
@@ -497,13 +501,13 @@ display: none;
     /*border: 1px dotted blue;*/
 }
 @media (max-width: 768px){
-    .center-div{
+    .div-content-list-tours .center-div,.div-content-list-buses .center-div{
         display: block;
     }
 }
-.center-div>*:first-child{
+/*.center-div>*:first-child{
     width: 100%;
-}
+}*/
 .v-align {
     /*width: 10%;*/
     float: none !important;
