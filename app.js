@@ -79,6 +79,7 @@ function toogleTours(index) {
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
 		$(`#destino-${destinoIndex}`).removeClass('selecionado');
+		location.hash = "";
 		// console.log($(`#destino-${destinoIndex}`));
 		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
 	}
@@ -121,7 +122,7 @@ function toogleTours(index) {
 		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
 		// focus
-		// document.getElementById(`space-tours`).focus();
+		location.hash = "space-tours";
 	}
 
 }
@@ -282,7 +283,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 				<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
 					<div class="input-group con_calendario">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                        <input class="form-control" id="ticket-${idTicket}-date" name="date" type="text" onchange="cambiarFechaTicket(this)">
+                        <input class="form-control" id="ticket-${idTicket}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)"/>
                     </div>					
 				</div>
 				<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
@@ -294,7 +295,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	$('#tickets-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    	'autoclose': true
+    	'autoclose': false
 	});
 	$('#ticketsModal').modal('hide');
 	setTimeout(()=>{
@@ -334,6 +335,7 @@ function liveSearch(text) {
 
 	if (text.length < 1) {
 		mostrarDestinos();
+		location.hash = "";
 		return;
 	}
 	else {
@@ -408,6 +410,7 @@ function addTourPersonalizado() {
 		</div>
 	`;
 	document.getElementById('destinosCards').innerHTML = content;
+	location.hash = "";
 }
 function addTourCustomTour(tourId) {
 	selectedTours.push({
