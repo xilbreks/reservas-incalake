@@ -152,7 +152,7 @@ function addTour(tourName, tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    	'autoclose': false,
+    	'autoclose': true,
     	language: 'es',
            startDate: 'now'
 	});
@@ -297,7 +297,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	$('#tickets-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    	'autoclose': false
+    	'autoclose': true
 	});
 	$('#ticketsModal').modal('hide');
 	setTimeout(()=>{
@@ -439,7 +439,7 @@ function addTourCustomTour(tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': false
+    'autoclose': true
 	});
 	$('#toursModal').modal('hide');
 	setTimeout(()=>{
