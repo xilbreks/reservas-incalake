@@ -415,6 +415,7 @@ function addTourPersonalizado() {
 		</div>
 	`;
 	document.getElementById('destinosCards').innerHTML = content;
+	document.getElementById('detalles_p').focus();
 	location.hash = "";
 }
 function addTourCustomTour(tourId) {
