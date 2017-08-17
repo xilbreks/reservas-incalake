@@ -2140,7 +2140,8 @@
 	<title>Reservas Incalake</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="//incalake.com/reservar/email/style.css" rel="stylesheet">
+	<!-- <link href="//incalake.com/reservar/email/style.css" rel="stylesheet"> -->
+    <link href="style.css" rel="stylesheet">
 	<script src="//incalake.com/wcontent/js/jquery-1.11.1.min.js" type="text/javascript"></script>
 	<!-- <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script> -->
 	<link href="//www.incalake.com/wcontent/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -2172,7 +2173,7 @@
 			<div class="container" id="form-reservas">
 					<section>
 						<div class="wizard">
-							<h1 class="title-reservas">Reservas</h1>
+							<h1 class="title-reservas" ><a href="#" data-placement="bottom" data-toggle="tooltip" title="Si tienes algun problema con tu reserva, escribanos o llamenos, los datos de contacto que estan en la parte inferior de la pagina">Reservas IncaLake </a></h1>
 							<div class="wizard-inner">
 								<div class="connecting-line"></div>
 								<ul class="nav nav-tabs" role="tablist">
@@ -2341,15 +2342,15 @@
 					</section>
 			</div>
             <div class="col-md-12 alert alert-info">
-                <strong>NOTA:</strong>
-                <p> Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
+            <strong>NOTA:</strong>
+                <p> Si tienes algun problema con tu reserva, por favor, escribenos a <b>reservas@incalake.com</b>
                 o llamanos a los siguentes numeros:
                 </p>
                 <ul class="list-unstyled">
-                    <li> <i class="fa fa-mobile"></i> +51 957585843 (Movistar)</li>
-                    <li> <i class="fa fa-mobile"></i> +51 956060988 (Movistar)</li>
-                    <li> <i class="fa fa-whatsapp"></i> +51 949755305 (Claro - Whatsapp)</li>
-                    <li> <i class="fa fa-whatsapp"></i> +51 982769453 (Claro - Whatsapp)</li>
+                    <li> <i class="fa fa-mobile"></i> <b>+51 957585843</b> (Movistar)</li>
+                    <li> <i class="fa fa-mobile"></i> <b>+51 956060988</b> (Movistar)</li>
+                    <li> <i class="fa fa-whatsapp"></i> <b>+51 949755305</b> (Claro - Whatsapp)</li>
+                    <li> <i class="fa fa-whatsapp"></i> <b>+51 982769453 </b>(Claro - Whatsapp)</li>
                 </ul>
             </div>
 	</div>
