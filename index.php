@@ -2407,9 +2407,9 @@
     </div>
     <!-- End Modal -->
 	<br>
-	<div id="div-loader" class="center-div">
-		<div class="loader ">
-			Loading ...
+	<div id="div-loader" class="text-center">
+		<div class="sub-loader ">
+			<div class="loader">Loading...</div>
 		</div>
 	</div>
 <!-- 	<div class="center-div col-md-12">
