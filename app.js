@@ -154,6 +154,9 @@ function addTour(tourName, tourId) {
     'autoclose': true
 	});
 	$('#toursModal').modal('hide');
+	setTimeout(()=>{
+		$(`#tour-${tourId}-date`).focus();
+	},50);
 }
 
 function removeTour(id) {
@@ -286,9 +289,12 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	$('#tickets-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': true
+    	'autoclose': true
 	});
 	$('#ticketsModal').modal('hide');
+	setTimeout(()=>{
+		$(`#ticket-${idTicket}-date`).focus();
+	},50);
 }
 
 function removeTicket(id) {
@@ -426,6 +432,9 @@ function addTourCustomTour(tourId) {
     'autoclose': true
 	});
 	$('#toursModal').modal('hide');
+	setTimeout(()=>{
+		$(`#tour-${tourId}-date`).focus();
+	},50);
 }
 /**********************************************************************************************/
 /***************************  Debe ejecutarse al cargar la pagina  ****************************/
@@ -528,7 +537,7 @@ function checkPersonalInformation() {
 	}
 
 	var data = {
-		nombres: document.getElementById('name').value,
+		//nombres: document.getElementById('name').value,
 		pais: document.getElementById('nationality').value,
 		npax: document.getElementById('numberof').value,
 		celular: document.getElementById('cellphone').value,
@@ -549,17 +558,33 @@ function checkPersonalInformation() {
 		dataType: 'json',
 		data: data,
 		success: function (res) {
+			console.log(res);
+			// Leendo respuesta del servidor
+			if(res.state=="success"){
+				document.getElementById('div-loader').setAttribute('style', 'display:none');
+				document.getElementById('respuesta').innerHTML = res.msg;
+				var $active = $('.wizard .nav-tabs li.active');
+				$active.addClass('tab-complete');
+				$active.next().removeClass('disabled').addClass('tab-complete');
+				nextTab($active);
+				$active.addClass('disabled');
+				$active.prev().addClass('disabled');
+				$(".nueva_reserva").click(function (e) {
+					document.location.reload(); 
+				});
+			}else if(res.state=="error"){
+				document.getElementById('div-loader').setAttribute('style', 'display:none');
+				alert(`Ocurrio un error, ${res.msg}`);	
+			}else{
+				document.getElementById('div-loader').setAttribute('style', 'display:none');
+				alert('Ocurrio un error Inesperado');
+			}
+			
+		},
+		error: function(agg){
+			console.log('error=>',agg);
 			document.getElementById('div-loader').setAttribute('style', 'display:none');
-			document.getElementById('respuesta').innerHTML = res.msg;
-			var $active = $('.wizard .nav-tabs li.active');
-			$active.addClass('tab-complete');
-			$active.next().removeClass('disabled').addClass('tab-complete');
-			nextTab($active);
-			$active.addClass('disabled');
-			$active.prev().addClass('disabled');
-			$(".nueva_reserva").click(function (e) {
-				document.location.reload(); 
-			});
+			alert('Ocurrio un error, Verifique su conexion a Internet');
 		}
 	});
 }
