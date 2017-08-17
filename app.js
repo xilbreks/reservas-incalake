@@ -70,7 +70,7 @@ function mostrarDestinos() {
 		<div id="space-tours" class="col-xs-12" >
 		</div>
 	`;
-
+	location.hash = '';
 	document.getElementById('destinosCards').innerHTML = html;
 }
 
@@ -154,9 +154,10 @@ function addTour(tourName, tourId) {
 		'format': 'd-MM-yyyy',
     	'autoclose': true,
     	language: 'es',
-           startDate: 'now'
+        startDate: 'now'
 	});
 	$('#toursModal').modal('hide');
+	location.hash = '';
 	setTimeout(()=>{
 		$(`#tour-${tourId}-date`).focus();
 	},50);
@@ -297,7 +298,9 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 	$('#tickets-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    	'autoclose': true
+    	'autoclose': true,
+		language: 'es',
+        startDate: 'now'
 	});
 	$('#ticketsModal').modal('hide');
 	setTimeout(()=>{
@@ -439,7 +442,9 @@ function addTourCustomTour(tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': true
+    	'autoclose': true,
+		language: 'es',
+        startDate: 'now'
 	});
 	$('#toursModal').modal('hide');
 	setTimeout(()=>{
@@ -507,6 +512,7 @@ function checkToursAndBuses() {
 	nextTab($active);
 	$active.addClass('tab-complete');
 
+	document.getElementById('name').focus();
 }
 
 function checkPersonalInformation() {
@@ -515,6 +521,7 @@ function checkPersonalInformation() {
 	document.getElementById('div_for_nationality').setAttribute('class', 'form-group');
 	document.getElementById('div_for_email').setAttribute('class', 'form-group');
 	document.getElementById('div_for_numberof').setAttribute('class', 'form-group');
+	document.getElementById('error-msg3').setAttribute('style', 'display: none');
 	// Veficar informacion personal
 	if (document.getElementById('name').value.length < 1) {
 		document.getElementById('name').focus();

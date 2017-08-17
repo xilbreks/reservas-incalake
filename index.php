@@ -2300,7 +2300,7 @@
 											</div>
 											<div class="col-md-3 col-xs-12">
 												<div class="form-group" id="div_for_cellphone">
-													<label for="cellphone">Numero de celular</label>
+													<label for="cellphone">Numero de celular <i>(Opcional)</i></label>
 													<input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
 												</div>
 											</div>
@@ -2308,11 +2308,11 @@
 										<div class="row">
 											<div class="col-xs-12">
 												<div class="form-group" id="div_for_hotel">
-													<label for="place">Hotel o lugar de Recojo</label>
+													<label for="place">Hotel o lugar de Recojo <i>(Opcional)</i></label>
 													<textarea class="form-control" id="place" placeholder="..." title="Lugar donde se le recojera"></textarea>
 												</div>
 												<div class="form-group" id="div_for_extra">
-													<label for="extra">Escribanos aqui mas detalles o observaciones</label>
+													<label for="extra">Escribanos aqui mas detalles o observaciones <i>(Opcional)</i></label>
 													<textarea class="form-control" id="extra" placeholder="..." title="Cualquier informacion extra aqui"></textarea>
 												</div>
 											</div>
