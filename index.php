@@ -2324,6 +2324,12 @@
 											<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
 											<li><button type="button" class="btn btn-primary" onclick="checkPersonalInformation()">Reservar</button></li>
 										</ul>
+
+                                        <div class="col-md-12 alert alert-warning">
+                                            <p>
+                                            Los campos con el simbolo <i class="requerido">*</i> obligatorios.
+                                            </p>
+                                        </div>
 									</div>
 									<div class="tab-pane" role="tabpanel" id="complete">
 										<h3>Completado</h3>
