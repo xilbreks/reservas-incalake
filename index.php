@@ -2247,7 +2247,7 @@
 												<div class="col-md-12 div-content-list-buses col-xs-12" id="tickets-screen">
 												</div>
 												<!-- Trigger the modal with a button -->
-												<a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal">
+												<a type="button" class="btn btn-link" data-toggle="modal" data-target="#ticketsModal" onclick="mostrarBusTickets()">
 													+ Agregar Ticket aqui
 												</a>
 											</div>
@@ -2330,6 +2330,18 @@
 						</div>
 					</section>
 			</div>
+            <div>
+                <p>
+                Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
+                o llamanos a los siguentes numeros:
+                </p>
+                <ul>
+                    <li> <i class="fa fa-mobile"></i> +51 957585843 (Movistar)</li>
+                    <li> <i class="fa fa-mobile"></i> +51 956060988 (Movistar)</li>
+                    <li> <i class="fa fa-whatsapp"></i> +51 949755305 (Claro - Whatsapp)</li>
+                    <li> <i class="fa fa-whatsapp"></i> +51 982769453 (Claro - Whatsapp)</li>
+                </ul>
+            </div>
 	</div>
 	<!-- - - - - - - - - - - - - -  - - - - - - - -->
 	<!-- Tours Modal -->
