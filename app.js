@@ -152,7 +152,9 @@ function addTour(tourName, tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': false
+    	'autoclose': false,
+    	language: 'es',
+           startDate: 'now'
 	});
 	$('#toursModal').modal('hide');
 	setTimeout(()=>{
