@@ -521,6 +521,7 @@ function checkPersonalInformation() {
 	document.getElementById('div_for_nationality').setAttribute('class', 'form-group');
 	document.getElementById('div_for_email').setAttribute('class', 'form-group');
 	document.getElementById('div_for_numberof').setAttribute('class', 'form-group');
+	document.getElementById('error-msg3').setAttribute('style', 'display: none');
 	// Veficar informacion personal
 	if (document.getElementById('name').value.length < 1) {
 		document.getElementById('name').focus();
