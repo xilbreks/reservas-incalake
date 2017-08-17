@@ -46,11 +46,16 @@ body{
     position: relative;
     font-family: 'Pontano Sans', sans-serif;
 }
-.title-reservas{
+.title-reservas a{
     /*position: absolute;*/
     /*left: 0;*/
     /*top: 0;*/
+        text-decoration: none;
+    color: #444;
+    /*font-weight: 600;*/
+
 }
+
 /*CSS SNIPPETS */
 .wizard {
     /*margin: 20px auto;*/
@@ -585,3 +590,6 @@ display: none;
     font-size: medium !important;
 }
  /*.toursModal .page-header*/
+ .con_calendario input{
+    cursor: pointer !important;
+ }
