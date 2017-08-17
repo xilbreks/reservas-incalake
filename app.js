@@ -598,6 +598,4 @@ function prevTab(elem) {
 	$(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
-$('.close').on('closed.bs.alert', function () {
-  // do something…
-})
+$(".alert").alert('close');

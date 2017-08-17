@@ -2203,14 +2203,12 @@
 											<span style="font-size:1.3em;font-weight:bold">Servicios</span>
 										</div>
 										<div class="col-md-12" id="error-msg1" style="display:none">
-											<div class="alert alert-danger alert-dismissable fade in">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+											<div class="alert alert-danger">
 												<strong>Selecciona al menos un tour o Bus ticket</strong>
 											</div>
 										</div>
 										<div class="col-md-12" id="error-msg2" style="display:none">
-											<div class="alert alert-danger alert-dismissable fade in">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+											<div class="alert alert-danger">
 												<strong>Fecha no seleccionada</strong>
 											</div>
 										</div>
@@ -2265,8 +2263,7 @@
 											<span style="font-size:1.3em;font-weight:bold">Informacion Personal</span>
 										</div>
 										<div class="row" id="error-msg3" style="display:none">
-											<div class="alert alert-danger alert-dismissable fade in">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+											<div class="alert alert-danger">
 												<strong>Completa los campos requeridos</strong>
 											</div>
 										</div>
@@ -2334,9 +2331,7 @@
 					</section>
 			</div>
             <div class="col-md-12 alert alert-info">
-                <p>
-                    <strong>NOTA</strong>
-                </p>
+            <strong>NOTA:</strong>
                 <p> Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
                 o llamanos a los siguentes numeros:
                 </p>
