@@ -483,15 +483,15 @@ function checkToursAndBuses() {
 	// Veficar fechas de tours y tickets
 	for(let tour of selectedTours){
 		if (!tour.date) {
-			document.getElementById(`tour-${tour.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style', 'display: block');
+			document.getElementById(`tour-${tour.id}-date`).focus();
 			return;
 		}
 	}
 	for(let ticket of selectedTickets){
 		if (!ticket.date) {
-			document.getElementById(`ticket-${ticket.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style', 'display: block');
+			document.getElementById(`ticket-${ticket.id}-date`).focus();
 			return;
 		}
 	}
