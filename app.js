@@ -447,6 +447,7 @@ function addTourCustomTour(tourId) {
         startDate: 'now'
 	});
 	$('#toursModal').modal('hide');
+	location.hash = '';
 	setTimeout(()=>{
 		$(`#tour-${tourId}-date`).focus();
 	},50);
