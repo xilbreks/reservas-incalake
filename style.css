@@ -505,9 +505,9 @@ display: none;
         display: block;
     }
 }
-/*.center-div>*:first-child{
+.div-content-list-tours .center-div>*:first-child,.div-content-list-buses .center-div>*:first-child{
     width: 100%;
-}*/
+}
 .v-align {
     /*width: 10%;*/
     float: none !important;
