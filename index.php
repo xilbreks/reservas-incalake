@@ -2323,6 +2323,12 @@
 											<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
 											<li><button type="button" class="btn btn-primary" onclick="checkPersonalInformation()">Reservar</button></li>
 										</ul>
+
+                                        <div class="col-md-12 alert alert-warning">
+                                            <p>
+                                            Los campos con el simbolo <i class="requerido">*</i> obligatorios.
+                                            </p>
+                                        </div>
 									</div>
 									<div class="tab-pane" role="tabpanel" id="complete">
 										<h3>Completado</h3>
@@ -2335,7 +2341,7 @@
 					</section>
 			</div>
             <div class="col-md-12 alert alert-info">
-            <strong>NOTA:</strong>
+                <strong>NOTA:</strong>
                 <p> Si tienes algun problema con tu reserva, por favor, escribenos a reservas@incalake.com
                 o llamanos a los siguentes numeros:
                 </p>
