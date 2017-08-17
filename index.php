@@ -2276,13 +2276,13 @@
 											<div class="col-md-8 col-xs-12">
 												<div class="form-group" id="div_for_name">
 													<label for="name">Nombres y Apellios <i class="requerido">*</i></label>
-													<input type="text" class="form-control" id="name" placeholder="..." required title="Mi nombre y mi apellido">
+													<input type="text" class="form-control" id="name" placeholder="Juan Quispe Mamani" required title="Mi nombre y mi apellido">
 												</div>
 											</div>
 											<div class="col-md-4 col-xs-12">
 												<div class="form-group" id="div_for_nationality">
 													<label for="nationality">Nacionalidad <i class="requerido">*</i></label>
-													<input type="text" class="form-control" id="nationality" placeholder="..." required title="Mi nacionalidad">
+													<input type="text" class="form-control" id="nationality" placeholder="Bolivia" required title="Mi nacionalidad">
 												</div>
 											</div>
 										</div>
@@ -2290,19 +2290,19 @@
 											<div class="col-md-6 col-xs-12">
 												<div class="form-group" id="div_for_email">
 													<label for="email">Email <i class="requerido">*</i></label>
-													<input type="email" class="form-control" id="email" placeholder="..." required title="Mi correo electronico">
+													<input type="email" class="form-control" id="email" placeholder="juan_quispe@hotmail.com" required title="Mi correo electronico">
 												</div>
 											</div>
 											<div class="col-md-3 col-xs-12">
 												<div class="form-group" id="div_for_numberof">
 													<label for="numberof">Numero de Pasajeros <i class="requerido">*</i></label>
-													<input type="text" class="form-control" id="numberof" placeholder="..." required title="Cantidad de pasajeros que van a viajar">
+													<input type="text" class="form-control" id="numberof" placeholder="5" required title="Cantidad de pasajeros que van a viajar">
 												</div>
 											</div>
 											<div class="col-md-3 col-xs-12">
 												<div class="form-group" id="div_for_cellphone">
 													<label for="cellphone">Numero de celular <i>(Opcional)</i></label>
-													<input type="text" class="form-control" id="cellphone" placeholder="..." title="Numero de celular">
+													<input type="text" class="form-control" id="cellphone" placeholder="987654321" title="Numero de celular">
 												</div>
 											</div>
 										</div>
@@ -2326,7 +2326,7 @@
 
                                         <div class="col-md-12 alert alert-warning">
                                             <p>
-                                            Los campos con el simbolo <i class="requerido">*</i> obligatorios.
+                                            Los campos con asterisco (<i class="requerido">*</i> ) son obligatorios.
                                             </p>
                                         </div>
 									</div>
