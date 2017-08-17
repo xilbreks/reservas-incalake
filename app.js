@@ -140,7 +140,7 @@ function addTour(tourName, tourId) {
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group con_calendario">
                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                        <input class="form-control" id="tour-${tourId}-date" name="date" type="text" onchange="cambiarFechaTour(this)"">
+                        <input class="form-control" id="tour-${tourId}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)"">
                     </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
@@ -152,7 +152,7 @@ function addTour(tourName, tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': true
+    'autoclose': false
 	});
 	$('#toursModal').modal('hide');
 	setTimeout(()=>{
@@ -425,7 +425,7 @@ function addTourCustomTour(tourId) {
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group con_calendario">
             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-            <input class="form-control" id="tour-${tourId}-date" name="date" type="text" onchange="cambiarFechaTour(this)">
+            <input class="form-control" id="tour-${tourId}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
           </div>
 				</div>
 				<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
@@ -437,7 +437,7 @@ function addTourCustomTour(tourId) {
 	$('#tours-screen').append(child);
 	$('.con_calendario input').datepicker({
 		'format': 'd-MM-yyyy',
-    'autoclose': true
+    'autoclose': false
 	});
 	$('#toursModal').modal('hide');
 	setTimeout(()=>{
