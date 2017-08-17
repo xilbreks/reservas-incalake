@@ -2159,7 +2159,8 @@
 	<!-- <link rel="stylesheet" href="node_modules/jquery-timepicker/jquery.timepicker.css"> -->
 	<script src="//incalake.com/wcontent/js/jquery.timepicker.js" type="text/javascript"></script>
 	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
-	<script src="//incalake.com/reservar/email/app.js"></script>
+	<!-- <script src="//incalake.com/reservar/email/app.js"></script> -->
+    <script src="app.js"></script>
 </head>
 
 <!-- Pagina Interna(Toda la app de reserva) -->
