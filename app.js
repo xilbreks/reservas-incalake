@@ -506,6 +506,7 @@ function checkToursAndBuses() {
 	$active.next().removeClass('disabled');
 	nextTab($active);
 	$active.addClass('tab-complete');
+
 }
 
 function checkPersonalInformation() {
