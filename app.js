@@ -489,8 +489,10 @@ function checkToursAndBuses() {
 	if (falatFechaTicket) return;
 
 	var $active = $('.wizard .nav-tabs li.active');
+	
 	$active.next().removeClass('disabled');
 	nextTab($active);
+	$active.addClass('tab-complete');
 }
 
 function checkPersonalInformation() {
@@ -550,7 +552,8 @@ function checkPersonalInformation() {
 			document.getElementById('div-loader').setAttribute('style', 'display:none');
 			document.getElementById('respuesta').innerHTML = res.msg;
 			var $active = $('.wizard .nav-tabs li.active');
-			$active.next().removeClass('disabled');
+			$active.addClass('tab-complete');
+			$active.next().removeClass('disabled').addClass('tab-complete');
 			nextTab($active);
 			$active.addClass('disabled');
 			$active.prev().addClass('disabled');

@@ -2165,11 +2165,8 @@
 
 	<!-- Contenedor para los pasos que el usuario debera pasar -->
 	<div class="container container-book-now">
-		<div class="">
-			<div class="container">
-				<div class="">
+			<div class="container" id="form-reservas">
 					<section>
-
 						<div class="wizard">
 							<h1 class="title-reservas">Reservas</h1>
 							<div class="wizard-inner">
@@ -2191,10 +2188,10 @@
 									</li>
 									<li role="presentation" class="disabled">
 										<a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completado">
-                      <span class="round-tab">
-                        <i class="glyphicon glyphicon-ok"></i>
-                      </span>
-                    </a>
+                                          <span class="round-tab">
+                                            <i class="glyphicon glyphicon-ok"></i>
+                                          </span>
+                                        </a>
 									</li>
 								</ul>
 							</div>
@@ -2216,7 +2213,7 @@
 											</div>
 										</div>
 										
-										<h4>
+										<h4 class="title-service-tours">
 											<i class="fa fa-map-signs"></i> Tours
 											<i href="#" data-toggle="tooltip" title="Alguna ayuda aqui" id="ayuda1"><span class="fa fa-question-circle-o"></span></i>
 										</h4>
@@ -2235,7 +2232,7 @@
 												</a>
 											</div>
 										</div>
-										<h4>
+										<h4 class="title-service-buses">
 											<i class="fa fa-bus"></i> Bus Tickets
 											<i href="#" data-toggle="tooltip" title="Hola a todos tios" id="ayuda2"><span class="fa fa-question-circle-o"></span></i>
 										</h4>
@@ -2331,11 +2328,8 @@
 								</div>
 							</form>
 						</div>
-
 					</section>
-				</div>
 			</div>
-		</div>
 	</div>
 	<!-- - - - - - - - - - - - - -  - - - - - - - -->
 	<!-- Tours Modal -->
@@ -2413,12 +2407,12 @@
     </div>
     <!-- End Modal -->
 	<br>
-	<div id="div-loader">
-		<div class="loader">
+	<div id="div-loader" class="center-div">
+		<div class="loader ">
 			Loading ...
 		</div>
 	</div>
-	<div class="center-div col-md-12">
+<!-- 	<div class="center-div col-md-12">
 		<div class="col-md-10">
 			asd <br><br><br><br>
 		</div>
@@ -2428,7 +2422,7 @@
 		</div>
 
 	</div>
-
+ -->
 </body>
 
 </html>
