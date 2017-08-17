@@ -178,6 +178,11 @@ function cambiarFechaTour(self) {
 /**********************************************************************************************/
 /****************************************  BUS TICKET  ****************************************/
 /**********************************************************************************************/
+function mostrarBusTickets(){
+	getStarts();
+	document.getElementById('div_busqueda').innerHTML = '';
+	document.getElementById('destino').innerHTML = '';
+}
 function getStarts() {
 	$.ajax({
 		url: 'http://incalake.com/reservar/buses.php',
@@ -217,11 +222,11 @@ function buscar_bus() {
 		dataType: 'json',
 		success: function (res) {
 			console.log(res);
-			$('#div_busqueda').html('').append(`
-				<div>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </div>
-				<span>
-          Seleccione un BUS
-				</span>
+			$('#div_busqueda')
+			.html('')
+			.append(`
+				<div>>_</div>
+				<h3>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </h3>
 			`).append(res.html);
 
 			$('.select').click(function () {
@@ -476,26 +481,20 @@ function checkToursAndBuses() {
 		return;
 	}
 	// Veficar fechas de tours y tickets
-	let falatFechaTour = false;
-	selectedTours.forEach((tour) => {
+	for(let tour of selectedTours){
 		if (!tour.date) {
 			document.getElementById(`tour-${tour.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTour = true;
 			return;
 		}
-	});
-	if (falatFechaTour) return;
-	let falatFechaTicket = false;
-	selectedTickets.forEach((ticket) => {
+	}
+	for(let ticket of selectedTickets){
 		if (!ticket.date) {
 			document.getElementById(`ticket-${ticket.id}-date`).focus();
 			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			falatFechaTicket = true;
 			return;
 		}
-	});
-	if (falatFechaTicket) return;
+	}
 
 	var $active = $('.wizard .nav-tabs li.active');
 	
@@ -537,7 +536,7 @@ function checkPersonalInformation() {
 	}
 
 	var data = {
-		//nombres: document.getElementById('name').value,
+		nombres: document.getElementById('name').value,
 		pais: document.getElementById('nationality').value,
 		npax: document.getElementById('numberof').value,
 		celular: document.getElementById('cellphone').value,
