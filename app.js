@@ -73,9 +73,11 @@ function mostrarDestinos() {
 	location.hash = '';
 	document.getElementById('destinosCards').innerHTML = html;
 }
+var scroll2=0;
 
 function toogleTours(index) {
 	// Esconder si ya existia seleccionado
+
 	if (destinoWasSelected) {
 		document.getElementById(`space-tours`).innerHTML = "";
 		$(`#destino-${destinoIndex}`).removeClass('selecionado');
@@ -128,8 +130,10 @@ function toogleTours(index) {
 		// $(".div-category-search").click(function(){
 			// console.log('asdasd');
 			// console.log($('#space-tours').offset().top);
-			$('#toursModal').animate({ scrollTop: $('#space-tours').offset().top }, 2000);
+			scroll2=$('#space-tours').offset().top;
+			$('#toursModal').animate({ scrollTop: scroll2 }, 2000);
 			console.log($('#space-tours').offset().top);
+			scroll2=0;
 		// });
 
 
