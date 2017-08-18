@@ -1,4 +1,6 @@
 <?php
+// require ('menu/data__.php');
+// require ('../menu/data__.php');
     $menus = [];
     $menus = [
     /********************************************     menu 1 ***************************************************/       
@@ -1044,7 +1046,7 @@
     /*===========================================================================================================================================*/
 
 
-        /*================================================================== MENU 4 ===================================================================*/
+/*================================================================== MENU 4 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -1404,7 +1406,7 @@
     /*================================================================== FIN MENU 4 ===================================================================*/
     /*===========================================================================================================================================*/
 
-        /*================================================================== MENU 5 ===================================================================*/
+/*================================================================== MENU 5 ===================================================================*/
         /*===========================================================================================================================================*/
 
         [   
@@ -2140,8 +2142,8 @@
 	<title>Reservas Incalake</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <link href="//incalake.com/reservar/email/style.css" rel="stylesheet"> -->
-    <link href="style.css" rel="stylesheet">
+	<link href="//incalake.com/reservar/email/style.css" rel="stylesheet">
+    <!-- <link href="style.css" rel="stylesheet"> -->
 	<script src="//incalake.com/wcontent/js/jquery-1.11.1.min.js" type="text/javascript"></script>
 	<!-- <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script> -->
 	<link href="//www.incalake.com/wcontent/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -2159,7 +2161,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css" />
 	<!-- <link rel="stylesheet" href="node_modules/jquery-timepicker/jquery.timepicker.css"> -->
 	<script src="//incalake.com/wcontent/js/jquery.timepicker.js" type="text/javascript"></script>
-	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700&subset=latin,vietnamese,latin-ext,cyrillic,greek,cyrillic-ext,greek-ext" rel="stylesheet" type="text/css">
 	<!-- <script src="//incalake.com/reservar/email/app.js"></script> -->
     <script src="app.js"></script>
 </head>
@@ -2170,7 +2172,7 @@
 
 	<!-- Contenedor para los pasos que el usuario debera pasar -->
 	<div class="container container-book-now">
-			<div class="container" id="form-reservas">
+			<div class="col-md-12" id="form-reservas">
 					<section>
 						<div class="wizard">
 							<h1 class="title-reservas" ><a href="#" data-placement="bottom" data-toggle="tooltip" title="Si tienes algun problema con tu reserva, escribanos o llamenos, los datos de contacto que estan en la parte inferior de la pagina">Reservas IncaLake </a></h1>

@@ -122,7 +122,17 @@ function toogleTours(index) {
 		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
 		// focus
-		location.hash = "space-tours";
+		// location.hash = "space-tours";
+		// $('#space-tours').animate({ scrollTop: 0 }, 'slow');
+		
+		// $(".div-category-search").click(function(){
+			// console.log('asdasd');
+			// console.log($('#space-tours').offset().top);
+			$('#toursModal').animate({ scrollTop: $('#space-tours').offset().top }, 2000);
+			console.log($('#space-tours').offset().top);
+		// });
+
+
 	}
 
 }
@@ -609,5 +619,3 @@ function nextTab(elem) {
 function prevTab(elem) {
 	$(elem).prev().find('a[data-toggle="tab"]').click();
 }
-
-$(".alert").alert('close');
