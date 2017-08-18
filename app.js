@@ -497,7 +497,7 @@ $(document).ready(function () {
 	getStarts();
 
 	// Leer la url y ver si esta presente un id de tour
-	if(getParameterByName('tour')){
+	if(getParameterByName('t')){
 		// hacer el ajax y pedir el nombre del tour
 		$.ajax({
 			type: 'POST',
