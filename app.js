@@ -73,7 +73,6 @@ function mostrarDestinos() {
 	location.hash = '';
 	document.getElementById('destinosCards').innerHTML = html;
 }
-var scroll2=0;
 
 function toogleTours(index) {
 	// Esconder si ya existia seleccionado
@@ -97,7 +96,11 @@ function toogleTours(index) {
 
 		var content = `
 			<div class="page-header">
-				<h3>Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></h3>
+				<span style="float: left;">Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></span>
+				<span class="input-group" style="float: right;" onclick="focucear();">
+                          <input type="text" class="form-control"  placeholder="Buscar..." style="float:left;" id="search_box_tours">
+                          <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                        </span>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
@@ -130,17 +133,17 @@ function toogleTours(index) {
 		// $(".div-category-search").click(function(){
 			// console.log('asdasd');
 			// console.log($('#space-tours').offset().top);
-			scroll2=$('#space-tours').offset().top;
-			$('#toursModal').animate({ scrollTop: scroll2 }, 2000);
-			console.log($('#space-tours').offset().top);
-			scroll2=0;
+			$('#toursModal').animate({ scrollTop: $('#space-tours').offset().top+$('#toursModal').scrollTop()}, 1000);
 		// });
 
 
 	}
 
 }
-
+function focucear(){
+	document.getElementById(`search_box_tours`).focus();
+	
+}
 function addTour(tourName, tourId) {
 	selectedTours.push({
 		name: tourName,
