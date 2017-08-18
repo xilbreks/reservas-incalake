@@ -552,7 +552,7 @@ $(document).ready(function () {
 			type: 'POST',
 			url: 'http://incalake.com/reservar/bus.php',
 			dataType: 'json',
-			data: 'bus='+getParameterByName('b'),
+			data: 'bus='+getParameterByName('b')+'&idioma=es',
 			success: function (res) {
 				console.log(res);
 				if(res){
@@ -563,12 +563,12 @@ $(document).ready(function () {
 						hora: res.hora,
 						bus: res.empresa,
 						nombrebus: res.servicio,
-						precio: `$ ${res.bus_precio}`,
+						precio: `$ ${res.precio}`,
 						date: null
 					});
 					let child = `
 							<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${res.bus_id}">
-								<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${res.servicio} / ${res.empresa} / $ ${res.bus_precio}
+								<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${res.servicio} / ${res.empresa} / $ ${res.precio}
 								</div>
 								<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${res.origen} - ${res.destino}
 								</div>
