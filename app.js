@@ -8,24 +8,24 @@ var destinosDisponibles = menus.filter((menu) => menu.options);
 var i = 0;
 
 var destinos = destinosDisponibles.map((destino) => {
-	let toursDestino = [];
-	destino.options.forEach(grupo => {
-		grupo.options.forEach(tour => {
-			toursDestino.push({
-				name: tour.name ? tour.name.es : null,
-				desc: tour.subname ? tour.subname.es : '',
-				url: tour.url ? tour.url.es : null,
-				id: i
-			});
-			i = i + 1;
-		});
-	});
+    let toursDestino = [];
+    destino.options.forEach(grupo => {
+        grupo.options.forEach(tour => {
+            toursDestino.push({
+                name: tour.name ? tour.name.es : null,
+                desc: tour.subname ? tour.subname.es : '',
+                url: tour.url ? tour.url.es : null,
+                id: i
+            });
+            i = i + 1;
+        });
+    });
 
-	return {
-		name: destino.name.es,
-		tours: toursDestino,
-		img: destino.thumbnail
-	}
+    return {
+        name: destino.name.es,
+        tours: toursDestino,
+        img: destino.thumbnail
+    }
 });
 console.log(destinos);
 
@@ -48,12 +48,12 @@ var destinoIndex = null;
 /******************************************  TOURS  *******************************************/
 /**********************************************************************************************/
 function mostrarDestinos() {
-	document.getElementById('search_box_tours').value = '';
+    document.getElementById('search_box_tours').value = '';
 
-	var html = "";
+    var html = "";
 
-	destinos.forEach((destino, index) => {
-		html = html + `
+    destinos.forEach((destino, index) => {
+        html = html + `
     	<div class="col-xs-6 col-sm-4 div-category-search" id="destino-${index}">
 	    	<div class="img-thumbnail list-category-search">
 		        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
@@ -64,37 +64,37 @@ function mostrarDestinos() {
 	        </div>
       </div>
 		`;
-	});
+    });
 
-	html = html + `
+    html = html + `
 		<div id="space-tours" class="col-xs-12" >
 		</div>
 	`;
-	location.hash = '';
-	document.getElementById('destinosCards').innerHTML = html;
+    location.hash = '';
+    document.getElementById('destinosCards').innerHTML = html;
 }
 
 function toogleTours(index) {
-	// Esconder si ya existia seleccionado
+    // Esconder si ya existia seleccionado
 
-	if (destinoWasSelected) {
-		document.getElementById(`space-tours`).innerHTML = "";
-		$(`#destino-${destinoIndex}`).removeClass('selecionado');
-		location.hash = "";
-		// console.log($(`#destino-${destinoIndex}`));
-		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
-	}
-	// Esconder si selecciono lo mismo
-	if (index == destinoIndex) {
-		destinoWasSelected = false;
-		destinoIndex = null;
-	}
-	// Mostrar tour si seleciono otro
-	else {
-		destinoWasSelected = true;
-		destinoIndex = index;
+    if (destinoWasSelected) {
+        document.getElementById(`space-tours`).innerHTML = "";
+        $(`#destino-${destinoIndex}`).removeClass('selecionado');
+        location.hash = "";
+        // console.log($(`#destino-${destinoIndex}`));
+        // document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4');
+    }
+    // Esconder si selecciono lo mismo
+    if (index == destinoIndex) {
+        destinoWasSelected = false;
+        destinoIndex = null;
+    }
+    // Mostrar tour si seleciono otro
+    else {
+        destinoWasSelected = true;
+        destinoIndex = index;
 
-		var content = `
+        var content = `
 			<div class="page-header">
 				<span style="float: left;">Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></span>
 				<span class="input-group" style="float: right;" onclick="focucear();">
@@ -104,8 +104,8 @@ function toogleTours(index) {
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
-		destinos[index].tours.forEach((tour) => {
-			content = content + `
+        destinos[index].tours.forEach((tour) => {
+            content = content + `
 				<div class="col-md-12 center-div col-xs-12">
 					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
@@ -118,39 +118,43 @@ function toogleTours(index) {
 
 				</div>
 			`;
-		});
-		content = content + `
+        });
+        content = content + `
 			</div>
 		`;
-		document.getElementById(`space-tours`).innerHTML = content;
-		$(`#destino-${destinoIndex}`).addClass('selecionado');
-		// document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
+        document.getElementById(`space-tours`).innerHTML = content;
+        $(`#destino-${destinoIndex}`).addClass('selecionado');
+        // document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
 
-		// focus
-		// location.hash = "space-tours";
-		// $('#space-tours').animate({ scrollTop: 0 }, 'slow');
-		
-		// $(".div-category-search").click(function(){
-			// console.log('asdasd');
-			// console.log($('#space-tours').offset().top);
-			$('#toursModal').animate({ scrollTop: $('#space-tours').offset().top+$('#toursModal').scrollTop()}, 1000);
-		// });
+        // focus
+        // location.hash = "space-tours";
+        // $('#space-tours').animate({ scrollTop: 0 }, 'slow');
+
+        // $(".div-category-search").click(function(){
+        // console.log('asdasd');
+        // console.log($('#space-tours').offset().top);
+        $('#toursModal').animate({
+            scrollTop: $('#space-tours').offset().top + $('#toursModal').scrollTop()
+        }, 1000);
+        // });
 
 
-	}
+    }
 
 }
-function focucear(){
-	document.getElementById(`search_box_tours`).focus();
-	
+
+function focucear() {
+    document.getElementById(`search_box_tours`).focus();
+
 }
+
 function addTour(tourName, tourId) {
-	selectedTours.push({
-		name: tourName,
-		id: tourId,
-		date: null
-	});
-	let child = `
+    selectedTours.push({
+        name: tourName,
+        id: tourId,
+        date: null
+    });
+    let child = `
 			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div" id="detalles-tour-${tourId}">
 				<div class="col-md-8 list-tours-name col-sm-7 col-xs-12"> ${tourName}
 				</div>
@@ -166,135 +170,151 @@ function addTour(tourName, tourId) {
 				</div>
 			</div>
 		`;
-	$('#tours-screen').append(child);
-	$('.con_calendario input').datepicker({
-		'format': 'd-MM-yyyy',
-    	'autoclose': true,
-    	language: 'es',
+    $('#tours-screen').append(child);
+    $('.con_calendario input').datepicker({
+        'format': 'd-MM-yyyy',
+        'autoclose': true,
+        language: 'es',
         startDate: 'now'
-	});
-	$('#toursModal').modal('hide');
-	location.hash = '';
-	setTimeout(()=>{
-		$(`#tour-${tourId}-date`).focus();
-	},50);
+    });
+    $('#toursModal').modal('hide');
+    location.hash = '';
+    setTimeout(() => {
+        $(`#tour-${tourId}-date`).focus();
+    }, 50);
 }
 
 function removeTour(id) {
-	selectedTours = selectedTours.filter(tour => tour.id != id);
+    selectedTours = selectedTours.filter(tour => tour.id != id);
 
-	var parent = document.getElementById("tours-screen");
-	var child = document.getElementById(`detalles-tour-${id}`);
-	parent.removeChild(child);
+    var parent = document.getElementById("tours-screen");
+    var child = document.getElementById(`detalles-tour-${id}`);
+    parent.removeChild(child);
 }
 
 function cambiarFechaTour(self) {
-	selectedTours.forEach((tour) => {
-		if (tour.id == self.id.split('-')[1]) {
-			tour.date = self.value
-		}
-	});
+    selectedTours.forEach((tour) => {
+        if (tour.id == self.id.split('-')[1]) {
+            tour.date = self.value
+        }
+    });
 }
 
 /**********************************************************************************************/
 /****************************************  BUS TICKET  ****************************************/
 /**********************************************************************************************/
-function mostrarBusTickets(){
-	getStarts();
-	document.getElementById('div_busqueda').innerHTML = '';
-	document.getElementById('destino').innerHTML = '';
+function mostrarBusTickets() {
+    getStarts();
+    document.getElementById('div_busqueda').innerHTML = '';
+    document.getElementById('destino').innerHTML = '';
 }
+
 function getStarts() {
-	$.ajax({
-		url: 'http://incalake.com/reservar/buses.php',
-		data: { 'tabla': 'origen' },
-		type: 'POST',
-		dataType: 'Json',
-		success: function (res) {
-			$('#origen').html(res.html);
-		}
-	});
+    $.ajax({
+        url: 'http://incalake.com/reservar/buses.php',
+        data: {
+            'tabla': 'origen'
+        },
+        type: 'POST',
+        dataType: 'Json',
+        success: function(res) {
+            $('#origen').html(res.html);
+        }
+    });
 }
 
 function getEnds(origen) {
-	if (origen == 0) {
-		$('#destino').html('<option value="0">Ciudad de Destino</option>').attr('disabled', true);
-	}
-	else {
-		$.ajax({
-			url: 'http://incalake.com/reservar/buses.php',
-			data: { 'tabla': 'destino', 'origen': origen },
-			type: 'POST',
-			dataType: 'Json',
-			success: function (res) {
-				$('#destino').html(res.html).attr('disabled', false);
-			}
-		});
-	}
+    if (origen == 0) {
+        $('#destino').html('<option value="0">Ciudad de Destino</option>').attr('disabled', true);
+    } else {
+        $.ajax({
+            url: 'http://incalake.com/reservar/buses.php',
+            data: {
+                'tabla': 'destino',
+                'origen': origen
+            },
+            type: 'POST',
+            dataType: 'Json',
+            success: function(res) {
+                $('#destino').html(res.html).attr('disabled', false);
+            }
+        });
+    }
 }
 
 function buscar_bus() {
-	console.log($('.select'));
+    console.log($('.select'));
 
-	$.ajax({
-		url: 'http://incalake.com/reservar/buses.php',
-		data: { 'tabla': 'busqueda', 'origen': $('#origen').val(), 'destino': $('#destino').val() },
-		type: 'POST',
-		dataType: 'json',
-		success: function (res) {
-			console.log(res);
-			$('#div_busqueda')
-			.html('')
-			.append(`
+    $.ajax({
+        url: 'http://incalake.com/reservar/buses.php',
+        data: {
+            'tabla': 'busqueda',
+            'origen': $('#origen').val(),
+            'destino': $('#destino').val()
+        },
+        type: 'POST',
+        dataType: 'json',
+        success: function(res) {
+            console.log(res);
+            $('#div_busqueda')
+                .html('')
+                .append(`
 				<div>>_</div>
 				<h3>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </h3>
 			`).append(res.html);
 
-			$('.select').click(function () {
-				let idTicket = $(this).data('id');
-				let origen;
-				let destino;
-				let hora;
-				let tipobus;
-				let nombrebus;
-				let costo;
-				$(this).children('td').each(function (index) {
-					switch (index) {
-						case 0: ;
-							break;
-						case 1: origen = $(this).text();
-							break;
-						case 2: destino = $(this).text();
-							break;
-						case 3: hora = $(this).text();
-							break;
-						case 4: nombrebus = $(this).text();
-							break;
-						case 5: tipobus = $(this).text();
-							break;
-						case 6: costo = $(this).text();
-							break;
-					}
-				});
-				addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo);
-			});
+            $('.select').click(function() {
+                let idTicket = $(this).data('id');
+                let origen;
+                let destino;
+                let hora;
+                let tipobus;
+                let nombrebus;
+                let costo;
+                $(this).children('td').each(function(index) {
+                    switch (index) {
+                        case 0:
+                            ;
+                            break;
+                        case 1:
+                            origen = $(this).text();
+                            break;
+                        case 2:
+                            destino = $(this).text();
+                            break;
+                        case 3:
+                            hora = $(this).text();
+                            break;
+                        case 4:
+                            nombrebus = $(this).text();
+                            break;
+                        case 5:
+                            tipobus = $(this).text();
+                            break;
+                        case 6:
+                            costo = $(this).text();
+                            break;
+                    }
+                });
+                addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo);
+            });
 
-		}
-	});
+        }
+    });
 };
 
 function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
-	selectedTickets.push({
-		id: idTicket,
-		origen: origen,
-		destino: destino,
-		hora: hora,
-		bus: tipobus,
-		nombrebus: nombrebus,
-		precio: costo,
-		date: null
-	});
-	let child = `
+    selectedTickets.push({
+        id: idTicket,
+        origen: origen,
+        destino: destino,
+        hora: hora,
+        bus: tipobus,
+        nombrebus: nombrebus,
+        precio: costo,
+        date: null
+    });
+    let child = `
 			<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${idTicket}">
 				<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${nombrebus} / ${tipobus} / ${costo}
 				</div>
@@ -312,33 +332,33 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 				</div>
 			</div>
 		`;
-	$('#tickets-screen').append(child);
-	$('.con_calendario input').datepicker({
-		'format': 'd-MM-yyyy',
-    	'autoclose': true,
-		language: 'es',
+    $('#tickets-screen').append(child);
+    $('.con_calendario input').datepicker({
+        'format': 'd-MM-yyyy',
+        'autoclose': true,
+        language: 'es',
         startDate: 'now'
-	});
-	$('#ticketsModal').modal('hide');
-	setTimeout(()=>{
-		$(`#ticket-${idTicket}-date`).focus();
-	},50);
+    });
+    $('#ticketsModal').modal('hide');
+    setTimeout(() => {
+        $(`#ticket-${idTicket}-date`).focus();
+    }, 50);
 }
 
 function removeTicket(id) {
-	selectedTickets = selectedTickets.filter(ticket => ticket.id != id);
+    selectedTickets = selectedTickets.filter(ticket => ticket.id != id);
 
-	var parent = document.getElementById("tickets-screen");
-	var child = document.getElementById(`detalles-ticket-${id}`);
-	parent.removeChild(child);
+    var parent = document.getElementById("tickets-screen");
+    var child = document.getElementById(`detalles-ticket-${id}`);
+    parent.removeChild(child);
 }
 
 function cambiarFechaTicket(self) {
-	selectedTickets.forEach((ticket) => {
-		if (ticket.id == self.id.split('-')[1]) {
-			ticket.date = self.value
-		}
-	});
+    selectedTickets.forEach((ticket) => {
+        if (ticket.id == self.id.split('-')[1]) {
+            ticket.date = self.value
+        }
+    });
 }
 
 /**********************************************************************************************/
@@ -346,45 +366,44 @@ function cambiarFechaTicket(self) {
 /**********************************************************************************************/
 
 function liveSearch(text) {
-	//console.log('{',text,'}');
-	let text2 = '';
-	text.trim().split(' ').filter(e => e != '').forEach(t => {
-		text2 = text2 + t + ' ';
-	})
-	text2 = text2.trim();
-	//console.log('{',text2,'}');
-	text = text2;
+    //console.log('{',text,'}');
+    let text2 = '';
+    text.trim().split(' ').filter(e => e != '').forEach(t => {
+        text2 = text2 + t + ' ';
+    })
+    text2 = text2.trim();
+    //console.log('{',text2,'}');
+    text = text2;
 
-	if (text.length < 1) {
-		mostrarDestinos();
-		location.hash = "";
-		return;
-	}
-	else {
-		text = text.toLowerCase();
-		var content = `
+    if (text.length < 1) {
+        mostrarDestinos();
+        location.hash = "";
+        return;
+    } else {
+        text = text.toLowerCase();
+        var content = `
 			<div class="">
 				<h4>Resultados</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
 
-		let coincidences = destinos.map((destino) => {
-			return {
-				name: destino.name,
-				tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
-			};
-		})
-			.filter((destino) => destino.tours.length > 0);
-		coincidences
-			.forEach((destino, index) => {
-				content = content + `
+        let coincidences = destinos.map((destino) => {
+                return {
+                    name: destino.name,
+                    tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
+                };
+            })
+            .filter((destino) => destino.tours.length > 0);
+        coincidences
+            .forEach((destino, index) => {
+                content = content + `
 				<div class="col-md-12 div-title-search ">
 				Tours de ${destino.name}
 				</div>
 			`;
-				destino.tours.forEach((tour) => {
-					content = content + `
+                destino.tours.forEach((tour) => {
+                    content = content + `
 					<div class="col-md-12 center-div">
 						<div class="col-md-10">
 							<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
@@ -397,33 +416,34 @@ function liveSearch(text) {
 
 					</div>
 				`;
-				});
-			});
+                });
+            });
 
-		// Si no hay resultados
-		if (coincidences.length == 0) {
-			content = content + `
+        // Si no hay resultados
+        if (coincidences.length == 0) {
+            content = content + `
 				Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
 				<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
 			`;
-		}
+        }
 
 
-		content = content + `
+        content = content + `
 			</div>
 		`;
 
-		document.getElementById('destinosCards').innerHTML = content;
-	}
+        document.getElementById('destinosCards').innerHTML = content;
+    }
 }
 
 /**********************************************************************************************/
 /************************************  Tour Personalizado  ************************************/
 /**********************************************************************************************/
 var cont_custom_tours = 10000;
+
 function addTourPersonalizado() {
-	cont_custom_tours = cont_custom_tours + 1;
-	let content = `
+    cont_custom_tours = cont_custom_tours + 1;
+    let content = `
 		<div>
 			<label for="detalles_p">Escribenos los detalles del tour que desea realizar</label>
 			<textarea class="form-control" id="detalles_p" placeholder="aqui" rows="5"></textarea>
@@ -431,17 +451,18 @@ function addTourPersonalizado() {
 			<button class="btn btn-primary" onclick="addTourCustomTour(${cont_custom_tours})">Agregar</button>
 		</div>
 	`;
-	document.getElementById('destinosCards').innerHTML = content;
-	document.getElementById('detalles_p').focus();
-	location.hash = "";
+    document.getElementById('destinosCards').innerHTML = content;
+    document.getElementById('detalles_p').focus();
+    location.hash = "";
 }
+
 function addTourCustomTour(tourId) {
-	selectedTours.push({
-		name: document.getElementById('detalles_p').value,
-		id: tourId,
-		date: null
-	});
-	let child = `
+    selectedTours.push({
+        name: document.getElementById('detalles_p').value,
+        id: tourId,
+        date: null
+    });
+    let child = `
 			<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-${tourId}">
 				<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${document.getElementById('detalles_p').value}
 				</div>
@@ -457,18 +478,18 @@ function addTourCustomTour(tourId) {
 				</div>
 			</div>
 		`;
-	$('#tours-screen').append(child);
-	$('.con_calendario input').datepicker({
-		'format': 'd-MM-yyyy',
-    	'autoclose': true,
-		language: 'es',
+    $('#tours-screen').append(child);
+    $('.con_calendario input').datepicker({
+        'format': 'd-MM-yyyy',
+        'autoclose': true,
+        language: 'es',
         startDate: 'now'
-	});
-	$('#toursModal').modal('hide');
-	location.hash = '';
-	setTimeout(()=>{
-		$(`#tour-${tourId}-date`).focus();
-	},50);
+    });
+    $('#toursModal').modal('hide');
+    location.hash = '';
+    setTimeout(() => {
+        $(`#tour-${tourId}-date`).focus();
+    }, 50);
 }
 /**********************************************************************************************/
 /***************************  Debe ejecutarse al cargar la pagina  ****************************/
@@ -483,42 +504,42 @@ function getParameterByName(name) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-	$('[data-toggle="tooltip"]').tooltip();
-	$('.wizard .nav-tabs > li a[title]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.wizard .nav-tabs > li a[title]').tooltip();
 
-	//Wizard
-	$('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-		var $target = $(e.target);
-		if ($target.parent().hasClass('disabled')) {
-			return false;
-		}
-	});
+    //Wizard
+    $('.wizard a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        var $target = $(e.target);
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
 
-	$(".wizard .prev-step").click(function (e) {
-		var $active = $('.wizard .nav-tabs li.active');
-		prevTab($active);
-	});
+    $(".wizard .prev-step").click(function(e) {
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+    });
 
-	getStarts();
+    getStarts();
 
-	// Leer la url y ver si esta presente un id de tour
-	if(getParameterByName('t')){
-		// hacer el ajax y pedir el nombre del tour
-		$.ajax({
-			type: 'POST',
-			url: 'http://incalake.com/control/paqueteturistico/pt',
-			dataType: 'json',
-			data: 'id='+getParameterByName('t')+'&idioma=en',
-			success: function (res) {
-				if(res.length>0){
-					selectedTours.push({
-						name: res[0].nombre,
-						id: 666,
-						date: null
-					});
-					let child = `
+    // Leer la url y ver si esta presente un id de tour
+    if (getParameterByName('t')) {
+        // hacer el ajax y pedir el nombre del tour
+        $.ajax({
+            type: 'POST',
+            url: 'http://incalake.com/control/paqueteturistico/pt',
+            dataType: 'json',
+            data: 'id=' + getParameterByName('t') + '&idioma=en',
+            success: function(res) {
+                if (res.length > 0) {
+                    selectedTours.push({
+                        name: res[0].nombre,
+                        id: 666,
+                        date: null
+                    });
+                    let child = `
 							<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-666">
 								<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${res[0].nombre}
 								</div>
@@ -534,46 +555,46 @@ $(document).ready(function () {
 								</div>
 							</div>
 						`;
-					$('#tours-screen').append(child);
-					$('.con_calendario input').datepicker({
-						'format': 'd-MM-yyyy',
-						'autoclose': true,
-						language: 'es',
-						startDate: 'now'
-					});
-					$('#toursModal').modal('hide');
-					location.hash = '';
-					setTimeout(()=>{
-						$(`#tour-666-date`).focus();
-					},50);		
-				}
-			},
-			error: function(agg){
-				
-			}
-		});
-	}
-	if(getParameterByName('b')){
-		// hacer el ajax y pedir el nombre del tour
-		$.ajax({
-			type: 'POST',
-			url: 'http://incalake.com/reservar/bus.php',
-			dataType: 'json',
-			data: 'bus='+getParameterByName('b')+'&idioma=es',
-			success: function (res) {
-				console.log(res);
-				if(res){
-					selectedTickets.push({
-						id: res.bus_id,
-						origen: res.origen,
-						destino: res.destino,
-						hora: res.hora,
-						bus: res.empresa,
-						nombrebus: res.servicio,
-						precio: `$ ${res.precio}`,
-						date: null
-					});
-					let child = `
+                    $('#tours-screen').append(child);
+                    $('.con_calendario input').datepicker({
+                        'format': 'd-MM-yyyy',
+                        'autoclose': true,
+                        language: 'es',
+                        startDate: 'now'
+                    });
+                    $('#toursModal').modal('hide');
+                    location.hash = '';
+                    setTimeout(() => {
+                        $(`#tour-666-date`).focus();
+                    }, 50);
+                }
+            },
+            error: function(agg) {
+
+            }
+        });
+    }
+    if (getParameterByName('b')) {
+        // hacer el ajax y pedir el nombre del tour
+        $.ajax({
+            type: 'POST',
+            url: 'http://incalake.com/reservar/bus.php',
+            dataType: 'json',
+            data: 'bus=' + getParameterByName('b') + '&idioma=es',
+            success: function(res) {
+                console.log(res);
+                if (res) {
+                    selectedTickets.push({
+                        id: res.bus_id,
+                        origen: res.origen,
+                        destino: res.destino,
+                        hora: res.hora,
+                        bus: res.empresa,
+                        nombrebus: res.servicio,
+                        precio: `$ ${res.precio}`,
+                        date: null
+                    });
+                    let child = `
 							<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${res.bus_id}">
 								<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${res.servicio} / ${res.empresa} / $ ${res.precio}
 								</div>
@@ -591,154 +612,155 @@ $(document).ready(function () {
 								</div>
 							</div>
 						`;
-					$('#tickets-screen').append(child);
-					$('.con_calendario input').datepicker({
-						'format': 'd-MM-yyyy',
-						'autoclose': true,
-						language: 'es',
-						startDate: 'now'
-					});
-					$('#ticketsModal').modal('hide');
-					setTimeout(()=>{
-						$(`#ticket-${res.bus_id}-date`).focus();
-					},50);
-				}
-			},
-			error: function(agg){
-				
-			}
-		});
-	}
+                    $('#tickets-screen').append(child);
+                    $('.con_calendario input').datepicker({
+                        'format': 'd-MM-yyyy',
+                        'autoclose': true,
+                        language: 'es',
+                        startDate: 'now'
+                    });
+                    $('#ticketsModal').modal('hide');
+                    setTimeout(() => {
+                        $(`#ticket-${res.bus_id}-date`).focus();
+                    }, 50);
+                }
+            },
+            error: function(agg) {
+
+            }
+        });
+    }
 });
 /**********************************************************************************************/
 /*******************************  Control de flujo en los pasos  ******************************/
 /**********************************************************************************************/
 function checkToursAndBuses() {
-	// Verificar que haya al menos 1 tour o 1 bus
+    // Verificar que haya al menos 1 tour o 1 bus
 
-	// Limpiar cualquier alerta anterior
-	document.getElementById('error-msg1').setAttribute('style', 'display: none');
-	document.getElementById('error-msg2').setAttribute('style', 'display: none');
+    // Limpiar cualquier alerta anterior
+    document.getElementById('error-msg1').setAttribute('style', 'display: none');
+    document.getElementById('error-msg2').setAttribute('style', 'display: none');
 
-	// Veficar servicios requeridos
-	if (selectedTours.length == 0 && selectedTickets.length == 0) {
-		document.getElementById('error-msg1').setAttribute('style', 'display: block');
-		return;
-	}
-	// Veficar fechas de tours y tickets
-	for(let tour of selectedTours){
-		if (!tour.date) {
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			document.getElementById(`tour-${tour.id}-date`).focus();
-			return;
-		}
-	}
-	for(let ticket of selectedTickets){
-		if (!ticket.date) {
-			document.getElementById('error-msg2').setAttribute('style', 'display: block');
-			document.getElementById(`ticket-${ticket.id}-date`).focus();
-			return;
-		}
-	}
+    // Veficar servicios requeridos
+    if (selectedTours.length == 0 && selectedTickets.length == 0) {
+        document.getElementById('error-msg1').setAttribute('style', 'display: block');
+        return;
+    }
+    // Veficar fechas de tours y tickets
+    for (let tour of selectedTours) {
+        if (!tour.date) {
+            document.getElementById('error-msg2').setAttribute('style', 'display: block');
+            document.getElementById(`tour-${tour.id}-date`).focus();
+            return;
+        }
+    }
+    for (let ticket of selectedTickets) {
+        if (!ticket.date) {
+            document.getElementById('error-msg2').setAttribute('style', 'display: block');
+            document.getElementById(`ticket-${ticket.id}-date`).focus();
+            return;
+        }
+    }
 
-	var $active = $('.wizard .nav-tabs li.active');
-	
-	$active.next().removeClass('disabled');
-	nextTab($active);
-	$active.addClass('tab-complete');
+    var $active = $('.wizard .nav-tabs li.active');
 
-	document.getElementById('name').focus();
+    $active.next().removeClass('disabled');
+    nextTab($active);
+    $active.addClass('tab-complete');
+
+    document.getElementById('name').focus();
 }
 
 function checkPersonalInformation() {
-	// Verificar que los datos sean correctos
-	document.getElementById('div_for_name').setAttribute('class', 'form-group');
-	document.getElementById('div_for_nationality').setAttribute('class', 'form-group');
-	document.getElementById('div_for_email').setAttribute('class', 'form-group');
-	document.getElementById('div_for_numberof').setAttribute('class', 'form-group');
-	document.getElementById('error-msg3').setAttribute('style', 'display: none');
-	// Veficar informacion personal
-	if (document.getElementById('name').value.length < 1) {
-		document.getElementById('name').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		document.getElementById('div_for_name').setAttribute('class', 'form-group has-error');
-		return;
-	}
-	if (document.getElementById('nationality').value.length < 1) {
-		document.getElementById('nationality').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		document.getElementById('div_for_nationality').setAttribute('class', 'form-group has-error');
-		return;
-	}
-	if (document.getElementById('email').value.length < 1) {
-		document.getElementById('email').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		document.getElementById('div_for_email').setAttribute('class', 'form-group has-error');
-		return;
-	}
-	if (document.getElementById('numberof').value.length < 1) {
-		document.getElementById('numberof').focus();
-		document.getElementById('error-msg3').setAttribute('style', 'display: block');
-		document.getElementById('div_for_numberof').setAttribute('class', 'form-group has-error');
-		return;
-	}
+    // Verificar que los datos sean correctos
+    document.getElementById('div_for_name').setAttribute('class', 'form-group');
+    document.getElementById('div_for_nationality').setAttribute('class', 'form-group');
+    document.getElementById('div_for_email').setAttribute('class', 'form-group');
+    document.getElementById('div_for_numberof').setAttribute('class', 'form-group');
+    document.getElementById('error-msg3').setAttribute('style', 'display: none');
+    // Veficar informacion personal
+    if (document.getElementById('name').value.length < 1) {
+        document.getElementById('name').focus();
+        document.getElementById('error-msg3').setAttribute('style', 'display: block');
+        document.getElementById('div_for_name').setAttribute('class', 'form-group has-error');
+        return;
+    }
+    if (document.getElementById('nationality').value.length < 1) {
+        document.getElementById('nationality').focus();
+        document.getElementById('error-msg3').setAttribute('style', 'display: block');
+        document.getElementById('div_for_nationality').setAttribute('class', 'form-group has-error');
+        return;
+    }
+    if (document.getElementById('email').value.length < 1) {
+        document.getElementById('email').focus();
+        document.getElementById('error-msg3').setAttribute('style', 'display: block');
+        document.getElementById('div_for_email').setAttribute('class', 'form-group has-error');
+        return;
+    }
+    if (document.getElementById('numberof').value.length < 1) {
+        document.getElementById('numberof').focus();
+        document.getElementById('error-msg3').setAttribute('style', 'display: block');
+        document.getElementById('div_for_numberof').setAttribute('class', 'form-group has-error');
+        return;
+    }
 
-	var data = {
-		nombres: document.getElementById('name').value,
-		pais: document.getElementById('nationality').value,
-		npax: document.getElementById('numberof').value,
-		celular: document.getElementById('cellphone').value,
-		hotel: document.getElementById('place').value,
-		detalles: document.getElementById('extra').value,
-		email: document.getElementById('email').value,
-		tours: selectedTours,
-		buses: selectedTickets,
-	}
+    var data = {
+        nombres: document.getElementById('name').value,
+        pais: document.getElementById('nationality').value,
+        npax: document.getElementById('numberof').value,
+        celular: document.getElementById('cellphone').value,
+        hotel: document.getElementById('place').value,
+        detalles: document.getElementById('extra').value,
+        email: document.getElementById('email').value,
+        tours: selectedTours,
+        buses: selectedTickets,
+    }
 
-	console.log(data);
+    console.log(data);
 
-	document.getElementById('div-loader').setAttribute('style', 'display:block');
+    document.getElementById('div-loader').setAttribute('style', 'display:block');
 
-	$.ajax({
-		type: 'POST',
-		url: 'http://incalake.com/reservar/email/reservar-cms.php',
-		dataType: 'json',
-		data: data,
-		success: function (res) {
-			console.log(res);
-			// Leendo respuesta del servidor
-			if(res.state=="success"){
-				document.getElementById('div-loader').setAttribute('style', 'display:none');
-				document.getElementById('respuesta').innerHTML = res.msg;
-				var $active = $('.wizard .nav-tabs li.active');
-				$active.addClass('tab-complete');
-				$active.next().removeClass('disabled').addClass('tab-complete');
-				nextTab($active);
-				$active.addClass('disabled');
-				$active.prev().addClass('disabled');
-				$(".nueva_reserva").click(function (e) {
-					document.location.reload(); 
-				});
-			}else if(res.state=="error"){
-				document.getElementById('div-loader').setAttribute('style', 'display:none');
-				alert(`Ocurrio un error, ${res.msg}`);	
-			}else{
-				document.getElementById('div-loader').setAttribute('style', 'display:none');
-				alert('Ocurrio un error Inesperado');
-			}
-			
-		},
-		error: function(agg){
-			console.log('error=>',agg);
-			document.getElementById('div-loader').setAttribute('style', 'display:none');
-			alert('Ocurrio un error, Verifique su conexion a Internet');
-		}
-	});
+    $.ajax({
+        type: 'POST',
+        url: 'http://incalake.com/reservar/email/reservar-cms.php',
+        dataType: 'json',
+        data: data,
+        success: function(res) {
+            console.log(res);
+            // Leendo respuesta del servidor
+            if (res.state == "success") {
+                document.getElementById('div-loader').setAttribute('style', 'display:none');
+                document.getElementById('respuesta').innerHTML = res.msg;
+                var $active = $('.wizard .nav-tabs li.active');
+                $active.addClass('tab-complete');
+                $active.next().removeClass('disabled').addClass('tab-complete');
+                nextTab($active);
+                $active.addClass('disabled');
+                $active.prev().addClass('disabled');
+                $(".nueva_reserva").click(function(e) {
+                    document.location.reload();
+                });
+            } else if (res.state == "error") {
+                document.getElementById('div-loader').setAttribute('style', 'display:none');
+                alert(`Ocurrio un error, ${res.msg}`);
+            } else {
+                document.getElementById('div-loader').setAttribute('style', 'display:none');
+                alert('Ocurrio un error Inesperado');
+            }
+
+        },
+        error: function(agg) {
+            console.log('error=>', agg);
+            document.getElementById('div-loader').setAttribute('style', 'display:none');
+            alert('Ocurrio un error, Verifique su conexion a Internet');
+        }
+    });
 }
 
 function nextTab(elem) {
-	$(elem).next().find('a[data-toggle="tab"]').click();
+    $(elem).next().find('a[data-toggle="tab"]').click();
 }
+
 function prevTab(elem) {
-	$(elem).prev().find('a[data-toggle="tab"]').click();
+    $(elem).prev().find('a[data-toggle="tab"]').click();
 }
