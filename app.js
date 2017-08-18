@@ -501,54 +501,111 @@ $(document).ready(function () {
 	getStarts();
 
 	// Leer la url y ver si esta presente un id de tour
-	if(getParameterByName('tour')){
+	if(getParameterByName('t')){
 		// hacer el ajax y pedir el nombre del tour
 		$.ajax({
 			type: 'POST',
 			url: 'http://incalake.com/control/paqueteturistico/pt',
 			dataType: 'json',
-			data: 'id='+getParameterByName('tour')+'&idioma=en',
+			data: 'id='+getParameterByName('t')+'&idioma=en',
 			success: function (res) {
-				selectedTours.push({
-					name: res[0].nombre,
-					id: 666,
-					date: null
-				});
-				let child = `
-						<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-666">
-							<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${res[0].nombre}
-							</div>
-							<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
-								<div class="input-group con_calendario">
-						<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-						<input class="form-control" id="tour-666-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
-					</div>
-							</div>
-							<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
-								<span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(666)">
-								</span>
-							</div>
+				if(res.length>0){
+					selectedTours.push({
+						name: res[0].nombre,
+						id: 666,
+						date: null
+					});
+					let child = `
+							<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-666">
+								<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${res[0].nombre}
+								</div>
+								<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
+									<div class="input-group con_calendario">
+							<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+							<input class="form-control" id="tour-666-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
 						</div>
-					`;
-				$('#tours-screen').append(child);
-				$('.con_calendario input').datepicker({
-					'format': 'd-MM-yyyy',
-					'autoclose': true,
-					language: 'es',
-					startDate: 'now'
-				});
-				$('#toursModal').modal('hide');
-				location.hash = '';
-				setTimeout(()=>{
-					$(`#tour-666-date`).focus();
-				},50);	
+								</div>
+								<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
+									<span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(666)">
+									</span>
+								</div>
+							</div>
+						`;
+					$('#tours-screen').append(child);
+					$('.con_calendario input').datepicker({
+						'format': 'd-MM-yyyy',
+						'autoclose': true,
+						language: 'es',
+						startDate: 'now'
+					});
+					$('#toursModal').modal('hide');
+					location.hash = '';
+					setTimeout(()=>{
+						$(`#tour-666-date`).focus();
+					},50);		
+				}
 			},
 			error: function(agg){
 				
 			}
 		});
 	}
-
+	if(getParameterByName('b')){
+		// hacer el ajax y pedir el nombre del tour
+		$.ajax({
+			type: 'POST',
+			url: 'http://incalake.com/reservar/bus.php',
+			dataType: 'json',
+			data: 'bus='+getParameterByName('b'),
+			success: function (res) {
+				console.log(res);
+				if(res){
+					selectedTickets.push({
+						id: res.bus_id,
+						origen: res.origen,
+						destino: res.destino,
+						hora: res.hora,
+						bus: res.empresa,
+						nombrebus: res.servicio,
+						precio: `$ ${res.bus_precio}`,
+						date: null
+					});
+					let child = `
+							<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-${res.bus_id}">
+								<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ${res.servicio} / ${res.empresa} / $ ${res.bus_precio}
+								</div>
+								<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ${res.origen} - ${res.destino}
+								</div>
+								<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
+									<div class="input-group con_calendario">
+										<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+										<input class="form-control" id="ticket-${res.bus_id}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)"/>
+									</div>					
+								</div>
+								<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">
+									<span class="btn btn-default btn-sm fa fa-close" onclick="removeTicket(${res.bus_id})">
+									</span>
+								</div>
+							</div>
+						`;
+					$('#tickets-screen').append(child);
+					$('.con_calendario input').datepicker({
+						'format': 'd-MM-yyyy',
+						'autoclose': true,
+						language: 'es',
+						startDate: 'now'
+					});
+					$('#ticketsModal').modal('hide');
+					setTimeout(()=>{
+						$(`#ticket-${res.bus_id}-date`).focus();
+					},50);
+				}
+			},
+			error: function(agg){
+				
+			}
+		});
+	}
 });
 /**********************************************************************************************/
 /*******************************  Control de flujo en los pasos  ******************************/
