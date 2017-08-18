@@ -503,8 +503,9 @@ $(document).ready(function () {
 			type: 'POST',
 			url: 'http://incalake.com/control/paqueteturistico/pt',
 			dataType: 'json',
-			data: 'id='+getParameterByName('tour')+'&idioma=en',
+			data: 'id='+getParameterByName('t')+'&idioma=en',
 			success: function (res) {
+				console.log(res);
 				selectedTours.push({
 					name: res[0].nombre,
 					id: 666,
