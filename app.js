@@ -470,6 +470,16 @@ function addTourCustomTour(tourId) {
 /**********************************************************************************************/
 /***************************  Debe ejecutarse al cargar la pagina  ****************************/
 /**********************************************************************************************/
+function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 $(document).ready(function () {
 
 	$('[data-toggle="tooltip"]').tooltip();
@@ -489,6 +499,55 @@ $(document).ready(function () {
 	});
 
 	getStarts();
+
+	// Leer la url y ver si esta presente un id de tour
+	if(getParameterByName('tour')){
+		// hacer el ajax y pedir el nombre del tour
+		$.ajax({
+			type: 'POST',
+			url: 'http://incalake.com/control/paqueteturistico/pt',
+			dataType: 'json',
+			data: 'id='+getParameterByName('tour')+'&idioma=en',
+			success: function (res) {
+				selectedTours.push({
+					name: res[0].nombre,
+					id: 666,
+					date: null
+				});
+				let child = `
+						<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-666">
+							<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ${res[0].nombre}
+							</div>
+							<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
+								<div class="input-group con_calendario">
+						<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+						<input class="form-control" id="tour-666-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
+					</div>
+							</div>
+							<div class="col-md-1 text-center col-xs-1 v-align col-sm-1">
+								<span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(666)">
+								</span>
+							</div>
+						</div>
+					`;
+				$('#tours-screen').append(child);
+				$('.con_calendario input').datepicker({
+					'format': 'd-MM-yyyy',
+					'autoclose': true,
+					language: 'es',
+					startDate: 'now'
+				});
+				$('#toursModal').modal('hide');
+				location.hash = '';
+				setTimeout(()=>{
+					$(`#tour-666-date`).focus();
+				},50);	
+			},
+			error: function(agg){
+				
+			}
+		});
+	}
 
 });
 /**********************************************************************************************/
