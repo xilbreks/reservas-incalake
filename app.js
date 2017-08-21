@@ -12,9 +12,9 @@ var destinos = destinosDisponibles.map((destino) => {
     destino.options.forEach(grupo => {
         grupo.options.forEach(tour => {
             toursDestino.push({
-                name: tour.name ? tour.name.es : null,
+                name: tour.name ? tour.name.es : '',
                 desc: tour.subname ? tour.subname.es : '',
-                url: tour.url ? tour.url.es : null,
+                url: tour.url ? tour.url.es : '',
                 id: i
             });
             i = i + 1;
