@@ -268,7 +268,7 @@ function buscar_bus() {
             $('#div_busqueda')
                 .html('')
                 .append(`
-				<div>>_</div>
+				
 				<h3>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </h3>
 			`).append(res.html);
 
