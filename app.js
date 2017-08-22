@@ -111,8 +111,23 @@ function toogleTours(index) {
 		`;
         destinos[index].tours.forEach((tour) => {
             if (tour.name) {
-                content = content + `
-				<div class="col-md-12 center-div col-xs-12">
+                if (tour.id=='ofertas') {
+                	content = content + `
+					<div class="col-md-12 center-div col-xs-12">
+					<div class="col-md-10 col-xs-10">
+						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
+						<small>${tour.desc}</small> <br> 
+						<small><a href="${tour.url}" target="__blank">${lang_domain=='es'?'Explorar tour':'Explore tour'} >> </a></small> 
+					</div>
+					<div class="col-md-2 col-xs-2 v-align">
+						<div class="box"><a style="color: #f5f5f5;" target="_blank" href="${tour.url}"><span  >${lang_domain=='es'?'Ver':'View'}</span></a></div>
+					</div>
+
+				</div>
+				`;
+                }else{
+                	content = content + `
+					<div class="col-md-12 center-div col-xs-12">
 					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
@@ -123,7 +138,8 @@ function toogleTours(index) {
 					</div>
 
 				</div>
-			`;
+				`;
+                }
             }
 
         });
@@ -157,7 +173,9 @@ function focucear() {
     document.getElementById(`search_box_tours`).focus();
 
 }
-
+function focucearCalendario(id) {
+    document.getElementById(id).focus();
+}
 function addTour(tourName, tourId) {
     selectedTours.push({
         name: tourName,
@@ -170,7 +188,7 @@ function addTour(tourName, tourId) {
 				</div>
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group con_calendario">
-                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <span class="input-group-addon" onclick="focucearCalendario('tour-${tourId}-date')"><span class="fa fa-calendar"></span></span>
                         <input class="form-control" id="tour-${tourId}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)"">
                     </div>
 				</div>
@@ -333,7 +351,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
 				</div>
 				<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
 					<div class="input-group con_calendario">
-                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                        <span class="input-group-addon" onclick="focucearCalendario('ticket-${idTicket}-date')"><span class="fa fa-calendar"></span></span>
                         <input class="form-control" id="ticket-${idTicket}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)"/>
                     </div>					
 				</div>
@@ -483,7 +501,7 @@ function addTourCustomTour(tourId) {
 				</div>
 				<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 					<div class="input-group con_calendario">
-            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+            <span class="input-group-addon" onclick="focucearCalendario('tour-${tourId}-date')"><span class="fa fa-calendar"></span></span>
             <input class="form-control" id="tour-${tourId}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
           </div>
 				</div>
@@ -560,7 +578,7 @@ $(document).ready(function () {
 								</div>
 								<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">
 									<div class="input-group con_calendario">
-							<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+							<span class="input-group-addon" onclick="focucearCalendario('tour-666-date')"><span class="fa fa-calendar"></span></span>
 							<input class="form-control" id="tour-666-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">
 						</div>
 								</div>
@@ -616,7 +634,7 @@ $(document).ready(function () {
 								</div>
 								<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">
 									<div class="input-group con_calendario">
-										<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+										<span class="input-group-addon" onclick="focucearCalendario('ticket-${res.bus_id}-date')"><span class="fa fa-calendar"></span></span>
 										<input class="form-control" id="ticket-${res.bus_id}-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)"/>
 									</div>					
 								</div>
@@ -729,6 +747,7 @@ function checkPersonalInformation() {
         email: document.getElementById('email').value,
         tours: selectedTours,
         buses: selectedTickets,
+        idioma: lang_domain,
     }
 
     console.log(data);
@@ -765,7 +784,7 @@ function checkPersonalInformation() {
 
         },
         error: function (agg) {
-            console.log('error=>', agg);
+            console.log('error=>', agg.responseText);
             document.getElementById('div-loader').setAttribute('style', 'display:none');
             alert('Ocurrio un error, Verifique su conexion a Internet');
         }
