@@ -4,38 +4,8 @@
 /**********************************************************************************************/
 /************************************  Variables globales  ************************************/
 /**********************************************************************************************/
-
-var destinosDisponibles = menus.filter((menu) => menu.options);
-var i = 0;
-var lang_html=document.documentElement.lang;
-var lang_domain = lang_html.toLowerCase();
-console.log(lang_domain+lang_html);
-var destinos = destinosDisponibles.map((destino) => {
-    let toursDestino = [];
-    destino.options.forEach(grupo => {
-        grupo.options.forEach(tour => {
-
-        	if (tour.name[lang_domain]) {
-        		toursDestino.push({
-                name: tour.name ? tour.name[lang_domain] : '',
-                desc: tour.subname ? tour.subname[lang_domain] : '',
-                url: tour.url ? tour.url[lang_domain] : null,
-                id: i
-            	});
-            	i = i + 1;
-        	}
-            
-        });
-    });
-
-    return {
-        name: destino.name[lang_domain],
-        tours: toursDestino,
-        img: destino.thumbnail
-    }
-});
-console.log(destinos);
-
+var destinos = [];
+var lang_domain = document.documentElement.lang.toLowerCase();
 // Array de Tours y Bus tickets seleccionados
 var selectedTours = [];
 var selectedTickets = [];
@@ -51,48 +21,39 @@ var f = w < 768 ? 2 : 3;
 var destinoWasSelected = false;
 var destinoIndex = null;
 
+$.ajax({
+    url: '//incalake.com/reservar/paquetes.php',
+    data: 'idioma=es',
+    type: 'POST',
+    dataType: 'Json',
+    success: function (response) {
+        destinos = response.filter((destino)=>destino.paquetes.length).map((destino)=>{
+            return {
+                name: destino.nombre,
+                tours: destino.paquetes.map((tour)=>{
+                    return {
+                        name: tour.nombre?tour.nombre:'',
+                        desc: '',
+                        url: tour.url?tour.url:'',
+                        id: tour.id
+                    }
+                }),
+                img: destino.imagen
+            }
+        }); 
+    }
+});
+
 /**********************************************************************************************/
 /******************************************  TOURS  *******************************************/
 /**********************************************************************************************/
-getPaquetes('en');
-function getPaquetes(idioma){
-	$.ajax({
-        // la URL para la petición
-        url : '//incalake.com/reservar/paquetes.php',
-     
-        // la información a enviar
-        // (también es posible utilizar una cadena de datos)
-        data : { idioma : 'en' },
-     
-        // especifica si será una petición POST o GET
-        type : 'POST',
-     
-        // el tipo de información que se espera de respuesta
-        dataType : 'json',
-     
-        // código a ejecutar si la petición es satisfactoria;
-        // la respuesta es pasada como argumento a la función
-        success : function(json) {
-           console.log(json);
-           
-        },
-     
-        // código a ejecutar si la petición falla;
-        // son pasados como argumentos a la función
-        // el objeto de la petición en crudo y código de estatus de la petición
-        error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
-        },
-
-    });
-}
 function mostrarDestinos() {
     document.getElementById('search_box_tours').value = '';
 
     var html = "";
     destinos.forEach((destino, index) => {
-    	if (destino.name) {
-    		html = html + `
+        if (destino.name) {
+            html = html + `
     	<div class="col-xs-6 col-sm-4 div-category-search" id="destino-${index}">
 	    	<div class="img-thumbnail list-category-search">
 		        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
@@ -103,8 +64,8 @@ function mostrarDestinos() {
 	        </div>
       	</div>
 		`;
-    	}
-        
+        }
+
     });
 
     html = html + `
@@ -148,8 +109,8 @@ function toogleTours(index) {
 			<div class="col-md-12 togle-list-tours">
 		`;
         destinos[index].tours.forEach((tour) => {
-        	if (tour.name) {
-        		content = content + `
+            if (tour.name) {
+                content = content + `
 				<div class="col-md-12 center-div col-xs-12">
 					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
@@ -162,8 +123,8 @@ function toogleTours(index) {
 
 				</div>
 			`;
-        	}
-            
+            }
+
         });
         content = content + `
 			</div>
@@ -180,7 +141,7 @@ function toogleTours(index) {
         // console.log('asdasd');
         console.log($('#toursModal').scrollTop());
         console.log($('#space-tours').offset().top);
-        console.log($('#toursModal').scrollTop()+$('#space-tours').offset().top);
+        console.log($('#toursModal').scrollTop() + $('#space-tours').offset().top);
         $('#toursModal').animate({
             scrollTop: $('#space-tours').offset().top + $('#toursModal').scrollTop()
         }, 1000);
@@ -265,7 +226,7 @@ function getStarts() {
         },
         type: 'POST',
         dataType: 'Json',
-        success: function(res) {
+        success: function (res) {
             $('#origen').html(res.html);
         }
     });
@@ -283,7 +244,7 @@ function getEnds(origen) {
             },
             type: 'POST',
             dataType: 'Json',
-            success: function(res) {
+            success: function (res) {
                 $('#destino').html(res.html).attr('disabled', false);
             }
         });
@@ -302,7 +263,7 @@ function buscar_bus() {
         },
         type: 'POST',
         dataType: 'json',
-        success: function(res) {
+        success: function (res) {
             console.log(res);
             $('#div_busqueda')
                 .html('')
@@ -311,7 +272,7 @@ function buscar_bus() {
 				<h3>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </h3>
 			`).append(res.html);
 
-            $('.select').click(function() {
+            $('.select').click(function () {
                 let idTicket = $(this).data('id');
                 let origen;
                 let destino;
@@ -319,7 +280,7 @@ function buscar_bus() {
                 let tipobus;
                 let nombrebus;
                 let costo;
-                $(this).children('td').each(function(index) {
+                $(this).children('td').each(function (index) {
                     switch (index) {
                         case 0:
                             ;
@@ -352,7 +313,7 @@ function buscar_bus() {
 };
 
 function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
-	console.log(idTicket+'id');
+    console.log(idTicket + 'id');
     selectedTickets.push({
         id: idTicket,
         origen: origen,
@@ -403,7 +364,7 @@ function removeTicket(id) {
 }
 
 function cambiarFechaTicket(self) {
-	console.log(self);
+    console.log(self);
     selectedTickets.forEach((ticket) => {
         if (ticket.id == self.id.split('-')[1]) {
             ticket.date = self.value
@@ -439,14 +400,14 @@ function liveSearch(text) {
 		`;
 
         let coincidences = destinos.map((destino) => {
-        	console.log(text2);
-                return {
-                    name: destino.name,
-                    tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
-                    // tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
-                    // tours: destino.tours.filter(('puno'))
-                };
-            })
+            console.log(text2);
+            return {
+                name: destino.name,
+                tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
+                // tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
+                // tours: destino.tours.filter(('puno'))
+            };
+        })
             .filter((destino) => destino.tours.length > 0);
         coincidences
             .forEach((destino, index) => {
@@ -557,20 +518,20 @@ function getParameterByName(name) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
     $('.wizard .nav-tabs > li a[title]').tooltip();
 
     //Wizard
-    $('.wizard a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+    $('.wizard a[data-toggle="tab"]').on('show.bs.tab', function (e) {
         var $target = $(e.target);
         if ($target.parent().hasClass('disabled')) {
             return false;
         }
     });
 
-    $(".wizard .prev-step").click(function(e) {
+    $(".wizard .prev-step").click(function (e) {
         var $active = $('.wizard .nav-tabs li.active');
         prevTab($active);
     });
@@ -584,8 +545,8 @@ $(document).ready(function() {
             type: 'POST',
             url: 'http://incalake.com/control/paqueteturistico/pt',
             dataType: 'json',
-            data: 'id=' + getParameterByName('t') + '&idioma='+lang_domain,
-            success: function(res) {
+            data: 'id=' + getParameterByName('t') + '&idioma=' + lang_domain,
+            success: function (res) {
                 if (res.length > 0) {
                     selectedTours.push({
                         name: res[0].nombre,
@@ -622,7 +583,7 @@ $(document).ready(function() {
                     }, 50);
                 }
             },
-            error: function(agg) {
+            error: function (agg) {
 
             }
         });
@@ -633,8 +594,8 @@ $(document).ready(function() {
             type: 'POST',
             url: 'http://incalake.com/reservar/bus.php',
             dataType: 'json',
-            data: 'bus=' + getParameterByName('b') + '&idioma='+lang_domain,
-            success: function(res) {
+            data: 'bus=' + getParameterByName('b') + '&idioma=' + lang_domain,
+            success: function (res) {
                 if (res) {
                     selectedTickets.push({
                         id: res.bus_id,
@@ -677,7 +638,7 @@ $(document).ready(function() {
                     }, 50);
                 }
             },
-            error: function(agg) {
+            error: function (agg) {
 
             }
         });
@@ -700,7 +661,7 @@ function checkToursAndBuses() {
     }
     // Veficar fechas de tours y tickets
     for (let tour of selectedTours) {
-    	
+
         if (!tour.date) {
             document.getElementById('error-msg2').setAttribute('style', 'display: block');
             document.getElementById(`tour-${tour.id}-date`).focus();
@@ -778,7 +739,7 @@ function checkPersonalInformation() {
         url: 'http://incalake.com/reservar/email/reservar-cms.php',
         dataType: 'json',
         data: data,
-        success: function(res) {
+        success: function (res) {
             console.log(res);
             // Leendo respuesta del servidor
             if (res.state == "success") {
@@ -790,7 +751,7 @@ function checkPersonalInformation() {
                 nextTab($active);
                 $active.addClass('disabled');
                 $active.prev().addClass('disabled');
-                $(".nueva_reserva").click(function(e) {
+                $(".nueva_reserva").click(function (e) {
                     document.location.reload();
                 });
             } else if (res.state == "error") {
@@ -802,7 +763,7 @@ function checkPersonalInformation() {
             }
 
         },
-        error: function(agg) {
+        error: function (agg) {
             console.log('error=>', agg);
             document.getElementById('div-loader').setAttribute('style', 'display:none');
             alert('Ocurrio un error, Verifique su conexion a Internet');
