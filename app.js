@@ -1,28 +1,34 @@
 /**********************************************************************************************/
-/***************************    SCRIPT PARA LA PAGINA EN ESPAÑOL  *****************************/
+/***************************    SCRIPT PARA LA PAGINA EN ESPANIOL  *****************************/
 /**********************************************************************************************/
 /**********************************************************************************************/
 /************************************  Variables globales  ************************************/
 /**********************************************************************************************/
+
 var destinosDisponibles = menus.filter((menu) => menu.options);
 var i = 0;
-
+var lang_html=document.documentElement.lang;
+var lang_domain = lang_html.toLowerCase();
+console.log(lang_domain+lang_html);
 var destinos = destinosDisponibles.map((destino) => {
     let toursDestino = [];
     destino.options.forEach(grupo => {
         grupo.options.forEach(tour => {
-            toursDestino.push({
-                name: tour.name ? tour.name.es : null,
-                desc: tour.subname ? tour.subname.es : '',
-                url: tour.url ? tour.url.es : null,
+        	if (tour.name[lang_domain]) {
+        		toursDestino.push({
+                name: tour.name ? tour.name[lang_domain] : '',
+                desc: tour.subname ? tour.subname[lang_domain] : '',
+                url: tour.url ? tour.url[lang_domain] : null,
                 id: i
-            });
-            i = i + 1;
+            	});
+            	i = i + 1;
+        	}
+            
         });
     });
 
     return {
-        name: destino.name.es,
+        name: destino.name[lang_domain],
         tours: toursDestino,
         img: destino.thumbnail
     }
@@ -47,13 +53,45 @@ var destinoIndex = null;
 /**********************************************************************************************/
 /******************************************  TOURS  *******************************************/
 /**********************************************************************************************/
+getPaquetes('en');
+function getPaquetes(idioma){
+	$.ajax({
+        // la URL para la petición
+        url : '//incalake.com/reservar/paquetes.php',
+     
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data : { idioma : 'en' },
+     
+        // especifica si será una petición POST o GET
+        type : 'POST',
+     
+        // el tipo de información que se espera de respuesta
+        dataType : 'json',
+     
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success : function(json) {
+           console.log(json);
+           
+        },
+     
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error : function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+
+    });
+}
 function mostrarDestinos() {
     document.getElementById('search_box_tours').value = '';
 
     var html = "";
-
     destinos.forEach((destino, index) => {
-        html = html + `
+    	if (destino.name) {
+    		html = html + `
     	<div class="col-xs-6 col-sm-4 div-category-search" id="destino-${index}">
 	    	<div class="img-thumbnail list-category-search">
 		        <a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(${index})">
@@ -62,12 +100,14 @@ function mostrarDestinos() {
 		          <h4><span class="title-category-search">${destino.name}</span><span class="count-category-search label label-primary">${destino.tours.length}</span></h4>
 		        </a>
 	        </div>
-      </div>
+      	</div>
 		`;
+    	}
+        
     });
 
     html = html + `
-		<div id="space-tours" class="col-xs-12" >
+		<div id="space-tours" class="col-md-12 col-xs-12" >
 		</div>
 	`;
     location.hash = '';
@@ -96,16 +136,19 @@ function toogleTours(index) {
 
         var content = `
 			<div class="page-header">
-				<span style="float: left;">Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></span>
-				<span class="input-group" style="float: right;" onclick="focucear();">
-                          <input type="text" class="form-control"  placeholder="Buscar..." style="float:left;" id="search_box_tours">
+				<div class="container-fluid">
+					<span class="col-md-8">Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></span>
+					<span class="col-md-4 input-group" style="float: right;" onclick="focucear();">
+                          <input type="text" class="form-control"  placeholder="Buscar..." style="float:left;" id="focus_search_box_tours">
                           <span class="input-group-addon"><span class="fa fa-search"></span></span>
                         </span>
+                </div>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
         destinos[index].tours.forEach((tour) => {
-            content = content + `
+        	if (tour.name) {
+        		content = content + `
 				<div class="col-md-12 center-div col-xs-12">
 					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
@@ -118,6 +161,8 @@ function toogleTours(index) {
 
 				</div>
 			`;
+        	}
+            
         });
         content = content + `
 			</div>
@@ -132,7 +177,9 @@ function toogleTours(index) {
 
         // $(".div-category-search").click(function(){
         // console.log('asdasd');
-        // console.log($('#space-tours').offset().top);
+        console.log($('#toursModal').scrollTop());
+        console.log($('#space-tours').offset().top);
+        console.log($('#toursModal').scrollTop()+$('#space-tours').offset().top);
         $('#toursModal').animate({
             scrollTop: $('#space-tours').offset().top + $('#toursModal').scrollTop()
         }, 1000);
@@ -304,6 +351,7 @@ function buscar_bus() {
 };
 
 function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
+	console.log(idTicket+'id');
     selectedTickets.push({
         id: idTicket,
         origen: origen,
@@ -354,6 +402,7 @@ function removeTicket(id) {
 }
 
 function cambiarFechaTicket(self) {
+	console.log(self);
     selectedTickets.forEach((ticket) => {
         if (ticket.id == self.id.split('-')[1]) {
             ticket.date = self.value
@@ -389,9 +438,12 @@ function liveSearch(text) {
 		`;
 
         let coincidences = destinos.map((destino) => {
+        	console.log(text2);
                 return {
                     name: destino.name,
                     tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
+                    // tours: destino.tours.filter((tour) => tour.name.toLowerCase().indexOf(text) != -1)
+                    // tours: destino.tours.filter(('puno'))
                 };
             })
             .filter((destino) => destino.tours.length > 0);
@@ -531,7 +583,7 @@ $(document).ready(function() {
             type: 'POST',
             url: 'http://incalake.com/control/paqueteturistico/pt',
             dataType: 'json',
-            data: 'id=' + getParameterByName('t') + '&idioma=en',
+            data: 'id=' + getParameterByName('t') + '&idioma='+lang_domain,
             success: function(res) {
                 if (res.length > 0) {
                     selectedTours.push({
@@ -580,9 +632,8 @@ $(document).ready(function() {
             type: 'POST',
             url: 'http://incalake.com/reservar/bus.php',
             dataType: 'json',
-            data: 'bus=' + getParameterByName('b') + '&idioma=es',
+            data: 'bus=' + getParameterByName('b') + '&idioma='+lang_domain,
             success: function(res) {
-                console.log(res);
                 if (res) {
                     selectedTickets.push({
                         id: res.bus_id,
@@ -648,6 +699,7 @@ function checkToursAndBuses() {
     }
     // Veficar fechas de tours y tickets
     for (let tour of selectedTours) {
+    	
         if (!tour.date) {
             document.getElementById('error-msg2').setAttribute('style', 'display: block');
             document.getElementById(`tour-${tour.id}-date`).focus();
