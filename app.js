@@ -23,7 +23,7 @@ var destinoIndex = null;
 
 $.ajax({
     url: '//incalake.com/reservar/paquetes.php',
-    data: 'idioma=es',
+    data: 'idioma='+lang_domain,
     type: 'POST',
     dataType: 'Json',
     success: function (response) {
@@ -41,6 +41,7 @@ $.ajax({
                 img: destino.imagen
             }
         }); 
+console.log(destinos);
     }
 });
 
@@ -99,9 +100,9 @@ function toogleTours(index) {
         var content = `
 			<div class="page-header">
 				<div class="container-fluid">
-					<span class="col-md-8">Tour disponibles de <span class="title-result-category-tours">${destinos[index].name}</span></span>
+					<span class="col-md-8">${lang_domain=='es'?'Servicios disponibles de':'Services available from'} <span class="title-result-category-tours">${destinos[index].name}</span></span>
 					<span class="col-md-4 input-group" style="float: right;" onclick="focucear();">
-                          <input type="text" class="form-control"  placeholder="Buscar..." style="float:left;" id="focus_search_box_tours">
+                          <input type="text" class="form-control"  placeholder="${lang_domain=='es'?'Buscar...':'Search...'}" style="float:left;" id="focus_search_box_tours">
                           <span class="input-group-addon"><span class="fa fa-search"></span></span>
                         </span>
                 </div>
@@ -115,10 +116,10 @@ function toogleTours(index) {
 					<div class="col-md-10 col-xs-10">
 						<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 						<small>${tour.desc}</small> <br> 
-						<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
+						<small><a href="${tour.url}" target="__blank">${lang_domain=='es'?'Explorar tour':'Explore tour'} >> </a></small> 
 					</div>
 					<div class="col-md-2 col-xs-2 v-align">
-						<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >Selecionar</span></div>
+						<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >${lang_domain=='es'?'Selecionar':'Add'}</span></div>
 					</div>
 
 				</div>
@@ -183,7 +184,7 @@ function addTour(tourName, tourId) {
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
         'autoclose': true,
-        language: 'es',
+        language: lang_domain,
         startDate: 'now'
     });
     $('#toursModal').modal('hide');
@@ -234,7 +235,7 @@ function getStarts() {
 
 function getEnds(origen) {
     if (origen == 0) {
-        $('#destino').html('<option value="0">Ciudad de Destino</option>').attr('disabled', true);
+        $('#destino').html(`<option value="0">${lang_domain=='es'?'Ciudad de Destino':'Destination city'}</option>`).attr('disabled', true);
     } else {
         $.ajax({
             url: 'http://incalake.com/reservar/buses.php',
@@ -269,7 +270,7 @@ function buscar_bus() {
                 .html('')
                 .append(`
 				
-				<h3>Buses disponibles de <b>${$('#origen option:selected').html()}</b> hacia <b>${$('#destino option:selected').html()}</b> </h3>
+				<h3>${lang_domain=='es'?'Buses disponibles':'Available buses from'}  <b>${$('#origen option:selected').html()}</b> To <b>${$('#destino option:selected').html()}</b> </h3>
 			`).append(res.html);
 
             $('.select').click(function () {
@@ -346,7 +347,7 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
         'autoclose': true,
-        language: 'es',
+        language: lang_domain,
         startDate: 'now'
     });
     $('#ticketsModal').modal('hide');
@@ -394,7 +395,7 @@ function liveSearch(text) {
         text = text.toLowerCase();
         var content = `
 			<div class="">
-				<h4>Resultados</h4>
+				<h4>${lang_domain=='es'?'Resultados':'Results'}</h4>
 			</div>
 			<div class="col-md-12 togle-list-tours">
 		`;
@@ -413,7 +414,7 @@ function liveSearch(text) {
             .forEach((destino, index) => {
                 content = content + `
 				<div class="col-md-12 div-title-search ">
-				Tours de ${destino.name}
+				 ${destino.name}
 				</div>
 			`;
                 destino.tours.forEach((tour) => {
@@ -422,10 +423,10 @@ function liveSearch(text) {
 						<div class="col-md-10">
 							<span onclick="addTour(\'${tour.name}\',${tour.id})" style="cursor:pointer">${tour.name}</span> <br> 
 							<small>${tour.desc}</small> <br> 
-							<small><a href="${tour.url}" target="__blank">Explorar tour >> </a></small> 
+							<small><a href="${tour.url}" target="__blank">${lang_domain=='es'?'Explorar tour':'Explore tour'}  >> </a></small> 
 						</div>
 						<div class="col-md-2 v-align">
-							<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >Selecionar</span></div>
+							<div class="box"><span onclick="addTour(\'${tour.name}\',${tour.id})" >${lang_domain=='es'?'Seleccionar':'Select'}</span></div>
 						</div>
 
 					</div>
@@ -436,8 +437,8 @@ function liveSearch(text) {
         // Si no hay resultados
         if (coincidences.length == 0) {
             content = content + `
-				Lo sentimos, no pudimos encontrar su Tour. Si desea puedes tener un tour personalizado.<br>
-				<a class="btn btn-link" onclick="addTourPersonalizado()">Quiero un tour personalisado</a>
+				${lang_domain=='es'?'Lo sentimos, no pudimos encontrar tu Tour. Si lo desea, puede tener un tour personalizado':'Sorry, we could not find your Tour. If you want you can have a personalized tour'}.<br>
+				<a class="btn btn-link" onclick="addTourPersonalizado()">${lang_domain=='es'?'Quiero un tour personalizado':'I want a personalized tour'}</a>
 			`;
         }
 
@@ -459,10 +460,10 @@ function addTourPersonalizado() {
     cont_custom_tours = cont_custom_tours + 1;
     let content = `
 		<div>
-			<label for="detalles_p">Escribenos los detalles del tour que desea realizar</label>
-			<textarea class="form-control" id="detalles_p" placeholder="aqui" rows="5"></textarea>
+			<label for="detalles_p">${lang_domain=='es'?'Escríbenos los detalles del tour que quiere hacer':'Write us the details of the tour that you want to do'}</label>
+			<textarea class="form-control" id="detalles_p" placeholder="${lang_domain=='es'?'Escríbenos los detalles':'Write us the details '}" rows="5"></textarea>
 			<br>
-			<button class="btn btn-primary" onclick="addTourCustomTour(${cont_custom_tours})">Agregar</button>
+			<button class="btn btn-primary" onclick="addTourCustomTour(${cont_custom_tours})">${lang_domain=='es'?'Agregar':'Add'}</button>
 		</div>
 	`;
     document.getElementById('destinosCards').innerHTML = content;
@@ -496,7 +497,7 @@ function addTourCustomTour(tourId) {
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
         'autoclose': true,
-        language: 'es',
+        language: lang_domain,
         startDate: 'now'
     });
     $('#toursModal').modal('hide');
@@ -573,7 +574,7 @@ $(document).ready(function () {
                     $('.con_calendario input').datepicker({
                         'format': 'd-MM-yyyy',
                         'autoclose': true,
-                        language: 'es',
+                        language: lang_domain,
                         startDate: 'now'
                     });
                     $('#toursModal').modal('hide');
@@ -629,7 +630,7 @@ $(document).ready(function () {
                     $('.con_calendario input').datepicker({
                         'format': 'd-MM-yyyy',
                         'autoclose': true,
-                        language: 'es',
+                        language: lang_domain,
                         startDate: 'now'
                     });
                     $('#ticketsModal').modal('hide');
