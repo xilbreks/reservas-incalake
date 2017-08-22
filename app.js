@@ -14,6 +14,7 @@ var destinos = destinosDisponibles.map((destino) => {
     let toursDestino = [];
     destino.options.forEach(grupo => {
         grupo.options.forEach(tour => {
+
         	if (tour.name[lang_domain]) {
         		toursDestino.push({
                 name: tour.name ? tour.name[lang_domain] : '',
