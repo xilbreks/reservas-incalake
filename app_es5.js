@@ -42,10 +42,15 @@ function mostrarDestinos() {
     var html = "";
     destinos.forEach(function (destino, index) {
         if (destino.name) {
-            html = html + ("\n    \t<div class=\"col-xs-6 col-sm-4 div-category-search\" id=\"destino-" + index + "\">\n\t    \t<div class=\"img-thumbnail list-category-search\">\n\t\t        <a class=\"bootcards-summary-item img-thumbnail\" onclick=\"toogleTours(" + index + ")\">\n\t\t        \t<img class=\"img-category-search\" src=\"" + destino.img + "\" alt=\"\" >\n\t\t          <i class=\"fa fa-3x fa-suitcase\"></i>\n\t\t          <h4><span class=\"title-category-search\">" + destino.name + "</span><span class=\"count-category-search label label-primary\">" + destino.tours.length + "</span></h4>\n\t\t        </a>\n\t        </div>\n      \t</div>\n\t\t");
+            html = html + ('<div class="col-xs-6 col-sm-4 div-category-search" id="destino-' + index + '">'+
+                                '<div class="img-thumbnail list-category-search">'+
+                                    '<a class="bootcards-summary-item img-thumbnail" onclick="toogleTours(' + index + ')"> <img class="img-category-search" src="' + destino.img + '" alt=""> <i class="fa fa-3x fa-suitcase"></i>'+
+                                        '<h4><span class="title-category-search">' + destino.name + '</span><span class="count-category-search label label-primary">' + destino.tours.length + '</span></h4> </a>'+
+                                '</div>'+
+                            '</div>');
         }
     });
-    html = html + "\n\t\t<div id=\"space-tours\" class=\"col-md-12 col-xs-12\" >\n\t\t</div>\n\t";
+    html = html + "<div id=\"space-tours\" class=\"col-md-12 col-xs-12\" ></div>";
     location.hash = '';
     document.getElementById('destinosCards').innerHTML = html;
 }
@@ -66,18 +71,55 @@ function toogleTours(index) {
     else {
         destinoWasSelected = true;
         destinoIndex = index;
-        var content = "\n\t\t\t<div class=\"page-header\">\n\t\t\t\t<div class=\"container-fluid\">\n\t\t\t\t\t<span class=\"col-md-8\">" + (lang_domain == 'es' ? 'Servicios disponibles de' : 'Services available from') + " <span class=\"title-result-category-tours\">" + destinos[index].name + "</span></span>\n\t\t\t\t\t<span class=\"col-md-4 input-group\" style=\"float: right;\" onclick=\"focucear();\">\n                          <input type=\"text\" class=\"form-control\"  placeholder=\"" + (lang_domain == 'es' ? 'Buscar...' : 'Search...') + "\" style=\"float:left;\" id=\"focus_search_box_tours\">\n                          <span class=\"input-group-addon\"><span class=\"fa fa-search\"></span></span>\n                        </span>\n                </div>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-12 togle-list-tours\">\n\t\t";
+        var content = '<div class="page-header">'+
+                           '<div class="container-fluid">'+
+                              '<span class="col-md-8">' + (lang_domain == 'es' ? 'Servicios disponibles de' : 'Services available from') + ' '+
+                              '<span class="title-result-category-tours">' + destinos[index].name + '</span>'+
+                              '</span>'+
+                              '<span class="col-md-4 input-group" style="float: right;" onclick="focucear();">'+
+                              '<input type="text" class="form-control"  placeholder="' + (lang_domain == 'es' ? 'Buscar...' : 'Search...') + '" style="float:left;" id="focus_search_box_tours">'+
+                              '<span class="input-group-addon"><span class="fa fa-search"></span></span'+
+                              '</span>'+
+                           '</div>'+
+                        '</div>'+
+                        '<div class="col-md-12 togle-list-tours">';
         destinos[index].tours.forEach(function (tour) {
             if (tour.name) {
                 if (tour.id == 'ofertas') {
-                    content = content + ("\n\t\t\t\t\t<div class=\"col-md-12 center-div col-xs-12\">\n\t\t\t\t\t<div class=\"col-md-10 col-xs-10\">\n\t\t\t\t\t\t<span onclick=\"addTour('" + tour.name + "'," + tour.id + ")\" style=\"cursor:pointer\">" + tour.name + "</span> <br> \n\t\t\t\t\t\t<small>" + tour.desc + "</small> <br> \n\t\t\t\t\t\t<small><a href=\"" + tour.url + "\" target=\"__blank\">" + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + " >> </a></small> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-md-2 col-xs-2 v-align\">\n\t\t\t\t\t\t<div class=\"box\"><a style=\"color: #f5f5f5;\" target=\"_blank\" href=\"" + tour.url + "\"><span  >" + (lang_domain == 'es' ? 'Ver' : 'View') + "</span></a></div>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t\t");
+                    content = content + ('<div class="col-md-12 center-div col-xs-12">'+
+                                            '<div class="col-md-10 col-xs-10">'+
+                                                '<span onclick="addTour(\'' + tour.name + '\',' + tour.id + ')" style="cursor:pointer">' + tour.name + '</span>'+
+                                                '<br>'+
+                                                '<small>' + tour.desc + '</small>'+
+                                                '<br> <small><a href="' + tour.url + '" target="__blank">' + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + ' >> </a>'+
+                                           '</small>'+
+                                            '</div>'+
+                                            '<div class="col-md-2 col-xs-2 v-align">'+
+                                                '<div class="box">'+
+                                                    '<a style="color: #f5f5f5;" target="_blank" href="' + tour.url + '">'+
+                                                        '<span>' + (lang_domain == 'es' ? 'Ver' : 'View') + '</span>'+
+                                                    '</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>');
                 }
                 else {
-                    content = content + ("\n\t\t\t\t\t<div class=\"col-md-12 center-div col-xs-12\">\n\t\t\t\t\t<div class=\"col-md-10 col-xs-10\">\n\t\t\t\t\t\t<span onclick=\"addTour('" + tour.name + "'," + tour.id + ")\" style=\"cursor:pointer\">" + tour.name + "</span> <br> \n\t\t\t\t\t\t<small>" + tour.desc + "</small> <br> \n\t\t\t\t\t\t<small><a href=\"" + tour.url + "\" target=\"__blank\">" + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + " >> </a></small> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-md-2 col-xs-2 v-align\">\n\t\t\t\t\t\t<div class=\"box\"><span onclick=\"addTour('" + tour.name + "'," + tour.id + ")\" >" + (lang_domain == 'es' ? 'Selecionar' : 'Add') + "</span></div>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t\t");
+                    content = content + ('<div class="col-md-12 center-div col-xs-12">'+
+                                            '<div class="col-md-10 col-xs-10">'+
+                                                '<span onclick="addTour(\'' + tour.name + '\',' + tour.id + ')" style="cursor:pointer">' + tour.name + '</span>'+
+                                                '<br> <small>' + tour.desc + '</small>'+
+                                                '<br> <small><a href="' + tour.url + '" target="__blank">' + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + ' >> </a></small>'+
+                                            '</div>'+
+                                            '<div class="col-md-2 col-xs-2 v-align">'+
+                                                '<div class="box">'+
+                                                    '<span onclick="addTour(\'' + tour.name + '\',' + tour.id + ')">' + (lang_domain == 'es' ? 'Selecionar' : 'Add') + '</span>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>');
                 }
             }
         });
-        content = content + "\n\t\t\t</div>\n\t\t";
+        content = content + "</div>";
         document.getElementById("space-tours").innerHTML = content;
         $("#destino-" + destinoIndex).addClass('selecionado');
         // document.getElementById(`destino-${destinoIndex}`).setAttribute('class', 'col-xs-6 col-sm-4 selecionado');
@@ -107,7 +149,20 @@ function addTour(tourName, tourId) {
         id: tourId,
         date: null
     });
-    var child = "\n\t\t\t<div class=\"col-md-12 div-list-tours col-sm-12 col-xs-12 center-div\" id=\"detalles-tour-" + tourId + "\">\n\t\t\t\t<div class=\"col-md-8 list-tours-name col-sm-7 col-xs-12\"> " + tourName + "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4\">\n\t\t\t\t\t<div class=\"input-group con_calendario\">\n                        <span class=\"input-group-addon\" onclick=\"focucearCalendario('tour-" + tourId + "-date')\"><span class=\"fa fa-calendar\"></span></span>\n                        <input class=\"form-control\" id=\"tour-" + tourId + "-date\" readonly=\"true\" name=\"date\" type=\"text\" onchange=\"cambiarFechaTour(this)\"\">\n                    </div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-1 text-center col-xs-1 v-align col-sm-1\">\n\t\t\t\t\t<span class=\"btn btn-default btn-sm fa fa-close\" onclick=\"removeTour(" + tourId + ")\">\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
+    var child = '<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div" id="detalles-tour-' + tourId + '">'+
+                    '<div class="col-md-8 list-tours-name col-sm-7 col-xs-12"> ' + tourName + '</div>'+
+                    '<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">'+
+                        '<div class="input-group con_calendario">'+
+                            '<span class="input-group-addon" onclick="focucearCalendario(\'tour-' + tourId + '-date\')">'+
+                                '<span class="fa fa-calendar"></span>'+
+                            '</span>'+
+                            '<input class="form-control" id="tour-' + tourId + '-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)" ">'+
+                       '</div>'+
+                    '</div>'+
+                    '<div class="col-md-1 text-center col-xs-1 v-align col-sm-1 ">'+
+                       '<span class="btn btn-default btn-sm fa fa-close " onclick="removeTour(' + tourId + ') "></span>'+
+                    '</div>'+
+                '</div>';
     $('#tours-screen').append(child);
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
@@ -189,7 +244,7 @@ function buscar_bus() {
             console.log(res);
             $('#div_busqueda')
                 .html('')
-                .append("\n\t\t\t\t\n\t\t\t\t<h3>" + (lang_domain == 'es' ? 'Buses disponibles' : 'Available buses from') + "  <b>" + $('#origen option:selected').html() + "</b> To <b>" + $('#destino option:selected').html() + "</b> </h3>\n\t\t\t").append(res.html);
+                .append("<h3>" + (lang_domain == 'es' ? 'Buses disponibles' : 'Available buses from') + "  <b>" + $('#origen option:selected').html() + "</b> To <b>" + $('#destino option:selected').html() + "</b> </h3>").append(res.html);
             $('.select').click(function () {
                 var idTicket = $(this).data('id');
                 var origen;
@@ -241,7 +296,21 @@ function addTicket(idTicket, origen, destino, hora, tipobus, nombrebus, costo) {
         precio: costo,
         date: null
     });
-    var child = "\n\t\t\t<div class=\"col-md-12 div-list-buses col-sm-12 col-xs-12 center-div\" id=\"detalles-ticket-" + idTicket + "\">\n\t\t\t\t<div class=\"col-md-5 list-buses-name col-xs-12 col-sm-5\"> " + nombrebus + " / " + tipobus + " / " + costo + "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 \"> " + origen + " - " + destino + "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align\">\n\t\t\t\t\t<div class=\"input-group con_calendario\">\n                        <span class=\"input-group-addon\" onclick=\"focucearCalendario('ticket-" + idTicket + "-date')\"><span class=\"fa fa-calendar\"></span></span>\n                        <input class=\"form-control\" id=\"ticket-" + idTicket + "-date\" readonly=\"true\" name=\"date\" type=\"text\" onchange=\"cambiarFechaTicket(this)\"/>\n                    </div>\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-1 text-center col-xs-1 col-sm-1 v-align\">\n\t\t\t\t\t<span class=\"btn btn-default btn-sm fa fa-close\" onclick=\"removeTicket(" + idTicket + ")\">\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
+    var child = '<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-' + idTicket + '">'+
+                    '<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ' + nombrebus + ' / ' + tipobus + ' / ' + costo + '</div>'+
+                    '<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ' + origen + ' - ' + destino + '</div>'+
+                    '<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">'+
+                        '<div class="input-group con_calendario">'+
+                            '<span class="input-group-addon" onclick="focucearCalendario(\'ticket-' + idTicket + '-date\')">'+
+                                '<span class="fa fa-calendar"></span>'+
+                            '</span>'+
+                            '<input class="form-control" id="ticket-' + idTicket + '-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)" />'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align">'+
+                        '<span class="btn btn-default btn-sm fa fa-close" onclick="removeTicket(' + idTicket + ')"></span>'+
+                    '</div>'+
+                '</div>';
     $('#tickets-screen').append(child);
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
@@ -287,7 +356,7 @@ function liveSearch(text) {
     }
     else {
         text = text.toLowerCase();
-        var content = "\n\t\t\t<div class=\"\">\n\t\t\t\t<h4>" + (lang_domain == 'es' ? 'Resultados' : 'Results') + "</h4>\n\t\t\t</div>\n\t\t\t<div class=\"col-md-12 togle-list-tours\">\n\t\t";
+        var content = "<div class=\"\"><h4>" + (lang_domain == 'es' ? 'Resultados' : 'Results') + "</h4></div><div class=\"col-md-12 togle-list-tours\">";
         var coincidences = destinos.map(function (destino) {
             console.log(text2);
             return {
@@ -300,16 +369,25 @@ function liveSearch(text) {
             .filter(function (destino) { return destino.tours.length > 0; });
         coincidences
             .forEach(function (destino, index) {
-            content = content + ("\n\t\t\t\t<div class=\"col-md-12 div-title-search \">\n\t\t\t\t " + destino.name + "\n\t\t\t\t</div>\n\t\t\t");
+            content = content + ("<div class=\"col-md-12 div-title-search \"> " + destino.name + "</div>");
             destino.tours.forEach(function (tour) {
-                content = content + ("\n\t\t\t\t\t<div class=\"col-md-12 center-div\">\n\t\t\t\t\t\t<div class=\"col-md-10\">\n\t\t\t\t\t\t\t<span onclick=\"addTour('" + tour.name + "'," + tour.id + ")\" style=\"cursor:pointer\">" + tour.name + "</span> <br> \n\t\t\t\t\t\t\t<small>" + tour.desc + "</small> <br> \n\t\t\t\t\t\t\t<small><a href=\"" + tour.url + "\" target=\"__blank\">" + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + "  >> </a></small> \n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-md-2 v-align\">\n\t\t\t\t\t\t\t<div class=\"box\"><span onclick=\"addTour('" + tour.name + "'," + tour.id + ")\" >" + (lang_domain == 'es' ? 'Seleccionar' : 'Select') + "</span></div>\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t</div>\n\t\t\t\t");
+                content = content + ('<div class="col-md-12 center-div">'+
+                                        '<div class="col-md-10">'+
+                                            '<span onclick="addTour(\'' + tour.name + '\',' + tour.id + ')" style="cursor:pointer">' + tour.name + '</span>'+
+                                            '<br> <small>' + tour.desc + '</small>'+
+                                            '<br> <small><a href="' + tour.url + '" target="__blank">' + (lang_domain == 'es' ? 'Explorar tour' : 'Explore tour') + '  >> </a></small>'+
+                                        '</div>'+
+                                        '<div class="col-md-2 v-align">'+
+                                            '<div class="box"><span onclick="addTour(\'' + tour.name + ',' + tour.id + '\')">' + (lang_domain == 'es' ? 'Seleccionar' : 'Select') + '</span></div>'+
+                                        '</div>'+
+                                    '</div>');
             });
         });
         // Si no hay resultados
         if (coincidences.length == 0) {
-            content = content + ("\n\t\t\t\t" + (lang_domain == 'es' ? 'Lo sentimos, no pudimos encontrar tu Tour. Si lo desea, puede tener un tour personalizado' : 'Sorry, we could not find your Tour. If you want you can have a personalized tour') + ".<br>\n\t\t\t\t<a class=\"btn btn-link\" onclick=\"addTourPersonalizado()\">" + (lang_domain == 'es' ? 'Quiero un tour personalizado' : 'I want a personalized tour') + "</a>\n\t\t\t");
+            content = content + ("" + (lang_domain == 'es' ? 'Lo sentimos, no pudimos encontrar tu Tour. Si lo desea, puede tener un tour personalizado' : 'Sorry, we could not find your Tour. If you want you can have a personalized tour') + ".<br><a class=\"btn btn-link\" onclick=\"addTourPersonalizado()\">" + (lang_domain == 'es' ? 'Quiero un tour personalizado' : 'I want a personalized tour') + "</a>");
         }
-        content = content + "\n\t\t\t</div>\n\t\t";
+        content = content + "</div>";
         document.getElementById('destinosCards').innerHTML = content;
     }
 }
@@ -319,7 +397,7 @@ function liveSearch(text) {
 var cont_custom_tours = 10000;
 function addTourPersonalizado() {
     cont_custom_tours = cont_custom_tours + 1;
-    var content = "\n\t\t<div>\n\t\t\t<label for=\"detalles_p\">" + (lang_domain == 'es' ? 'Escríbenos los detalles del tour que quiere hacer' : 'Write us the details of the tour that you want to do') + "</label>\n\t\t\t<textarea class=\"form-control\" id=\"detalles_p\" placeholder=\"" + (lang_domain == 'es' ? 'Escríbenos los detalles' : 'Write us the details ') + "\" rows=\"5\"></textarea>\n\t\t\t<br>\n\t\t\t<button class=\"btn btn-primary\" onclick=\"addTourCustomTour(" + cont_custom_tours + ")\">" + (lang_domain == 'es' ? 'Agregar' : 'Add') + "</button>\n\t\t</div>\n\t";
+    var content = "<div><label for=\"detalles_p\">" + (lang_domain == 'es' ? 'Escríbenos los detalles del tour que quiere hacer' : 'Write us the details of the tour that you want to do') + "</label><textarea class=\"form-control\" id=\"detalles_p\" placeholder=\"" + (lang_domain == 'es' ? 'Escríbenos los detalles' : 'Write us the details ') + "\" rows=\"5\"></textarea><br><button class=\"btn btn-primary\" onclick=\"addTourCustomTour(" + cont_custom_tours + ")\">" + (lang_domain == 'es' ? 'Agregar' : 'Add') + "</button></div>";
     document.getElementById('destinosCards').innerHTML = content;
     document.getElementById('detalles_p').focus();
     location.hash = "";
@@ -330,7 +408,14 @@ function addTourCustomTour(tourId) {
         id: tourId,
         date: null
     });
-    var child = "\n\t\t\t<div class=\"col-md-12 div-list-tours col-sm-12 col-xs-12 center-div \" id=\"detalles-tour-" + tourId + "\">\n\t\t\t\t<div class=\"col-md-8 list-tours-name col-xs-12 col-sm-8\"> " + $('#detalles_p').val() + "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4\">\n\t\t\t\t\t<div class=\"input-group con_calendario\">\n            <span class=\"input-group-addon\" onclick=\"focucearCalendario('tour-" + tourId + "-date')\"><span class=\"fa fa-calendar\"></span></span>\n            <input class=\"form-control\" id=\"tour-" + tourId + "-date\" readonly=\"true\" name=\"date\" type=\"text\" onchange=\"cambiarFechaTour(this)\">\n          </div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-1 text-center col-xs-1 v-align col-sm-1\">\n\t\t\t\t\t<span class=\"btn btn-default btn-sm fa fa-close\" onclick=\"removeTour(" + tourId + ")\">\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t";
+    var child = '<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-' + tourId + '">'+
+                    '<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ' + $('#detalles_p').val() + '</div>'+
+                    '<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">'+
+                        '<div class="input-group con_calendario"> <span class="input-group-addon" onclick="focucearCalendario(\'tour-' + tourId + '-date\')"><span class="fa fa-calendar"></span></span>'+
+                            '<input class="form-control" id="tour-' + tourId + '-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)"> </div>'+
+                    '</div>'+
+                    '<div class="col-md-1 text-center col-xs-1 v-align col-sm-1"><span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(' + tourId + ')"></span></div>'+
+                '</div>';
     $('#tours-screen').append(child);
     $('.con_calendario input').datepicker({
         'format': 'd-MM-yyyy',
@@ -387,7 +472,15 @@ $(document).ready(function () {
                         id: 666,
                         date: null
                     });
-                    var child = "\n\t\t\t\t\t\t\t<div class=\"col-md-12 div-list-tours col-sm-12 col-xs-12 center-div \" id=\"detalles-tour-666\">\n\t\t\t\t\t\t\t\t<div class=\"col-md-8 list-tours-name col-xs-12 col-sm-8\"> " + res[0].nombre + "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4\">\n\t\t\t\t\t\t\t\t\t<div class=\"input-group con_calendario\">\n\t\t\t\t\t\t\t<span class=\"input-group-addon\" onclick=\"focucearCalendario('tour-666-date')\"><span class=\"fa fa-calendar\"></span></span>\n\t\t\t\t\t\t\t<input class=\"form-control\" id=\"tour-666-date\" readonly=\"true\" name=\"date\" type=\"text\" onchange=\"cambiarFechaTour(this)\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-md-1 text-center col-xs-1 v-align col-sm-1\">\n\t\t\t\t\t\t\t\t\t<span class=\"btn btn-default btn-sm fa fa-close\" onclick=\"removeTour(666)\">\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t";
+                    var child = '<div class="col-md-12 div-list-tours col-sm-12 col-xs-12 center-div " id="detalles-tour-666">'+
+                                    '<div class="col-md-8 list-tours-name col-xs-12 col-sm-8"> ' + res[0].nombre + '</div>'+
+                                    '<div class="col-md-3 text-center list-tours-date col-xs-11 v-align col-sm-4">'+
+                                        '<div class="input-group con_calendario"><span class="input-group-addon" onclick="focucearCalendario(\'tour-666-date\')"><span class="fa fa-calendar"></span></span>'+
+                                            '<input class="form-control" id="tour-666-date" readonly="true" name="date" type="text" onchange="cambiarFechaTour(this)">'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="col-md-1 text-center col-xs-1 v-align col-sm-1"><span class="btn btn-default btn-sm fa fa-close" onclick="removeTour(666)"></span></div>'+
+                                '</div>';
                     $('#tours-screen').append(child);
                     $('.con_calendario input').datepicker({
                         'format': 'd-MM-yyyy',
@@ -425,7 +518,16 @@ $(document).ready(function () {
                         precio: "$ " + res.precio,
                         date: null
                     });
-                    var child = "\n\t\t\t\t\t\t\t<div class=\"col-md-12 div-list-buses col-sm-12 col-xs-12 center-div\" id=\"detalles-ticket-" + res.bus_id + "\">\n\t\t\t\t\t\t\t\t<div class=\"col-md-5 list-buses-name col-xs-12 col-sm-5\"> " + res.servicio + " / " + res.empresa + " / $ " + res.precio + "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 \"> " + res.origen + " - " + res.destino + "\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align\">\n\t\t\t\t\t\t\t\t\t<div class=\"input-group con_calendario\">\n\t\t\t\t\t\t\t\t\t\t<span class=\"input-group-addon\" onclick=\"focucearCalendario('ticket-" + res.bus_id + "-date')\"><span class=\"fa fa-calendar\"></span></span>\n\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" id=\"ticket-" + res.bus_id + "-date\" readonly=\"true\" name=\"date\" type=\"text\" onchange=\"cambiarFechaTicket(this)\"/>\n\t\t\t\t\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-md-1 text-center col-xs-1 col-sm-1 v-align\">\n\t\t\t\t\t\t\t\t\t<span class=\"btn btn-default btn-sm fa fa-close\" onclick=\"removeTicket(" + res.bus_id + ")\">\n\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t";
+                    var child = '<div class="col-md-12 div-list-buses col-sm-12 col-xs-12 center-div" id="detalles-ticket-' + res.bus_id + '">'+
+                                    '<div class="col-md-5 list-buses-name col-xs-12 col-sm-5"> ' + res.servicio + ' / ' + res.empresa + ' / $ ' + res.precio + '</div>'+
+                                    '<div class="col-md-3 list-tours-where text-center v-align col-xs-12 col-sm-3 "> ' + res.origen + ' - ' + res.destino + '</div>'+
+                                    '<div class="col-md-3 text-center list-buses-date col-xs-11 col-sm-3 v-align">'+
+                                        '<div class="input-group con_calendario"><span class="input-group-addon" onclick="focucearCalendario(\'ticket-' + res.bus_id + '-date\')"><span class="fa fa-calendar"></span></span>'+
+                                            '<input class="form-control" id="ticket-' + res.bus_id + '-date" readonly="true" name="date" type="text" onchange="cambiarFechaTicket(this)" />'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="col-md-1 text-center col-xs-1 col-sm-1 v-align"><span class="btn btn-default btn-sm fa fa-close" onclick="removeTicket(\'' + res.bus_id + '\')"></span></div>'+
+                                '</div>';
                     $('#tickets-screen').append(child);
                     $('.con_calendario input').datepicker({
                         'format': 'd-MM-yyyy',
